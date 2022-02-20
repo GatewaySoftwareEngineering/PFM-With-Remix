@@ -59,6 +59,7 @@ functions as if it is BE requests.
 - As a user, I want to see an overview of latest transactions of this week.
   - If there is no transaction in this week, I'd like to see transactions of the last month
   - if there is no transaction in the last month, I'd like to see transactions of this year
+  - In any case, only last 10 transactions must be shown.
 - As a user, I want nothing to happen, when a transaction card clicked (`Will be implemented in future stories`)
 - As a user, I want to see `Add Transaction` button in the overview page so I can add more transactions.
 
@@ -79,3 +80,17 @@ functions as if it is BE requests.
   - If one or more fields do not have acceptable values, each input will have an error message below it, showing a proper error message.
   - If the form is valid, then a transaction will be saved to the transactions list.
 
+### Transaction History page
+
+- As a user, I want the application to navigate to `Transaction History` page when `Transaction History` nav link clicked.
+- As a user, I want see my transactions list in the chronological order.
+- There should be only at most 10 transactions per page.
+- If transactions are more than 10 after applying filters, the pagination should contain more than one item.
+- As a user, I want to be able to see a Search bar, that can be used to filter transactions based on `note` and `price`.
+- As a user, I want to be able to see a Multi Select input, containing both `expense` and `income` categories that I can select
+  multiple items that the transactions will be filtered based on those selected categroies.
+- As a user, I want to be able to see a Date input to select a `from` date to filter transactions from that date until now.
+- As a user, I want to be able to see a Date input to select a `to` date to filter transactions until that date.
+  - in `to` date input, future dates must be disabled.
+- When clicking on `Clear` button on the filter bar, all filters except search bar will be resetted to their initial values.
+- As a user, I want to see pagination on the screen so I can change pages of which transactions is shown. 
