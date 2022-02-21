@@ -1,10 +1,10 @@
-# Money Manager
+# Personal Finance Manager
 
-Money Manager is an application with limited financing functionality, used for tracking your income and expenses and managing your money efficiently.
+Personal Finance Manager is an application with limited financing functionality, used for tracking your income and expenses and managing your money efficiently.
 
-## The Challenge
+## The Assignment
 
-The challenge you're about to tackle is a simple application, you'll be building from the current template built with Create React App + Redux Toolkit.
+The assignment you're about to tackle is a simple application, you'll be building from the current template built with Create React App + Redux Toolkit.
 This application might be small, but it's small for the purpose of helping you have more time over less work so you can focus on the project flexibily.
 And more importantly, so you can work from as much perspective as you have, from UI/UX to Web best practices or React Best practices and so on, **note**
 that every detail might matter, every careful and subtle touches as well as bigger picture quality, re-usability, maintainability and accessibility thoughts
@@ -15,7 +15,7 @@ but don't worry, this is not for you, it's how stories in the real world applica
 
 ## Design
 
-You can find the Design for Money Manager in [this Figma file](https://www.figma.com/file/dJUAWU41JCpAPl0rRDGCx3/Money-Manager?node-id=0%3A1).
+You can find the Design for Personal Finance Manager in [this Figma file](https://www.figma.com/file/dJUAWU41JCpAPl0rRDGCx3/Money-Manager?node-id=0%3A1).
 
 **Note**: Try preview the application with Figma Preview functionality and interact with links and buttons to see how they respond
 to actions, but keep in mind, it's just a mock up, and real-world applications need more attention in terms of both design and functionality.
