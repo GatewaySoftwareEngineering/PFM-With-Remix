@@ -13,6 +13,11 @@ you put into the application helps us better understand your skills and your men
 Also **note** that, all story points with the label (`Will be implemented in future stories`), is put to express future plans of the whole application,
 but don't worry, this is not for you, it's how stories in the real world applications and Development tracking systems will be written.
 
+## The deadline
+
+The assignment expected to be submitted for review by **11:59PM, 10th March of 2022**!
+
+
 ## Design
 
 You can find the Design for Personal Finance Manager in [this Figma file](https://www.figma.com/file/dJUAWU41JCpAPl0rRDGCx3/Money-Manager?node-id=0%3A1).
