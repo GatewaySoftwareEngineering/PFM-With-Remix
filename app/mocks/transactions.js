@@ -1,4 +1,4 @@
-export const getTransactions = async () => [
+export const mockedTransactions = [
   {
     id: "123456789",
     note: "HyperCloud II Headset",
