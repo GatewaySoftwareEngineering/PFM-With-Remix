@@ -28,6 +28,18 @@ export const meta = () => ({
   viewport: "width=device-width,initial-scale=1",
 })
 
+function AppContainer() {
+  return (
+    <div className="app-container">
+      <nav className="slidebar"></nav>
+      <div className="topbar"></div>
+      <main className="main">
+        <Outlet />
+      </main>
+    </div>
+  )
+}
+
 export default function App() {
   return (
     <html lang="en">
@@ -36,7 +48,7 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet />
+        <AppContainer />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
