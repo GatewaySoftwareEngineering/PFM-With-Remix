@@ -464,6 +464,38 @@
   display: block !important;
 }
 
+/* currency-input */
+.currency-input-component {
+  width: 240px;
+  height: 48px;
+  padding: 6px 8px;
+  background-color: #ffffff;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 5px;
+  font-size: 16px;
+}
+.currency-input-component span {
+  opacity: 0.4;
+}
+.currency-input-component input {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  font-size: 16px;
+  /* Firefox */
+}
+.currency-input-component input::-webkit-outer-spin-button, .currency-input-component input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.currency-input-component input[type=number] {
+  -moz-appearance: textfield;
+}
+
 body {
   font-family: "inter";
   width: 100vw;
