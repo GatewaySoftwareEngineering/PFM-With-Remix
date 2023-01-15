@@ -290,6 +290,7 @@
   width: 100%;
   height: 56px;
   padding: 12px 15px;
+  border-radius: 7px;
   background-color: #f8fafc;
   display: flex;
   justify-content: space-between;
@@ -299,6 +300,8 @@
   column-gap: 14px;
   display: flex;
   align-items: center;
+  min-width: 75%;
+  max-width: 75%;
 }
 .transaction .icon-title-container .icon {
   height: 100%;
@@ -431,7 +434,8 @@
 
 /* date-picker component */
 .date-picker {
-  width: 240px;
+  position: relative;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -458,6 +462,8 @@
   aspect-ratio: 1;
 }
 .date-picker .date-picker-selector {
+  top: 60px;
+  position: absolute;
   display: none;
 }
 .date-picker .date-picker-selector-showed {
@@ -496,6 +502,42 @@
   -moz-appearance: textfield;
 }
 
+/* Searchbar */
+.searchbar-container {
+  width: 100%;
+  height: 48px;
+  border-radius: 7px;
+  display: flex;
+  overflow: hidden;
+}
+.searchbar-container .text-bar {
+  width: 100%;
+  height: 100%;
+  padding: 6px 8px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 5px;
+  font-size: 16px;
+}
+.searchbar-container .text-bar span {
+  opacity: 0.4;
+}
+.searchbar-container .text-bar input {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  font-size: 16px;
+}
+.searchbar-container .search-btn {
+  height: 100%;
+  width: 100px;
+  background-color: #2584b7;
+  color: #ffffff;
+}
+
 body {
   font-family: "inter";
   width: 100vw;
@@ -505,19 +547,9 @@ body {
   justify-content: center;
   position: relative;
 }
-body::before {
-  content: "";
+body .app-container {
   width: 100%;
   height: 100%;
-  opacity: 0.1;
-  background-image: url("/assets/background-pattern.png");
-  background-repeat: repeat;
-  position: absolute;
-  z-index: 0;
-}
-body .app-container {
-  width: 1440px;
-  height: 1024px;
   position: relative;
   display: grid;
   grid-template-columns: 250px 1fr;
@@ -558,4 +590,5 @@ body .app-container .topbar span {
 }
 body .app-container .main {
   background-color: #ffffff;
+  overflow-y: auto;
 }

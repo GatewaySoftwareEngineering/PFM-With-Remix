@@ -3,7 +3,7 @@ import { useMemo } from "react"
 import Button from "~/components/button"
 import checkVariant from "~/utils/check-variant"
 
-export default function Card({ title, value, variant }) {
+export default function Card({ title, value, variant, onDetailIsClicked }) {
   const className = useMemo(
     () => (checkVariant(variant) ? `card-${variant}` : ""),
     [variant]
@@ -12,10 +12,11 @@ export default function Card({ title, value, variant }) {
     <div className={`card ${className}`}>
       <span className="card-title">{title}</span>
       <Button
-        type={"normal"}
+        buttonType={"normal"}
         variant={variant}
         size={"small"}
         className={"card-detail-button"}
+        onClick={onDetailIsClicked}
       >
         details
       </Button>
@@ -35,4 +36,5 @@ Card.propTypes = {
     "warning",
     "info",
   ]).isRequired,
+  onDetailIsClicked: PropTypes.func.isRequired,
 }

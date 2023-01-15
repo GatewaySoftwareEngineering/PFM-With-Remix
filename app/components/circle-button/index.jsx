@@ -6,7 +6,7 @@ export default function CircleButton({
   children,
   variant,
   size,
-  type,
+  buttonType,
   onClick,
   className,
   ...props
@@ -15,7 +15,7 @@ export default function CircleButton({
     <Button
       rounded={true}
       size={size}
-      type={type}
+      buttonType={buttonType}
       onClick={onClick}
       className={`circle-button circle-button-variant-${variant} ${className}`}
       {...props}
@@ -26,18 +26,19 @@ export default function CircleButton({
 }
 
 CircleButton.propTypes = {
-  type: PropTypes.oneOf(types),
+  buttonType: PropTypes.oneOf(types),
   size: PropTypes.oneOf(sizes),
   variant: PropTypes.oneOf(variants.push(...["dark", "light"])),
-  children: PropTypes.string.isRequired,
+  children: PropTypes.any,
   onClick: PropTypes.func,
   className: PropTypes.string,
 }
 
 CircleButton.defaultProps = {
-  type: "normal",
+  buttonType: "normal",
   size: "large",
   variant: variants[0],
   onClick: null,
   className: "",
+  children: "",
 }

@@ -6,7 +6,7 @@
   },
   "scripts": {
     "dev": "concurrently \"yarn assets:dev\" \"yarn sass:dev\" \"yarn remix dev\"",
-    "assets": "npx @svgr/cli --out-dir app/shared/assets/ -- assets",
+    "assets": "npx @svgr/cli --out-dir app/shared/assets/svg-components -- assets/svgs/to-component-svgs",
     "assets:watch": "npm-watch assets",
     "assets:dev": "concurrently --hide \"yarn assets\" \"yarn assets:watch\"",
     "sass:dev": "sass -q --no-source-map --watch styles/:app/styles",

@@ -5,7 +5,7 @@ export const types = ["normal", "ghost", "text"]
 export const sizes = ["large", "normal", "small"]
 
 export default function Button({
-  type,
+  buttonType: type,
   size,
   variant,
   rounded,
@@ -42,20 +42,21 @@ export default function Button({
 }
 
 Button.propTypes = {
-  type: PropTypes.oneOf(types),
+  buttonType: PropTypes.oneOf(types),
   size: PropTypes.oneOf(sizes),
-  variant: PropTypes.oneOf(variants.push(...["dark", "light"])),
+  variant: PropTypes.oneOf([...variants, "dark", "light"]),
   rounded: PropTypes.bool,
-  children: PropTypes.string.isRequired,
+  children: PropTypes.any,
   onClick: PropTypes.func,
   className: PropTypes.string,
 }
 
 Button.defaultProps = {
-  type: "normal",
+  buttonType: "normal",
   size: "large",
   variant: variants[0],
   rounded: true,
   onClick: null,
   className: "",
+  children: "",
 }

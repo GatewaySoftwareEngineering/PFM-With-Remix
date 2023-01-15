@@ -301,6 +301,7 @@
   width: 100%;
   height: 56px;
   padding: 12px 15px;
+  border-radius: 7px;
   background-color: $light;
   display: flex;
   justify-content: space-between;
@@ -310,6 +311,8 @@
     column-gap: 14px;
     display: flex;
     align-items: center;
+    min-width: 75%;
+    max-width: 75%;
 
     .icon {
       height: 100%;
@@ -473,7 +476,8 @@
 /* date-picker component */
 
 .date-picker {
-  width: 240px;
+  position: relative;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -503,6 +507,8 @@
   }
 
   .date-picker-selector {
+    top: 60px;
+    position: absolute;
     display: none;
   }
 
@@ -545,5 +551,46 @@
     &[type="number"] {
       -moz-appearance: textfield;
     }
+  }
+}
+
+/* Searchbar */
+
+.searchbar-container {
+  width: 100%;
+  height: 48px;
+  border-radius: 7px;
+  display: flex;
+  overflow: hidden;
+
+  .text-bar {
+    width: 100%;
+    height: 100%;
+    padding: 6px 8px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 5px;
+    font-size: 16px;
+
+    span {
+      opacity: 0.4;
+    }
+
+    input {
+      height: 100%;
+      width: 100%;
+      outline: none;
+      border: none;
+      font-size: 16px;
+    }
+  }
+
+  .search-btn {
+    height: 100%;
+    width: 100px;
+    background-color: lighten($color: $primary, $amount: 10);
+    color: #ffffff;
   }
 }

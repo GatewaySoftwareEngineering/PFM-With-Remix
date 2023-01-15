@@ -1,9 +1,11 @@
 import PropTypes from "prop-types"
-import { useCallback, useState } from "react"
+import { useCallback, useRef, useState } from "react"
 import { Calendar } from "react-date-range"
-import { Calender as CalenderIcon } from "~/shared/assets"
+import useOnClickOutside from "~/hooks/useOnClickOutside"
+import { Calender as CalenderIcon } from "~/shared/assets/svg-components"
 
 export default function DatePicker({
+  name,
   label,
   date,
   maxDate,
@@ -12,12 +14,19 @@ export default function DatePicker({
 }) {
   const [isSelectorShowedUp, setIsSelectorShowed] = useState(false)
 
+  const ref = useRef(null)
+
   const pickerTogglerHandler = useCallback(() => {
     setIsSelectorShowed((isSelectorShowedUp) => !isSelectorShowedUp)
   }, [])
 
+  useOnClickOutside(ref, () => {
+    setIsSelectorShowed(false)
+  })
+
   return (
-    <div className="date-picker">
+    <div className="date-picker" ref={ref}>
+      <input type={"hidden"} name={name} value={date ? date.toString() : ""} />
       <div className="date-picker-toggler" onClick={pickerTogglerHandler}>
         <span className="date-picker-content">{`${label}${
           date ? ": " + date.toLocaleDateString() : ""
@@ -43,9 +52,16 @@ export default function DatePicker({
 }
 
 DatePicker.propTypes = {
+  name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
-  date: PropTypes.objectOf(Date).isRequired,
+  date: PropTypes.objectOf(Date),
   onSelect: PropTypes.func.isRequired,
-  maxDate: PropTypes.objectOf(Date).isRequired,
-  minDate: PropTypes.objectOf(Date).isRequired,
+  maxDate: PropTypes.objectOf(Date),
+  minDate: PropTypes.objectOf(Date),
+}
+
+DatePicker.defaultProps = {
+  date: null,
+  maxDate: null,
+  minDate: null,
 }

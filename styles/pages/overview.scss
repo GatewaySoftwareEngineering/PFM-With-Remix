@@ -1,10 +1,112 @@
+@import "../colors";
+
 .overview-page {
-  height: 100%;
   display: flex;
   padding: 24px;
   flex-direction: column;
   row-gap: 90px;
   background-color: #e8e8e8;
+
+  .modal-container {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: $dark, $alpha: 0.5);
+
+    .modal {
+      overflow: hidden;
+      position: absolute;
+      width: 1100px;
+      height: 600px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 15px;
+      background-color: $light;
+
+      .modal-header {
+        height: 55px;
+        width: 100%;
+        background-color: #ffffff;
+        box-shadow: 1px 1px 2px 1px lighten($color: #333, $amount: 70);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+
+        .modal-text-header {
+          font-size: 16px;
+          text-transform: capitalize;
+        }
+
+        .modal-close-button {
+          height: 40%;
+          aspect-ratio: 1;
+          cursor: pointer;
+        }
+      }
+
+      .modal-body {
+        padding: 35px;
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 52px;
+        row-gap: 50px;
+        font-size: 16px;
+        padding: 25px;
+
+        > input {
+          font-size: 16px;
+        }
+
+        > div {
+          width: 300px;
+          display: flex;
+          flex-direction: column;
+          row-gap: 15px;
+        }
+
+        > .type-radio-group {
+          width: 300px;
+
+          > div {
+            display: flex;
+            column-gap: 40px;
+            > span {
+              display: flex;
+              column-gap: 10px;
+              text-transform: capitalize;
+            }
+          }
+        }
+
+        .note-container {
+          width: 695px;
+          height: 250px;
+
+          .note {
+            width: 100%;
+            height: 100%;
+            border-radius: 7px;
+            resize: none;
+            padding: 15px;
+          }
+        }
+        .modal-footer {
+          width: 325px;
+          margin-left: auto;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          .form-submit-button {
+            width: 200px;
+          }
+        }
+      }
+    }
+  }
 
   .card-list {
     width: 100%;
@@ -29,7 +131,22 @@
       flex-direction: column;
       row-gap: 18px;
       overflow-y: auto;
-      max-height: 569px;
+      max-height: max-content;
+
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: rgba($color: #333, $alpha: 0.5);
+        width: 5px;
+      }
     }
   }
 

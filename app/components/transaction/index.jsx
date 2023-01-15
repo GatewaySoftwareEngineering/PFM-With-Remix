@@ -1,20 +1,44 @@
 import PropTypes from "prop-types"
-import { Salary, Accessories, Book } from "~/shared/assets"
+import {
+  BillsIcon,
+  ClothsIcon,
+  FoodIcon,
+  GiftIcon,
+  SalaryIcon,
+  LoanIcon,
+  HealthIcon,
+  TechIcon,
+  SportsIcon,
+  UndefinedCategoryIcon,
+} from "~/shared/assets/svg-components"
 import currencyFormatter from "~/utils/currency-formatter"
 
-const transactionCategories = ["SALARY", "BOOK", "ACCESSORIES"]
-const transactionTypes = ["INCOME", "EXPENSE"]
+const getIcon = (category) => {
+  switch (category.toUpperCase()) {
+    case "SALARY":
+      return SalaryIcon
+    case "LOAN":
+      return LoanIcon
+    case "GIFT":
+      return GiftIcon
+    case "TECH":
+      return TechIcon
+    case "FOOD":
+      return FoodIcon
+    case "BILLS":
+      return BillsIcon
+    case "SPORTS":
+      return SportsIcon
+    case "HEALTH":
+      return HealthIcon
+    case "CLOTHS":
+      return ClothsIcon
+    default:
+      return UndefinedCategoryIcon
+  }
+}
 
 export default function Transaction({ category, title, date, amount, type }) {
-  const haveProperTransactionType = transactionTypes.includes(
-    type.toUpperCase(),
-    0
-  )
-  const haveProperTransactionCategory = transactionCategories.includes(
-    category.toUpperCase(),
-    0
-  )
-
   switch (date.getDate()) {
     case new Date().getDate(): {
       date = "today"
@@ -32,26 +56,9 @@ export default function Transaction({ category, title, date, amount, type }) {
 
   amount = currencyFormatter(+amount, { useAbbreviation: true, symbol: "$" })
 
-  type = haveProperTransactionType ? type.toLowerCase() : "income"
-  category = haveProperTransactionCategory ? category.toLowerCase() : "salary"
+  const className = `transaction transaction-type-${type.toLowerCase()}`
 
-  const className = `transaction transaction-type-${type}`
-
-  let Icon = <></>
-  switch (category) {
-    case "salary": {
-      Icon = Salary
-      break
-    }
-    case "accessories": {
-      Icon = Accessories
-      break
-    }
-    case "book": {
-      Icon = Book
-      break
-    }
-  }
+  let Icon = getIcon(category)
 
   return (
     <div className={className}>
@@ -72,9 +79,9 @@ export default function Transaction({ category, title, date, amount, type }) {
 }
 
 Transaction.propTypes = {
-  category: PropTypes.oneOf(transactionCategories).isRequired,
+  category: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   date: PropTypes.object.isRequired,
-  amount: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(transactionTypes).isRequired,
+  amount: PropTypes.number.isRequired,
+  type: PropTypes.string.isRequired,
 }
