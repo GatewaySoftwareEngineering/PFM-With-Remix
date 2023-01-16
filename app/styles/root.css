@@ -1,29 +1,67 @@
+/* root styles */
 * {
+  font-family: "Inter";
+  font-style: normal;
   box-sizing: border-box;
   font-family: inherit;
   margin: 0;
   padding: 0;
 }
 
-.index-page {
-  font-family: system-ui, sans-serif;
-  color: black;
-  margin-left: 200px;
-}
-
-.main-content {
-  margin-left: 200px;
-}
-
 .container {
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: row;
 }
 
-.side-nav {
-  position: fixed;
-  width: 200px;
-  height: 100%;
+/* Side Nav */
+.nav {
+  width: 250px;
+  height: 100vh;
   background: linear-gradient(180deg, #30475e 0%, #222831 100%);
-  z-index: 1;
+}
+
+.nav_Logo {
+  color: #f05454;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 27px;
+}
+
+.nav_Logo_icon {
+  width: 30px;
+  height: 30px;
+}
+
+.nav_Logo_text {
+  color: #f05454;
+  list-style: none;
+  text-decoration: none;
+  word-spacing: 2px;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 27px;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  gap: 30px;
+}
+
+.nav_item {
+  color: #d4d4d8;
+  list-style: none;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 27px;
 }

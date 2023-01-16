@@ -1,5 +1,5 @@
 import {
-  Link,
+  NavLink,
   Links,
   LiveReload,
   Meta,
@@ -8,7 +8,7 @@ import {
   ScrollRestoration,
 } from "@remix-run/react"
 import { Children } from "react"
-
+import { AiOutlineDollar } from "react-icons/ai"
 import rootStyles from "~/styles/root.css"
 
 /**
@@ -42,13 +42,33 @@ export default function App() {
 
 // Layout component
 function Layout({ children }) {
+  const activeStyle = {
+    color: "white",
+  }
   return (
     <container className="container">
-      <nav className="side-nav">
-        <Link to="/">Finance Manager</Link>
+      <nav className="nav">
+        <div className="nav_Logo">
+          <AiOutlineDollar className="nav_Logo_icon" />
+          <NavLink className="nav_Logo_text" to="/">
+            Finance Manager
+          </NavLink>
+        </div>
         <ul>
-          <Link to="/dashboard">Overview</Link>
-          <Link to="/transactions">Transaction History</Link>
+          <NavLink
+            className="nav_item"
+            to="/dashboard"
+            style={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            Overview
+          </NavLink>
+          <NavLink
+            className="nav_item"
+            to="/transactions"
+            style={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            Transaction History
+          </NavLink>
         </ul>
       </nav>
       <main className="main-content">{children}</main>
