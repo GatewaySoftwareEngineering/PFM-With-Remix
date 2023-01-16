@@ -19,6 +19,10 @@ export const links = () => [
     rel: "stylesheet",
     href: rootStyles,
   },
+  {
+    rel: "stylesheet",
+    href: "https://fonts.googleapis.com/css?family=Inter",
+  },
 ]
 
 /**
@@ -57,7 +61,7 @@ function Layout({ children }) {
         <ul>
           <NavLink
             className="nav_item"
-            to="/dashboard"
+            to="/"
             style={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             Overview
