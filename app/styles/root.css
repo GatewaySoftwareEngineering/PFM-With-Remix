@@ -65,3 +65,17 @@ ul {
   font-size: 22px;
   line-height: 27px;
 }
+
+.Main_Content__Header {
+  width: calc(100vw - 250px);
+  padding: 20px;
+  background: #f7f4f3;
+  box-shadow: 0px 1px 8px rgba(34, 40, 49, 0.05);
+}
+
+.Main_Content__Text {
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 27px;
+  color: #374151;
+}
