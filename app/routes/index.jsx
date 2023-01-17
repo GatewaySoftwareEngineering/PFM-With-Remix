@@ -43,15 +43,27 @@ export default function Overview() {
           <h1 className="week_list_header">This Week</h1>
           <div className="week_lists">
             <Transaction
-              category="Edu"
+              category="Education"
               amount="1000"
-              date="Today"
-              note="This is a note"
+              date="01/17/2023"
+              note="12 Rules for life by Jordan Peterson signed by himself..."
+            />
+            <Transaction
+              category="Salary"
+              amount="1000"
+              date="01/16/2023"
+              note="Salary After Promotion"
+            />
+            <Transaction
+              category="Tech"
+              amount="1000"
+              date="01/15/2023"
+              note="Latest blue yeti microphone"
             />
           </div>
         </div>
-        <div className="button-list">
-          <button>Add Transaction</button>
+        <div className="list-Add">
+          <button className="list-button">Add Transaction</button>
         </div>
       </div>
     </>
