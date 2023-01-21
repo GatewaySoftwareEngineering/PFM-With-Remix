@@ -1,6 +1,12 @@
+import propTypes from "prop-types"
 import Card from "~/Components/Card"
 import Transaction from "~/Components/Transaction"
+import Dropdown from "~/Components/dropdown"
 import overviewStyles from "~/styles/overview.css"
+import { IoClose } from "react-icons/io5"
+import { useState } from "react"
+import { BsCalendar2Date } from "react-icons/bs"
+import { IconContext } from "react-icons"
 
 export const links = () => [
   {
@@ -9,12 +15,102 @@ export const links = () => [
   },
 ]
 
+function Modal({ handleClose }) {
+  const [category, setCategory] = useState("")
+  const [startDate, setDate] = useState(new Date())
+
+  const selectDateHandler = (e) => {
+    setDate(e.target.value)
+  }
+
+  const options = [
+    { value: "Education", label: "Education" },
+    { value: "Salary", label: "Salary" },
+    { value: "Tech", label: "Tech" },
+  ]
+  return (
+    <div className="modal-container">
+      <div className="modal-content">
+        <div className="modal-header">
+          <span className="modal-header-text">Add Transaction</span>
+          <IoClose className="modal-close-button-icon" onClick={handleClose} />
+        </div>
+
+        <form className="modal-body">
+          <div className="modal-body-row-1">
+            <Dropdown
+              title="Category"
+              options={options}
+              setCategory={setCategory}
+              selected={category}
+            />
+            <div className="elements">
+              <label className="input-title">Date</label>
+              <span className="date-elements">
+                <input
+                  className="date-picker"
+                  type="date"
+                  value={startDate}
+                  onChange={selectDateHandler}
+                />
+                <BsCalendar2Date className="calendar-icon" />
+              </span>
+            </div>
+            <div className="elements">
+              <label className="input-title">Amount</label>
+              <input type="number" className="amount" placeholder="$" />
+            </div>
+          </div>
+          <div className="modal-body-row-2">
+            <div className="radio-group">
+              <label className="input-title">Type</label>
+              <div className="radio-elements">
+                <span className="radio-element">
+                  <input type="radio" name="type" value="INCOME" />
+                  <label>income</label>
+                </span>
+                <span className="radio-element">
+                  <input
+                    type="radio"
+                    name="type"
+                    value="EXPENSE"
+                    id="expense"
+                    onChange={() => {}}
+                  />
+                  <label>expense</label>
+                </span>
+              </div>
+            </div>
+            <div className="note-group">
+              <label>Note</label>
+              <textarea id="note" name="note" className="note"></textarea>
+            </div>
+          </div>
+          <div className="modal-footer">
+            <button className="btn-dismiss">Dismiss</button>
+            <button className="btn-transaction">Add Transaction</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  )
+}
+
+Modal.propTypes = {
+  handleClose: propTypes.func.isRequired,
+}
+
 export default function Overview() {
+  const [modal, setModal] = useState(false)
   function handleClick() {
     console.log("Clicked")
   }
+  function handleModal() {
+    setModal(!modal)
+  }
   return (
     <>
+      {modal && <Modal handleClose={handleModal} />}
       <div className="Main_Content__Header">
         <h1 className="Main_Content__Text">Overview</h1>
       </div>
@@ -63,7 +159,9 @@ export default function Overview() {
           </div>
         </div>
         <div className="list-Add">
-          <button className="list-button">Add Transaction</button>
+          <button className="list-button" onClick={handleModal}>
+            Add Transaction
+          </button>
         </div>
       </div>
     </>

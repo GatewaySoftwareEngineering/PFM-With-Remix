@@ -12,10 +12,11 @@ export default function Transaction({ category, amount, date, note }) {
 
   if (recivedDate === today) {
     date = "Today"
-  } else if (recivedDate == yestrday) {
+  }
+  if (recivedDate == yestrday) {
     date = "Yesterday"
   }
-  console.log(recivedDate, today, yestrday)
+
   const icon = {
     Education: <HiOutlineAcademicCap className="Blue-Icon" />,
     Salary: <TbBriefcase className="Green-Icon" />,
