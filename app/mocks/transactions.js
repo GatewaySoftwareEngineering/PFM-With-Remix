@@ -2,8 +2,8 @@ export const mockedTransactions = [
   {
     id: "123456789",
     note: "HyperCloud II Headset",
-    category: "ACCESSORIES",
-    createdAt: new Date(),
+    category: "Salary",
+    createdAt: "01/16/2023",
     type: "EXPENSE",
     amount: 75,
     currency: "USD",
@@ -11,8 +11,8 @@ export const mockedTransactions = [
   {
     id: "987546321",
     note: "Salary after promotion",
-    category: "SALARY",
-    createdAt: new Date(),
+    category: "Education",
+    createdAt: "01/16/2023",
     type: "INCOME",
     amount: 5_000_000,
     currency: "IQD",
@@ -20,8 +20,8 @@ export const mockedTransactions = [
   {
     id: "887546321",
     note: "Borrowed from Muhammad",
-    category: "LOAN",
-    createdAt: new Date(),
+    category: "Tech",
+    createdAt: "01/16/2023",
     type: "INCOME",
     amount: 100_000,
     currency: "IQD",
