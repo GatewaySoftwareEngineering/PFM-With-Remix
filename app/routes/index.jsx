@@ -6,7 +6,6 @@ import overviewStyles from "~/styles/overview.css"
 import { IoClose } from "react-icons/io5"
 import { useState } from "react"
 import { BsCalendar2Date } from "react-icons/bs"
-import { IconContext } from "react-icons"
 
 export const links = () => [
   {
