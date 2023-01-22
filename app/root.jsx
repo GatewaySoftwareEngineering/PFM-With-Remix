@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import {
   NavLink,
   Links,
@@ -7,7 +8,6 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react"
-import { Children } from "react"
 import { AiOutlineDollar } from "react-icons/ai"
 import rootStyles from "~/styles/root.css"
 
@@ -50,7 +50,7 @@ function Layout({ children }) {
     color: "white",
   }
   return (
-    <container className="container">
+    <div className="container">
       <nav className="nav">
         <div className="nav_Logo">
           <AiOutlineDollar className="nav_Logo_icon" />
@@ -76,12 +76,12 @@ function Layout({ children }) {
         </ul>
       </nav>
       <main className="main-content">{children}</main>
-    </container>
+    </div>
   )
 }
 // props validation
 Layout.propTypes = {
-  children: Children.isRequired,
+  children: PropTypes.node.isRequired,
 }
 
 // Document component
@@ -104,5 +104,5 @@ function Document({ children }) {
 
 // props validation
 Document.propTypes = {
-  children: Children.isRequired,
+  children: PropTypes.node.isRequired,
 }

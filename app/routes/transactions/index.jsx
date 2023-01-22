@@ -15,22 +15,47 @@ export const links = () => [
 ]
 
 export default function Transactions() {
-  const { transactionPage, setTransactionPage } = useState(1)
-  const { filter, setFilter } = useState("all")
-  const { start, setStart } = useState(
-    new Date("Sun Jan 01 2023 00:00:00 GMT+0300 (Arabian Standard Time)")
-  )
-  const { end, setEnd } = useState(
-    new Date("Sun Jan 19 2023 00:00:00 GMT+0300 (Arabian Standard Time)")
-  )
+  const [transactionPage, setTransactionPage] = useState(1)
+  const [filter, setFilter] = useState("all")
+  const [start, setStart] = useState(new Date().toLocaleDateString("en-US"))
+  const [end, setEnd] = useState(new Date().toLocaleDateString("en-US"))
+  const [search, setSearch] = useState("")
   const options = [
     { value: "all", label: "All" },
-    { value: "food", label: "Food" },
-    { value: "transport", label: "Transport" },
-    { value: "entertainment", label: "Entertainment" },
-    { value: "shopping", label: "Shopping" },
-    { value: "others", label: "Others" },
+    { value: "Education", label: "Education" },
+    { value: "Tech", label: "Tech" },
+    { value: "Salary", label: "Salary" },
   ]
+
+  const handleFilter = (e) => {
+    setFilter(e.value)
+    console.log(e)
+  }
+
+  const filterTransactions = () => {
+    if (filter === "all") {
+      return mockedTransactions
+    }
+    return mockedTransactions.filter((transaction) => {
+      return transaction.category === filter
+    })
+  }
+
+  const transactionRange = () => {
+    return filterTransactions().filter((transaction) => {
+      return (
+        new Date(transaction.createdAt) >= new Date(start) &&
+        new Date(transaction.createdAt) <= new Date(end)
+      )
+    })
+  }
+
+  /* filter transation based on page number each page showing 5 transactions */
+  const paginatedTransactions = () => {
+    const start = (transactionPage - 1) * 5
+    const end = start + 5
+    return filterTransactions().slice(start, end)
+  }
 
   function handleSelect(ranges) {
     const [startDate, endDate] = [ranges.selection]
@@ -45,7 +70,7 @@ export default function Transactions() {
         <h1 className="Main_Content__Text">Transaction History</h1>
       </div>
       <div className="Main_Content__Body">
-        <SearchBar />
+        <SearchBar setSearch={setSearch} />
         <div className="Filter_Section">
           <span className="Filter_Content">
             <span className="Filter_Icon_container">
@@ -54,9 +79,8 @@ export default function Transactions() {
             </span>
             <Select
               className="Filter_Select"
-              selected={filter}
               options={options}
-              onChange={(e) => setFilter(e.value)}
+              onChange={handleFilter}
             />
             <span className="date-elements">
               <input
@@ -67,7 +91,9 @@ export default function Transactions() {
                 value={start}
                 onFocus={(e) => (e.target.type = "date")}
                 onBlur={(e) => (e.target.type = "text")}
-                onChange={(e) => setStart(e.target.value)}
+                onChange={(e) =>
+                  setStart(e.target.value.toLocalString("en-US"))
+                }
               />
               <BsCalendar2Date className="calendar-icon" />
             </span>
@@ -88,7 +114,7 @@ export default function Transactions() {
           <button className="SearchBar__Btn">Clear</button>
         </div>
         <div className="Transaction__Table">
-          {mockedTransactions.map((transaction) => (
+          {filterTransactions().map((transaction) => (
             <Transaction
               category={transaction.category}
               amount={transaction.amount}
@@ -97,6 +123,7 @@ export default function Transactions() {
               key={transaction.id}
             />
           ))}
+          {console.log(filterTransactions())}
         </div>
       </div>
     </div>

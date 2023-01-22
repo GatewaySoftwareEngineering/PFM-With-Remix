@@ -73,7 +73,6 @@ function Modal({ handleClose }) {
                     type="radio"
                     name="type"
                     value="EXPENSE"
-                    id="expense"
                     onChange={() => {}}
                   />
                   <label>expense</label>
@@ -82,7 +81,7 @@ function Modal({ handleClose }) {
             </div>
             <div className="note-group">
               <label>Note</label>
-              <textarea id="note" name="note" className="note"></textarea>
+              <textarea name="note" className="note"></textarea>
             </div>
           </div>
           <div className="modal-footer">

@@ -38,7 +38,7 @@ export default function Transaction({ category, amount, date, note }) {
 
 Transaction.propTypes = {
   category: PropTypes.string.isRequired,
-  amount: PropTypes.string.isRequired,
+  amount: PropTypes.number.isRequired,
   date: PropTypes.string.isRequired,
   note: PropTypes.string.isRequired,
 }
