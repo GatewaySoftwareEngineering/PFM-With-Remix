@@ -3,7 +3,7 @@ import { IoSearchSharp } from "react-icons/io5"
 
 function SearchBar({ setSearch }) {
   const onInActive = (e) => {
-    e.target.placeholder = "What is that you are looking for?"
+    e.target.placeholder = "Search"
   }
 
   const onChangeInput = (e) => {
