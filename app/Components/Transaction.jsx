@@ -13,7 +13,7 @@ export default function Transaction({ category, amount, date, note }) {
   if (recivedDate === today) {
     date = "Today"
   }
-  if (recivedDate == yestrday) {
+  if (recivedDate === yestrday) {
     date = "Yesterday"
   }
 
