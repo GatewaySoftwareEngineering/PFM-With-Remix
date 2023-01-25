@@ -4,7 +4,7 @@
       "id": "1",
       "note": "HyperCloud II Headset",
       "category": "EDUCATION",
-      "createdAt": "1/24/2023",
+      "createdAt": "2023-01-24",
       "type": "EXPENSE",
       "amount": 77000,
       "currency": "USD"
@@ -13,7 +13,7 @@
       "id": "2",
       "note": "Salary after promotion",
       "category": "SALARY",
-      "createdAt": "1/24/2023",
+      "createdAt": "2023-01-24",
       "type": "INCOME",
       "amount": 1540000,
       "currency": "USD"
@@ -22,17 +22,17 @@
       "id": "3",
       "note": "Borrowed from Muhammad",
       "category": "LOAN",
-      "createdAt": "1/24/2023",
+      "createdAt": "2023-01-25",
       "type": "INCOME",
       "amount": 124000,
       "currency": "USD"
     },
     {
-      "id": 16642,
-      "note": "sdcds",
+      "id": 14769,
+      "note": "klanjjklnjknwjnjas bffbnajkba",
       "category": "SALARY",
-      "type": "expense",
-      "amount": "1",
+      "type": "INCOME",
+      "amount": "2000",
       "createdAt": "2023-01-25",
       "currency": "USD"
     }

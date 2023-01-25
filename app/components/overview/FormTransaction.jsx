@@ -1,5 +1,4 @@
 import { useState } from "react"
-import AddTransaction from "../AddTransaction"
 import PropTypes from "prop-types"
 function FormTransaction({ handleCancel }) {
   const [category, setCategory] = useState("EDUCATION")
@@ -81,7 +80,7 @@ function FormTransaction({ handleCancel }) {
                 id="income"
                 name="type"
                 required
-                value="income"
+                value="INCOME"
                 onChange={(e) => setType(e.target.value)}
               />
               <label htmlFor="income">Income</label>
@@ -90,10 +89,10 @@ function FormTransaction({ handleCancel }) {
                 id="expense"
                 name="type"
                 required
-                value="expense"
+                value="EXPENSE"
                 onChange={(e) => setType(e.target.value)}
               />
-              <label htmlFor="income">expense</label>
+              <label htmlFor="expense">expense</label>
             </div>
           </div>
         </div>
@@ -114,7 +113,9 @@ function FormTransaction({ handleCancel }) {
         <button className="dismiss" onClick={handleCancel}>
           Dismiss
         </button>
-        <AddTransaction className="transaction_footer_btn" />
+        <button className="transaction_footer_btn">
+          Add Transaction
+        </button>
       </div>
     </form>
   )

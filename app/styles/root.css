@@ -5,6 +5,10 @@
   padding: 0;
 }
 
+body {
+  background-color: #e5e5e5;
+}
+
 .container {
   display: flex;
   flex-direction: row;
@@ -148,15 +152,21 @@
   color: #fff;
 }
 
+.overview_transaction_container {
+  padding-top: 60px;
+}
+
 .overview_transaction_data {
   width: calc(100% - 262px);
-  padding-top: 60px;
+  max-height: 280px;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 18px;
+  padding: 5px;
 }
 
-.overview_transaction_data h2 {
+.overview_transaction_container h2 {
   font-weight: 500;
   font-size: 22px;
   line-height: 27px;
@@ -374,4 +384,88 @@
   min-height: 50px;
 }
 
-/*# sourceMappingURL=root.css.map */
+.transaction_history {
+  width: calc(100% - 262px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.transaction_history_search input {
+  padding: 12px;
+  background: #fff;
+  border-radius: 7px 0px 0px 7px;
+  border: none;
+  width: 95%;
+}
+
+.transaction_history_search button {
+  padding: 12px;
+  background: rgba(28, 101, 140, 0.75);
+  color: #fff;
+  border-radius: 0 7px 7px 0;
+  border: none;
+  width: 5%;
+  cursor: pointer;
+}
+
+.transaction_history_search {
+  padding-bottom: 20px;
+  display: flex;
+}
+
+.transaction_history_filter_container {
+  padding-bottom: 20px;
+  display: flex;
+  width: 100%;
+}
+
+.transaction_history_filter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-left: 20px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 7px 0px 0px 7px;
+}
+
+.transaction_history_filter button {
+  padding: 12px;
+  background: rgba(28, 101, 140, 0.75);
+  color: #fff;
+  border-radius: 0 7px 7px 0;
+  border: none;
+  width: 5%;
+  cursor: pointer;
+}
+
+.transaction_history_filter select {
+  background: #fff;
+  box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 7px;
+  width: 20%;
+  padding: 4px 8px;
+  border: none;
+}
+
+.transaction_history_filter_date {
+  width: 40%;
+  display: flex;
+  gap: 20px;
+}
+
+.transaction_history_filter input {
+  background: #fff;
+  box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 7px;
+  width: 100%;
+  padding: 4px 8px;
+  border: none;
+}
+
+.transaction_history_container {
+  width: 100%;
+}

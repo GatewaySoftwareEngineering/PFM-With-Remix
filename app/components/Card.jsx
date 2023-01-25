@@ -5,7 +5,14 @@ function Card({ className, title, mockedTransactions }) {
     if (curr.type === title.toUpperCase()) {
       acc += curr.amount
     } else if (title === "Balance") {
-      acc += curr.amount
+      acc = 0
+      mockedTransactions.forEach((transaction) => {
+        if (transaction.type === "INCOME") {
+          acc += transaction.amount
+        } else if (transaction.type === "EXPENSE") {
+          acc -= transaction.amount
+        }
+      })
     }
     return acc
   }, 0)

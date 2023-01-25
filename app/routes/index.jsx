@@ -8,7 +8,7 @@ import FormTransaction from "~/components/overview/FormTransaction"
 
 export default function Index() {
   const [mockedTransactions, setMockedTransactions] = useState([])
-  const [istransactions, setIsTransactions] = useState(true)
+  const [istransactions, setIsTransactions] = useState(false)
 
   const handleOpen = () => {
     setIsTransactions(true)
@@ -46,8 +46,9 @@ export default function Index() {
           />
         ))}
       </div>
-      <div className="overview_transaction_data">
+      <div className="overview_transaction_container">
         <h2>This Week</h2>
+        <div className="overview_transaction_data">
         {mockedTransactions.map((transaction) => (
           <TransactionItem
             key={transaction.id}
@@ -55,8 +56,10 @@ export default function Index() {
             amount={transaction.amount}
             date={transaction.createdAt}
             category={transaction.category}
+            type={transaction.type}
           />
         ))}
+      </div>
       </div>
       <div className="transaction">
         <AddTransaction
