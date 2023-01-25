@@ -1,3 +1,8 @@
+# run
+
+- npx json-server --watch app/mocks/transactions.json --port 8000
+- yarn dev
+
 # Personal Finance Manager
 
 Personal Finance Manager is an application with limited financing functionality, used for tracking your income and expenses and managing your money efficiently.

@@ -1,5 +1,4 @@
 import PropTypes from "prop-types"
-import AddTransaction from "./AddTransaction"
 
 function PopUps({ handleCancel, children, title }) {
   return (
@@ -9,15 +8,6 @@ function PopUps({ handleCancel, children, title }) {
         <button onClick={handleCancel}>X</button>
       </div>
       <div className="popup_body">{children}</div>
-      <div className="popup_footer">
-        <button onClick={handleCancel} className="dismiss">
-          Dismiss
-        </button>
-        <AddTransaction
-          handleTransaction={handleCancel}
-          className="transaction_footer_btn"
-        />
-      </div>
     </div>
   )
 }

@@ -1,13 +1,13 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Card from "~/components/Card"
 import CardDeatails from "~/data/CardDeatails"
-import { mockedTransactions } from "~/mocks/transactions"
 import TransactionItem from "~/components/TransactionItem"
 import PopUps from "~/components/PopUps"
 import AddTransaction from "~/components/AddTransaction"
 import FormTransaction from "~/components/overview/FormTransaction"
 
 export default function Index() {
+  const [mockedTransactions, setMockedTransactions] = useState([])
   const [istransactions, setIsTransactions] = useState(true)
 
   const handleOpen = () => {
@@ -17,11 +17,20 @@ export default function Index() {
   const handleCancel = () => {
     setIsTransactions(false)
   }
+
+  useEffect(() => {
+    fetch('http://localhost:8000/mockedTransactions')
+    .then(response => {return response.json()})
+    .then(data => {
+      setMockedTransactions(data)
+    }
+    )  
+  }, [])
   return (
     <div className="overview-page">
       {istransactions && (
         <PopUps handleCancel={handleCancel} title="Add Transaction">
-          <FormTransaction />
+          <FormTransaction handleCancel={handleCancel} />
         </PopUps>
       )}
       {istransactions && (
