@@ -1,21 +1,22 @@
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
 
 function Card({ className, title, mockedTransactions }) {
-  const total = mockedTransactions.reduce((acc, curr) => {
-    if (curr.type === title.toUpperCase()) {
-      acc += curr.amount
-    } else if (title === "Balance") {
-      acc = 0
-      mockedTransactions.forEach((transaction) => {
-        if (transaction.type === "INCOME") {
-          acc += transaction.amount
-        } else if (transaction.type === "EXPENSE") {
-          acc -= transaction.amount
-        }
-      })
-    }
-    return acc
-  }, 0)
+
+  let total = 0;
+  if (title === "Balance") {
+    mockedTransactions.forEach((transaction) => {
+      if (transaction.type === "INCOME") {
+        total += Number(transaction.amount);
+      } else if (transaction.type === "EXPENSE") {
+        total -= Number(transaction.amount);
+      }
+    });
+  } else {
+    total = mockedTransactions
+      .filter((transaction) => transaction.type === title.toUpperCase())
+      .reduce((acc, curr) => acc + Number(curr.amount), 0);
+  }
+
   return (
     <div className={`card_container ${className}`}>
       <div className="card_deatils">
@@ -24,13 +25,13 @@ function Card({ className, title, mockedTransactions }) {
       </div>
       <h2>${total}</h2>
     </div>
-  )
+  );
 }
 
 Card.propTypes = {
   className: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  mockedTransactions: PropTypes.array.isRequired,
-}
+  mockedTransactions: PropTypes.array.isRequired
+};
 
-export default Card
+export default Card;

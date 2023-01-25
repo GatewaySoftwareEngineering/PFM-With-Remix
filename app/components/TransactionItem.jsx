@@ -4,26 +4,28 @@ import Loan from "~/assets/Icons/Loan"
 import Salary from "~/assets/Icons/Salary"
 import { formattedAmount, getDayName } from "~/utils/formatTransaction"
 
-function TransactionItem({ note, amount, date, category, type }) {
+const categoryIcons = {
+  EDUCATION: <Education />,
+  SALARY: <Salary />,
+  LOAN: <Loan />,
+};
 
+function TransactionItem({ note, amount, date, category, type }) {
   return (
     <div className="overview_transaction">
       <div className="img_note">
-        {category === "EDUCATION" && <Education />}
-        {category === "SALARY" && <Salary />}
-        {category === "LOAN" && <Loan />}
+        {categoryIcons[category]}
         <p>{note}</p>
       </div>
       <div className="date_amount">
         <p>{getDayName(date)}</p>
-        {type === "INCOME" ? (
-          <h3 className="chip_income">${formattedAmount(amount)}</h3>
-        ) : (
-          <h3 className="chip_expense">-${formattedAmount(amount)}</h3>
-        )}
+        <h3 className={`chip_${type.toLowerCase()}`}>
+          {type === "INCOME" ? "$" : "-$"}
+          {formattedAmount(amount)}
+        </h3>
       </div>
     </div>
-  )
+  );
 }
 
 TransactionItem.propTypes = {
@@ -32,6 +34,6 @@ TransactionItem.propTypes = {
   date: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-}
+};
 
-export default TransactionItem
+export default TransactionItem;

@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react"
+import FilterData from "~/components/transaction/FilterData"
+import SearchFilter from "~/components/transaction/SearchFilter"
 import TransactionItem from "~/components/TransactionItem"
 
 function Transaction() {
@@ -10,17 +12,11 @@ function Transaction() {
 
   useEffect(() => {
     fetch("http://localhost:8000/mockedTransactions")
-      .then((response) => {
-        return response.json()
-      })
-      .then((data) => {
-        setMockedTransactions(data)
-      })
+      .then((response) => response.json())
+      .then((data) => setMockedTransactions(data))
   }, [])
 
-  const clearSearch = () => {
-    setSearch("")
-  }
+  const clearSearch = () => setSearch("")
 
   const clearFilter = () => {
     setCategoryFilter("")
@@ -37,68 +33,43 @@ function Transaction() {
 
   return (
     <div className="transaction_history_container">
-      <div className="transaction_history_search">
-        <input
-          type="text"
-          placeholder="Search"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        <button onClick={clearSearch}>Clear</button>
-      </div>
+      <SearchFilter
+        search={search}
+        setSearch={setSearch}
+        clearSearch={clearSearch}
+      />
       <div className="transaction_history_filter_container">
-        <div className="transaction_history_filter">
-          <select
-            value={categoryFilter}
-            onChange={(e) => setCategoryFilter(e.target.value)}
-          >
-            <option value="">All</option>
-            <option value="SALARY">Salary</option>
-            <option value="EDUCATION">Education</option>
-            <option value="LOAN">Loan</option>
-          </select>
-          <div className="transaction_history_filter_date">
-            <input
-              type="date"
-              value={perviousDate}
-              placeholder="From"
-              onChange={(e) => setPerviousDate(e.target.value)}
-            />
-            <input
-              type="date"
-              value={currentDate}
-              placeholder="To"
-              onChange={(e) => setCurrentDate(e.target.value)}
-            />
-          </div>
-          <button onClick={clearFilter}>Clear</button>
-        </div>
+        <FilterData
+          categoryFilter={categoryFilter}
+          setCategoryFilter={setCategoryFilter}
+          clearFilter={clearFilter}
+          setCurrentDate={setCurrentDate}
+          setPerviousDate={setPerviousDate}
+          currentDate={currentDate}
+          perviousDate={perviousDate}
+        />
       </div>
       <div className="transaction_history">
-        {perviousDate !== "" && currentDate !== ""
-          ? filteredTransactions.map((transaction) => {
-              return transaction.createdAt >= perviousDate &&
-                transaction.createdAt <= currentDate ? (
-                <TransactionItem
-                  key={transaction.id}
-                  note={transaction.note}
-                  amount={transaction.amount}
-                  date={transaction.createdAt}
-                  category={transaction.category}
-                  type={transaction.type}
-                />
-              ) : null
-            })
-          : filteredTransactions.map((transaction) => (
-              <TransactionItem
-                key={transaction.id}
-                note={transaction.note}
-                amount={transaction.amount}
-                date={transaction.createdAt}
-                category={transaction.category}
-                type={transaction.type}
-              />
-            ))}
+        {filteredTransactions.map((transaction) => {
+          if (
+            perviousDate !== "" &&
+            currentDate !== "" &&
+            (transaction.createdAt < perviousDate ||
+              transaction.createdAt > currentDate)
+          ) {
+            return null
+          }
+          return (
+            <TransactionItem
+              key={transaction.id}
+              note={transaction.note}
+              amount={transaction.amount}
+              date={transaction.createdAt}
+              category={transaction.category}
+              type={transaction.type}
+            />
+          )
+        })}
       </div>
     </div>
   )

@@ -26,15 +26,6 @@
       "type": "INCOME",
       "amount": 124000,
       "currency": "USD"
-    },
-    {
-      "id": 14769,
-      "note": "klanjjklnjknwjnjas bffbnajkba",
-      "category": "SALARY",
-      "type": "INCOME",
-      "amount": "2000",
-      "createdAt": "2023-01-25",
-      "currency": "USD"
     }
   ]
 }
