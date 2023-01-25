@@ -1,9 +1,376 @@
-.index-page {
-  font-family: system-ui, sans-serif;
+// START - Sidebar
+.container {
+  display: flex;
+  flex-direction: row;
   width: 100%;
   height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar {
   display: flex;
   flex-direction: column;
-  text-align: center;
-  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 100%;
+  background-color: #30475e;
+  padding-top: 5px;
 }
+
+.sidebar img {
+  width: 232px;
+  height: 40px;
+}
+
+.sidebar_menu {
+  width: 100%;
+  padding-top: 60px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar_menu a {
+  width: 100%;
+  padding: 10px 24px;
+  font-size: 22px;
+  color: #d4d4d8;
+  text-decoration: none;
+  border-left: 4px solid transparent;
+}
+
+.sidebar_menu a:hover {
+  border-left: 4px solid #fff;
+}
+
+.sidebar_menu .active {
+  color: #fff !important;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  background-color: #f7f4f3;
+  padding: 24px;
+}
+// END - Sidebar
+// START - topbar
+.header h1 {
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 27px;
+}
+
+.sub_container {
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 250px);
+}
+// END - topbar
+// START - main
+.main {
+  padding: 24px;
+}
+// START - CARD
+.card_row {
+  width: calc(100% - 262px);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card_container {
+  width: 280px;
+  height: 110px;
+  border-radius: 7px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.income {
+  background: linear-gradient(90deg, #7dd3fc 0%, #bae6fd 102.82%);
+}
+
+.balance {
+  background: linear-gradient(90deg, #d4d4d8 0%, #e4e4e7 102.82%);
+}
+
+.expense {
+  background: linear-gradient(90deg, #fda4af 0%, #fecdd3 102.82%);
+}
+
+.card_deatils {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card_deatils p {
+  padding: 2px 13px;
+  border-radius: 12px;
+}
+
+.income .card_deatils p {
+  background: rgba(56, 189, 248, 0.75);
+}
+
+.income .card_deatils h3 {
+  color: #1a74c7;
+}
+
+.balance .card_deatils p {
+  background: rgba(113, 113, 122, 0.75);
+}
+
+.balance .card_deatils h3 {
+  color: #71717a;
+}
+
+.expense .card_deatils p {
+  background: rgba(251, 113, 133, 0.75);
+}
+
+.expense .card_deatils h3 {
+  color: #ef2a4c;
+}
+
+.card_container h2 {
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 36px;
+  color: #fff;
+}
+// END - card
+// START - overview_transaction
+.overview_transaction_data {
+  width: calc(100% - 262px);
+  padding-top: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.overview_transaction_data h2 {
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 27px;
+  padding-bottom: 15px;
+}
+
+.overview_transaction {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8fafc;
+  border-radius: 7px;
+  padding: 20px;
+}
+
+.img_note {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  align-items: center;
+}
+
+.date_amount {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+
+.date_amount p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #334155;
+}
+
+.date_amount h3 {
+  border-radius: 20px;
+  padding: 5px 10px;
+}
+
+.chip_income {
+  background: rgba(14, 165, 233, 0.15);
+  color: #0ea5e9;
+}
+
+.chip_expense {
+  background: rgba(239, 42, 76, 0.15);
+  color: #ef2a4c;
+}
+
+.transaction {
+  display: flex;
+  justify-content: flex-end;
+  width: calc(100% - 262px);
+  padding-top: 60px;
+}
+
+.transaction_btn {
+  background: rgba(28, 101, 140, 0.15);
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  border: none;
+  padding: 8px 16px;
+  color: #1c658c;
+  cursor: pointer;
+}
+// END - overview_transaction
+// START - popup
+.transaction_footer_btn {
+  background: rgba(28, 101, 140, 0.15);
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  border: none;
+  padding: 4px 8px;
+  color: #1c658c;
+  cursor: pointer;
+}
+
+.shadow {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.popup {
+  position: fixed;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  background: #f8fafc;
+  border-radius: 7px;
+}
+
+.popup_header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: #ffffff;
+  box-shadow: 0px 0.5px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 7px 7px 0px 0px;
+}
+
+.popup_header button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.popup_header h2 {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.popup_footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 10px;
+  align-items: center;
+  padding: 20px;
+}
+
+.popup_footer .dismiss {
+  background: #f8fafc;
+  border-radius: 15px;
+  padding: 4px 8px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.form_group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.form_group .form_label {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form_label2 {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form_label input {
+  padding: 12px;
+  background: #ffffff;
+  border: none;
+  box-shadow: inset 0px 0px 1px 0.1px rgba(0, 0, 0, 0.25);
+  border-radius: 7px;
+}
+
+.form_label select {
+  padding: 12px;
+  background: #ffffff;
+  border: none;
+  box-shadow: inset 0px 0px 1px 0.1px rgba(0, 0, 0, 0.25);
+  border-radius: 7px;
+}
+
+.form_label label,
+.form_label2 label {
+  padding-bottom: 10px;
+}
+
+.radio {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+
+.radio label {
+  padding: 0;
+}
+
+.radio input {
+  border: none;
+  box-shadow: none;
+  width: 15px;
+  height: 15px;
+}
+
+.form_label2 textarea {
+  padding: 12px;
+  background: #ffffff;
+  box-shadow: inset 0px 0px 1px 0.1px rgba(0, 0, 0, 0.25);
+  border: none;
+  border-radius: 7px;
+  max-height: 200px;
+  max-width: 100%;
+  min-width: 150px;
+  min-height: 50px;
+}
+// END - popup
+
+// END - main
