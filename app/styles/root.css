@@ -23,7 +23,7 @@ body {
   align-items: center;
   width: 250px;
   height: 100%;
-  background-color: #30475e;
+  background: linear-gradient(180deg, #30475E 0%, #222831 100%);
   padding-top: 5px;
 }
 
