@@ -26,7 +26,7 @@ function FormTransaction({ handleCancel }) {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              id: Math.floor(Math.random() * 100000) + 1,
+              id: Number(Math.floor(Math.random() * 100000) + 1),
               note: formData.note,
               category: formData.category,
               type: formData.type,

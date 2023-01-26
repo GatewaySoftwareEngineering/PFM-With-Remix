@@ -489,3 +489,14 @@ body {
   font-weight: 900;
   cursor: pointer;
 }
+
+.pagination_container .active {
+  background: rgba(28, 101, 140, 0.75);
+  border-radius: 50%;
+  padding: 5px 10px;
+  color: #fff;
+}
+
+.pagination_container span {
+  cursor: pointer;
+}

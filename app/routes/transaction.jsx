@@ -25,27 +25,33 @@ function Transaction() {
     setCurrentDate("")
   }
 
-  const filteredTransactions = mockedTransactions
-  .filter((transaction) =>
-    transaction.note.toLowerCase().includes(search.toLowerCase()) ||
-    transaction.amount.toString().includes(search) 
-  )
-  .filter((transaction) =>
-    categoryFilter.length > 0 ? categoryFilter.some((f) => f === transaction.category) : true
-  )
-    .filter((transaction) =>
-      perviousDate !== "" && currentDate !== ""
-        ? transaction.createdAt >= perviousDate &&
-          transaction.createdAt <= currentDate
-        : true
-    )
+  const filterTransactions = (transactions) => {
+    return transactions
+      .filter(
+        (transaction) =>
+          transaction.note.toLowerCase().includes(search.toLowerCase()) ||
+          transaction.amount.toString().includes(search)
+      )
+      .filter((transaction) =>
+        categoryFilter.length > 0
+          ? categoryFilter.some((f) => f === transaction.category)
+          : true
+      )
+      .filter((transaction) =>
+        perviousDate !== "" && currentDate !== ""
+          ? transaction.createdAt >= perviousDate &&
+            transaction.createdAt <= currentDate
+          : true
+      )
+  }
 
+  // Use filteredTransactions only when needed
+  const filteredTransactions = filterTransactions(mockedTransactions)
   const paginatedTransactions = filteredTransactions.slice(
     (currentPage - 1) * 5,
     currentPage * 5
   )
 
- 
   return (
     <div className="transaction_history_container">
       <SearchFilter
@@ -82,11 +88,35 @@ function Transaction() {
         >
           {" < "}
         </button>
+        <span
+          className={currentPage === 1 ? "active" : ""}
+          onClick={() => setCurrentPage(1)}
+        >
+          1
+        </span>
+        {
+          // eslint-disable-next-line array-callback-return
+          filteredTransactions.map((transaction, index) => {
+            if (index % 5 === 0 && index !== 0) {
+              return (
+                <span
+                  key={index}
+                  className={
+                    currentPage === Math.ceil(index / 5) + 1 ? "active" : ""
+                  }
+                  onClick={() => setCurrentPage(Math.ceil(index / 5) + 1)}
+                >
+                  {Math.ceil(index / 5) + 1}
+                </span>
+              )
+            }
+          })
+        }
         <button
           onClick={() => setCurrentPage(currentPage + 1)}
           disabled={currentPage === Math.ceil(filteredTransactions.length / 5)}
         >
-           {" > "}
+          {" > "}
         </button>
       </div>
     </div>
