@@ -1,7 +1,8 @@
 import PropTypes from "prop-types"
+import FilterIcon from "~/assets/Icons/FilterIcon"
+import Select from "react-select"
 
 function FilterData({
-  categoryFilter,
   setCategoryFilter,
   clearFilter,
   setCurrentDate,
@@ -9,17 +10,36 @@ function FilterData({
   currentDate,
   perviousDate,
 }) {
+  const handleChange = (e) => {
+    setCategoryFilter(e.map((item) => item.value))
+  }
+
+  const options = [
+    { value: "SALARY", label: "Salary" },
+    { value: "TECH", label: "Tech" },
+    { value: "LOAN", label: "Loan" },
+    { value: "GIFT", label: "Gift" },
+    { value: "FOOD", label: "Food" },
+    { value: "BILLS", label: "Bills" },
+    { value: "SPORTS", label: "SPORTS" },
+    { value: "HEALTH", label: "Health" },
+    { value: "CLOTHS", label: "Cloths" },
+  ]
+
   return (
     <div className="transaction_history_filter">
-      <select
-        value={categoryFilter}
-        onChange={(e) => setCategoryFilter(e.target.value)}
-      >
-        <option value="">All</option>
-        <option value="SALARY">Salary</option>
-        <option value="EDUCATION">Education</option>
-        <option value="LOAN">Loan</option>
-      </select>
+      <FilterIcon />
+      <div className="transaction_history_filter_category">
+        <Select
+          isMulti
+          name="category"
+          options={options}
+          className="basic-multi-select"
+          classNamePrefix="select"
+          onChange={handleChange}
+        />
+      </div>
+
       <div className="transaction_history_filter_date">
         <input
           type="date"
@@ -40,7 +60,6 @@ function FilterData({
 }
 
 FilterData.propTypes = {
-  categoryFilter: PropTypes.string.isRequired,
   setCategoryFilter: PropTypes.func.isRequired,
   clearFilter: PropTypes.func.isRequired,
   setCurrentDate: PropTypes.func.isRequired,

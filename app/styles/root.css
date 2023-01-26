@@ -429,7 +429,7 @@ body {
   padding-left: 20px;
   width: 100%;
   background-color: #fff;
-  border-radius: 7px 0px 0px 7px;
+  border-radius: 7px;
 }
 
 .transaction_history_filter button {
@@ -439,16 +439,8 @@ body {
   border-radius: 0 7px 7px 0;
   border: none;
   width: 5%;
+  height: 100%;
   cursor: pointer;
-}
-
-.transaction_history_filter select {
-  background: #fff;
-  box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.25);
-  border-radius: 7px;
-  width: 20%;
-  padding: 4px 8px;
-  border: none;
 }
 
 .transaction_history_filter_date {
@@ -457,15 +449,43 @@ body {
   gap: 20px;
 }
 
-.transaction_history_filter input {
+.transaction_history_filter_date input {
   background: #fff;
   box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.25);
   border-radius: 7px;
   width: 100%;
+  height: 40px;
   padding: 4px 8px;
   border: none;
+  font-size: 17px;
+  margin: 5px 0;
 }
 
-.transaction_history_container {
-  width: 100%;
+.transaction_history_filter_category {
+  width: 300px;
+  max-width: 300px;
+}
+
+.select__multi-value__label,
+.select__multi-value__remove {
+  background-color: #fff;
+}
+
+.pagination_container {
+  padding-top: 10px;
+  width: calc(100% - 262px);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+
+.pagination_container button {
+  padding: 12px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  font-weight: 900;
+  cursor: pointer;
 }

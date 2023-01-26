@@ -3,8 +3,8 @@
     {
       "id": "1",
       "note": "HyperCloud II Headset",
-      "category": "EDUCATION",
-      "createdAt": "2023-01-24",
+      "category": "TECH",
+      "createdAt": "2023-01-1",
       "type": "EXPENSE",
       "amount": 77000,
       "currency": "USD"
@@ -25,6 +25,42 @@
       "createdAt": "2023-01-25",
       "type": "INCOME",
       "amount": 124000,
+      "currency": "USD"
+    },
+    {
+      "id": 57083,
+      "note": "trgge",
+      "category": "HEALTH",
+      "type": "EXPENSE",
+      "amount": 1,
+      "createdAt": "2023-01-26",
+      "currency": "USD"
+    },
+    {
+      "id": 17603,
+      "note": "4r",
+      "category": "CLOTHS",
+      "type": "EXPENSE",
+      "amount": 1,
+      "createdAt": "2023-01-26",
+      "currency": "USD"
+    },
+    {
+      "id": 68320,
+      "note": "fd",
+      "category": "SALARY",
+      "type": "INCOME",
+      "amount": 11,
+      "createdAt": "2023-01-26",
+      "currency": "USD"
+    },
+    {
+      "id": 17284,
+      "note": "dscd",
+      "category": "SALARY",
+      "type": "INCOME",
+      "amount": 33333,
+      "createdAt": "2023-01-26",
       "currency": "USD"
     }
   ]

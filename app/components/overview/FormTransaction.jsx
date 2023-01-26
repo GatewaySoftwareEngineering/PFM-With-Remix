@@ -3,35 +3,46 @@ import PropTypes from "prop-types"
 import AddTransaction from "../AddTransaction"
 function FormTransaction({ handleCancel }) {
   const [formData, setFormData] = useState({
-    category: "EDUCATION",
-    createdAt: "",
-    amount: 0,
-    type: "",
+    category: "",
+    createdAt: new Date().toISOString().slice(0, 10),
+    amount: null,
+    type: "INCOME",
     note: "",
   })
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    try {
-      const response = await fetch("http://localhost:8000/mockedTransactions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          id: Math.floor(Math.random() * 100000) + 1,
-          note: formData.note,
-          category: formData.category,
-          type: formData.type,
-          amount: Number(formData.amount),
-          createdAt: formData.createdAt,
-          currency: "USD",
-        }),
-      })
-      if (!response.ok) {
-        throw new Error(response.statusText)
+    if (
+      formData.category === "" ||
+      formData.amount === 0 ||
+      formData.note === ""
+    ) {
+      return alert("Please fill out the form")
+    } else {
+      try {
+        const response = await fetch(
+          "http://localhost:8000/mockedTransactions",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              id: Math.floor(Math.random() * 100000) + 1,
+              note: formData.note,
+              category: formData.category,
+              type: formData.type,
+              amount: Number(formData.amount),
+              createdAt: formData.createdAt,
+              currency: "USD",
+            }),
+          }
+        )
+        if (!response.ok) {
+          throw new Error(response.statusText)
+        }
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error(error)
       }
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error(error)
     }
   }
 
@@ -50,12 +61,26 @@ function FormTransaction({ handleCancel }) {
             id="category"
             placeholder="category"
             value={formData.category}
-            required
             onChange={handleChange}
+            required
           >
-            <option value="EDUCATION">Education</option>
-            <option value="SALARY">Salary</option>
-            <option value="LOAN">Loan</option>
+            <option value="">Choose</option>
+            {formData.type === "INCOME" ? (
+              <>
+                <option value="SALARY">Salary</option>
+                <option value="LOAN">Loan</option>
+                <option value="GIFT">Gift</option>
+              </>
+            ) : (
+              <>
+                <option value="TECH">Tech</option>
+                <option value="FOOD">Food</option>
+                <option value="BILLS">Bills</option>
+                <option value="SPORTS">Sports</option>
+                <option value="HEALTH">Health</option>
+                <option value="CLOTHS">Cloths</option>
+              </>
+            )}
           </select>
         </div>
         <div className="form_label">
@@ -64,10 +89,10 @@ function FormTransaction({ handleCancel }) {
             type="date"
             name="createdAt"
             id="Date"
-            required
             placeholder="Date"
             value={formData.createdAt}
             onChange={handleChange}
+            required
           />
         </div>
         <div className="form_label">
@@ -76,11 +101,11 @@ function FormTransaction({ handleCancel }) {
             type="number"
             name="amount"
             id="amount"
-            required
             placeholder="$"
             value={formData.amount}
             min="0"
             onChange={handleChange}
+            required
           />
         </div>
       </div>
@@ -93,20 +118,20 @@ function FormTransaction({ handleCancel }) {
                 type="radio"
                 id="income"
                 name="type"
-                required
                 value="INCOME"
                 checked={formData.type === "INCOME"}
                 onChange={handleChange}
+                required
               />
               <label htmlFor="income">Income</label>
               <input
                 type="radio"
                 id="expense"
                 name="type"
-                required
                 value="EXPENSE"
                 checked={formData.type === "EXPENSE"}
                 onChange={handleChange}
+                required
               />
               <label htmlFor="expense">Expense</label>
             </div>
@@ -117,6 +142,7 @@ function FormTransaction({ handleCancel }) {
           <textarea
             rows="4"
             cols="50"
+            maxLength="350"
             name="note"
             form="usrform"
             value={formData.note}
