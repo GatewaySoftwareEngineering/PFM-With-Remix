@@ -6,7 +6,9 @@ import {
 } from "@remix-run/react"
 import { useState } from "react"
 import styleUrl from "../styles/transactions.css"
+import paginationStyleUrl from "~/styles/pagination.css"
 import transactionStyleUrl from "~/styles/transaction.css"
+import Pagination from "~/components/pagination"
 import Transaction from "~/components/transaction"
 import { CATEGORIES as categories } from "~/utils/constants"
 import {
@@ -18,6 +20,7 @@ const PER_PAGE = 10
 
 export let links = () => [
   { rel: "stylesheet", href: styleUrl },
+  { rel: "stylesheet", href: paginationStyleUrl },
   { rel: "stylesheet", href: transactionStyleUrl },
 ]
 
@@ -34,6 +37,14 @@ export let loader = async ({ request }) => {
   const category = url.searchParams.get("category")
   const fromDate = url.searchParams.get("from-date")
   const toDate = url.searchParams.get("to-date")
+
+  const currentPage = Math.max(url.searchParams.get("page") || 1, 1)
+
+  const options = {
+    take: PER_PAGE,
+    skip: (currentPage - 1) * PER_PAGE,
+  }
+
   let searchFilters = {}
 
   if (search) {
@@ -72,18 +83,23 @@ export let loader = async ({ request }) => {
     }
   }
 
-  const transactions = await getFilteredTransactions(searchFilters)
+  const transactions = await getFilteredTransactions(options, searchFilters)
+  const count = await getTransactionsCount(searchFilters)
   return {
     transactions,
+    count,
   }
 }
+
 export default function Transactions() {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
-  const { transactions } = useLoaderData()
+  const { transactions, count } = useLoaderData()
 
   const [fromDate, setFromDate] = useState("")
   const [toDate, setToDate] = useState("")
+
+  const totalPages = Math.ceil(count / PER_PAGE)
 
   const clearFilters = () => {
     searchParams.delete("search")
@@ -155,6 +171,9 @@ export default function Transactions() {
           <Transaction key={transaction.id} transaction={transaction} />
         ))}
       </div>
+      {totalPages > 1 && (
+        <Pagination totalPages={totalPages} pageParam="page" count={count} />
+      )}
     </div>
   )
 }
