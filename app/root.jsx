@@ -6,6 +6,8 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react"
+import { Sidebar } from "~/components/sidebar"
+import { Topbar } from "~/components/topbar"
 
 import rootStyles from "~/styles/root.css"
 
@@ -40,6 +42,9 @@ export default function App() {
           <Sidebar />
           <div className="content">
             <Topbar />
+            <div className="appdata">
+              <Outlet />
+            </div>
           </div>
         </div>
         <ScrollRestoration />
