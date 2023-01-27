@@ -73,6 +73,7 @@ export default function Layout() {
                       ? 'current-nav-link'
                       : undefined
                   }
+                  onClick={() => setIsSideBarOpen(undefined)}
                 >
                   {link.label}
                 </Link>
