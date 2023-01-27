@@ -1,0 +1,45 @@
+.overview-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.overview-card {
+  width: 280px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: spacing(6);
+  margin: spacing(6);
+  border-radius: $border-radius;
+
+  div {
+    display: flex;
+    flex-direction: column;
+
+    h5 {
+      font-weight: $font-weight-bold;
+      margin-bottom: spacing(2.5);
+    }
+
+    h1 {
+      color: $text-black-contrast-primary;
+      font-size: 32px;
+    }
+  }
+
+  button {
+    color: $white;
+    border-radius: $button-border-radius;
+    font-size: 14px;
+    font-weight: $font-weight-bold;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .overview-card {
+    div {
+      margin-bottom: spacing(2.5);
+    }
+  }
+}

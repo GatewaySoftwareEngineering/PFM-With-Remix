@@ -39,10 +39,56 @@ body {
   font-family: "Inter", sans-serif;
 }
 
+button {
+  border: none;
+  border-radius: 1rem;
+  padding: 5.6px 18px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #1c658c;
+  background-color: rgba(28, 101, 140, 0.1490196078);
+  transition: all 0.2s ease-in-out;
+}
+button:hover {
+  cursor: pointer;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.error {
+  color: #ef2a4c;
+  background-color: rgba(251, 113, 133, 0.7490196078);
+}
+
+.error-gradient {
+  background: linear-gradient(to right, rgba(251, 113, 133, 0.7490196078), rgba(254, 237, 240, 0.7490196078));
+}
+
+.info {
+  color: #1a74c7;
+  background-color: rgba(56, 189, 248, 0.7490196078);
+}
+
+.info-gradient {
+  background: linear-gradient(to right, rgba(56, 189, 248, 0.7490196078), rgba(179, 230, 252, 0.7490196078));
+}
+
+.neutral {
+  color: #58585d;
+  background-color: rgba(113, 113, 122, 0.7490196078);
+}
+
+.neutral-gradient {
+  background: linear-gradient(to right, rgba(113, 113, 122, 0.7490196078), rgba(178, 178, 184, 0.7490196078));
+}
+
 .page {
   width: 100vw;
   height: 100vh;
   display: flex;
+}
+
+.dollar:before {
+  content: "$";
 }
 
 .sidebar {
@@ -142,5 +188,44 @@ body {
   }
   .top-bar-menu-icon {
     display: block;
+  }
+}
+.overview-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.overview-card {
+  width: 280px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 24px;
+  margin: 24px;
+  border-radius: 0.25rem;
+}
+.overview-card div {
+  display: flex;
+  flex-direction: column;
+}
+.overview-card div h5 {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.overview-card div h1 {
+  color: #ffffff;
+  font-size: 32px;
+}
+.overview-card button {
+  color: #ffffff;
+  border-radius: 1rem;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 992px) {
+  .overview-card div {
+    margin-bottom: 10px;
   }
 }

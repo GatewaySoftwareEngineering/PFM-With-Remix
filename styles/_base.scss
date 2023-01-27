@@ -12,13 +12,13 @@ $success-color: #059669;
 $success-color-background: #05966933;
 
 $error-color: #ef2a4c;
-$error-color-background: #ef2a4c26;
+$error-color-background: #fb7185bf;
 
-$info-color: #0ea5e9;
-$info-color-background: #0ea5e926;
+$info-color: #1a74c7;
+$info-color-background: #38bdf8bf;
 
-$neutral-color: #71717a;
-$neutral-color-background: #71717a26;
+$neutral-color: #58585d;
+$neutral-color-background: #71717abf;
 
 $paper-color: #f8fafc;
 $background-color: #e8e8e8;
@@ -75,6 +75,7 @@ $spacing: 4px;
 
 // shape
 $border-radius: 0.25rem;
+$button-border-radius: $border-radius * 4;
 
 // shadows
 $shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -90,4 +91,59 @@ $primary-transition: all 0.2s ease-in-out;
 body {
   background-color: $background-color;
   font-family: $font-family;
+}
+
+button {
+  border: none;
+  border-radius: $button-border-radius;
+  padding: spacing(1.4) spacing(4.5);
+  font-size: 20px;
+  font-weight: $font-weight-semi-bold;
+  color: $primary-color;
+  background-color: $primary-color-background;
+  transition: $primary-transition;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: $shadow;
+  }
+}
+
+.error {
+  color: $error-color;
+  background-color: $error-color-background;
+}
+
+.error-gradient {
+  background: linear-gradient(
+    to right,
+    $error-color-background,
+    lighten($error-color-background, 25%)
+  );
+}
+
+.info {
+  color: $info-color;
+  background-color: $info-color-background;
+}
+
+.info-gradient {
+  background: linear-gradient(
+    to right,
+    $info-color-background,
+    lighten($info-color-background, 25%)
+  );
+}
+
+.neutral {
+  color: $neutral-color;
+  background-color: $neutral-color-background;
+}
+
+.neutral-gradient {
+  background: linear-gradient(
+    to right,
+    $neutral-color-background,
+    lighten($neutral-color-background, 25%)
+  );
 }
