@@ -1,16 +1,67 @@
 * {
   box-sizing: border-box;
-  font-family: inherit;
   margin: 0;
   padding: 0;
 }
 
-.index-page {
-  font-family: system-ui, sans-serif;
-  width: 100%;
+h1 {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+h5 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+h6 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+body {
+  background-color: #e8e8e8;
+  font-family: "Inter", sans-serif;
+}
+
+.page {
+  width: 100vw;
   height: 100vh;
   display: flex;
+}
+
+.sidebar {
+  display: flex;
   flex-direction: column;
-  text-align: center;
-  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 100%;
+  background: linear-gradient(#30475e, #222831);
+  padding: 16px;
+  color: #ffffff;
+}
+.sidebar .logo {
+  color: #f05454;
+  display: flex;
+  align-items: center;
+}
+.sidebar .logo img {
+  width: 36px;
+  height: 36px;
+  margin-right: 8px;
 }
