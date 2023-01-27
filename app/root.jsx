@@ -36,7 +36,12 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet />
+        <div className="index-page">
+          <Sidebar />
+          <div className="content">
+            <Topbar />
+          </div>
+        </div>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />

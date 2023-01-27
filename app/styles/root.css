@@ -83,7 +83,44 @@
 .sidebar .links a:hover {
   color: white;
 }
+
+.content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #e8e8e8;
+}
+
+.topbar {
+  width: 100%;
+  background-color: #f7f4f3;
+  padding: 1.5rem 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.topbar h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #222831;
+}
+.recent-transactions,
+.transaction-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+  overflow: scroll;
+}
+
 @media (max-width: 768px) {
+  .index-page {
+    flex-direction: column;
+  }
+
   .sidebar-logo {
     margin-bottom: 0;
   }
@@ -92,4 +129,7 @@
     justify-content: flex-start;
   }
 
+  .topbar {
+    padding: 1rem;
+  }
 }
