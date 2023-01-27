@@ -1,0 +1,157 @@
+{
+  "mockedTransactions": [
+    {
+      "id": 12,
+      "note": "HyperCloud II Headset",
+      "category": "TECH",
+      "createdAt": "2023-01-24",
+      "type": "EXPENSE",
+      "amount": 77000,
+      "currency": "USD"
+    },
+    {
+      "id": 99,
+      "note": "Salary after promotion",
+      "category": "SALARY",
+      "createdAt": "2023-01-24",
+      "type": "INCOME",
+      "amount": 1540000,
+      "currency": "USD"
+    },
+    {
+      "id": 88,
+      "note": "Borrowed from Muhammad",
+      "category": "LOAN",
+      "createdAt": "2023-01-25",
+      "type": "INCOME",
+      "amount": 124000,
+      "currency": "USD"
+    },
+    {
+      "id": 57706,
+      "note": "I received money from my aunt for my birthday.",
+      "category": "GIFT",
+      "type": "INCOME",
+      "amount": 100,
+      "createdAt": "2023-01-27",
+      "currency": "USD"
+    },
+    {
+      "id": 27665,
+      "note": "Hamburger",
+      "category": "FOOD",
+      "type": "EXPENSE",
+      "amount": 20,
+      "createdAt": "2023-01-27",
+      "currency": "USD"
+    },
+    {
+      "id": 20252,
+      "note": "pay the house's rent.",
+      "category": "BILLS",
+      "type": "EXPENSE",
+      "amount": 550,
+      "createdAt": "2023-01-27",
+      "currency": "USD"
+    },
+    {
+      "id": 74454,
+      "note": "play ping pong with friends",
+      "category": "SPORTS",
+      "type": "EXPENSE",
+      "amount": 10,
+      "createdAt": "2023-01-27",
+      "currency": "USD"
+    },
+    {
+      "id": 74456,
+      "note": "buy pills",
+      "category": "HEALTH",
+      "type": "EXPENSE",
+      "amount": 30,
+      "createdAt": "2023-01-27",
+      "currency": "USD"
+    },
+    {
+      "id": 58101,
+      "note": "I go shopping for clothes.",
+      "category": "CLOTHS",
+      "type": "EXPENSE",
+      "amount": 100,
+      "createdAt": "2023-01-27",
+      "currency": "USD"
+    },
+    {
+      "id": 10256,
+      "note": "kmjkln",
+      "category": "LOAN",
+      "type": "INCOME",
+      "amount": 44,
+      "createdAt": "2023-01-27",
+      "currency": "USD"
+    },
+    {
+      "id": 68286,
+      "note": "jknkjn",
+      "category": "SALARY",
+      "type": "INCOME",
+      "amount": 1,
+      "createdAt": "2023-01-27",
+      "currency": "USD"
+    },
+    {
+      "id": 50708,
+      "note": "ndjfjk",
+      "category": "TECH",
+      "type": "EXPENSE",
+      "amount": 55,
+      "createdAt": "2023-01-27",
+      "currency": "USD"
+    },
+    {
+      "id": 91855,
+      "note": "jnkn",
+      "category": "FOOD",
+      "type": "EXPENSE",
+      "amount": 1,
+      "createdAt": "2023-01-27",
+      "currency": "USD"
+    },
+    {
+      "id": 45683,
+      "note": "klfnl",
+      "category": "TECH",
+      "type": "EXPENSE",
+      "amount": 10,
+      "createdAt": "2023-01-27",
+      "currency": "USD"
+    },
+    {
+      "id": 28201,
+      "note": "bdkjbde",
+      "category": "TECH",
+      "type": "EXPENSE",
+      "amount": 4,
+      "createdAt": "2023-01-27",
+      "currency": "USD"
+    },
+    {
+      "id": 38882,
+      "note": "jhjkb",
+      "category": "FOOD",
+      "type": "EXPENSE",
+      "amount": 787,
+      "createdAt": "2023-01-27",
+      "currency": "USD"
+    },
+    {
+      "id": 42236,
+      "note": "knjlkfd",
+      "category": "SALARY",
+      "type": "INCOME",
+      "amount": 2,
+      "createdAt": "2023-01-27",
+      "currency": "USD"
+    }
+  ]
+}

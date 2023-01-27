@@ -3,6 +3,7 @@ import FilterIcon from "~/assets/Icons/FilterIcon"
 import Select from "react-select"
 
 function FilterData({
+  categoryFilter,
   setCategoryFilter,
   clearFilter,
   setCurrentDate,
@@ -34,6 +35,7 @@ function FilterData({
           isMulti
           name="category"
           options={options}
+          value={options.filter((item) => categoryFilter.includes(item.value))}
           className="basic-multi-select"
           classNamePrefix="select"
           onChange={handleChange}
@@ -60,6 +62,7 @@ function FilterData({
 }
 
 FilterData.propTypes = {
+  categoryFilter: PropTypes.array.isRequired,
   setCategoryFilter: PropTypes.func.isRequired,
   clearFilter: PropTypes.func.isRequired,
   setCurrentDate: PropTypes.func.isRequired,

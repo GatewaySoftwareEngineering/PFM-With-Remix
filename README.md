@@ -1,6 +1,6 @@
 # run
 
-- npx json-server --watch app/mocks/transactions.json --port 8000
+- npx json-server --watch transactions.json --port 8000
 - yarn dev
 
 # Personal Finance Manager

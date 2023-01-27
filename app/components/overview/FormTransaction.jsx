@@ -1,7 +1,9 @@
 import { useState } from "react"
 import PropTypes from "prop-types"
 import AddTransaction from "../AddTransaction"
-function FormTransaction({ handleCancel }) {
+import { Form } from "@remix-run/react"
+
+function FormTransaction({ handleCancel, setIsTransactions }) {
   const [formData, setFormData] = useState({
     category: "",
     createdAt: new Date().toISOString().slice(0, 10),
@@ -10,49 +12,40 @@ function FormTransaction({ handleCancel }) {
     note: "",
   })
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
     if (
+      formData.amount === null ||
       formData.category === "" ||
-      formData.amount === 0 ||
       formData.note === ""
     ) {
-      return alert("Please fill out the form")
+      return alert("Please select a category")
     } else {
-      try {
-        const response = await fetch(
-          "http://localhost:8000/mockedTransactions",
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              id: Number(Math.floor(Math.random() * 100000) + 1),
-              note: formData.note,
-              category: formData.category,
-              type: formData.type,
-              amount: Number(formData.amount),
-              createdAt: formData.createdAt,
-              currency: "USD",
-            }),
-          }
-        )
-        if (!response.ok) {
-          throw new Error(response.statusText)
-        }
-      } catch (error) {
-        // eslint-disable-next-line no-console
-        console.error(error)
-      }
+      fetch("http://localhost:8000/mockedTransactions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          id: Number(Math.floor(Math.random() * 100000) + 1),
+          note: formData.note,
+          category: formData.category,
+          type: formData.type,
+          amount: Number(formData.amount),
+          createdAt: formData.createdAt,
+          currency: "USD",
+        }),
+      })
     }
+    setIsTransactions(false)
   }
 
   const handleChange = (e) => {
+    e.preventDefault()
     const { name, value } = e.target
     setFormData((prevState) => ({ ...prevState, [name]: value }))
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <Form>
       <div className="form_group">
         <div className="form_label">
           <label htmlFor="category">Category</label>
@@ -92,7 +85,6 @@ function FormTransaction({ handleCancel }) {
             placeholder="Date"
             value={formData.createdAt}
             onChange={handleChange}
-            required
           />
         </div>
         <div className="form_label">
@@ -105,7 +97,6 @@ function FormTransaction({ handleCancel }) {
             value={formData.amount}
             min="0"
             onChange={handleChange}
-            required
           />
         </div>
       </div>
@@ -121,7 +112,6 @@ function FormTransaction({ handleCancel }) {
                 value="INCOME"
                 checked={formData.type === "INCOME"}
                 onChange={handleChange}
-                required
               />
               <label htmlFor="income">Income</label>
               <input
@@ -131,7 +121,6 @@ function FormTransaction({ handleCancel }) {
                 value="EXPENSE"
                 checked={formData.type === "EXPENSE"}
                 onChange={handleChange}
-                required
               />
               <label htmlFor="expense">Expense</label>
             </div>
@@ -155,16 +144,17 @@ function FormTransaction({ handleCancel }) {
           Dismiss
         </button>
         <AddTransaction
-          className="transaction_footer_btn"
           handleTransaction={handleSubmit}
+          className="transaction_footer_btn"
         />
       </div>
-    </form>
+    </Form>
   )
 }
 
 FormTransaction.propTypes = {
   handleCancel: PropTypes.func.isRequired,
+  setIsTransactions: PropTypes.func.isRequired,
 }
 
 export default FormTransaction

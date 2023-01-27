@@ -1,28 +1,34 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
+import { useLoaderData } from "@remix-run/react"
 import FilterData from "~/components/transaction/FilterData"
 import SearchFilter from "~/components/transaction/SearchFilter"
 import TransactionItem from "~/components/TransactionItem"
 
+export const loader = async () => {
+
+  const res = await fetch(" http://localhost:8000/mockedTransactions", {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  })
+  const data = await res.json()
+  return data
+}
+
 function Transaction() {
-  const [mockedTransactions, setMockedTransactions] = useState([])
   const [search, setSearch] = useState("")
   const [categoryFilter, setCategoryFilter] = useState([])
   const [perviousDate, setPerviousDate] = useState("")
   const [currentDate, setCurrentDate] = useState("")
   const [currentPage, setCurrentPage] = useState(1)
 
-  useEffect(() => {
-    fetch("http://localhost:8000/mockedTransactions")
-      .then((response) => response.json())
-      .then((data) => setMockedTransactions(data))
-  }, [])
+  const mockedTransactions = useLoaderData()
 
   const clearSearch = () => setSearch("")
 
   const clearFilter = () => {
-    setCategoryFilter("")
     setPerviousDate("")
     setCurrentDate("")
+    setCategoryFilter([])
   }
 
   const filterTransactions = (transactions) => {
@@ -45,7 +51,6 @@ function Transaction() {
       )
   }
 
-  // Use filteredTransactions only when needed
   const filteredTransactions = filterTransactions(mockedTransactions)
   const paginatedTransactions = filteredTransactions.slice(
     (currentPage - 1) * 5,
@@ -61,6 +66,7 @@ function Transaction() {
       />
       <div className="transaction_history_filter_container">
         <FilterData
+          categoryFilter={categoryFilter}
           setCategoryFilter={setCategoryFilter}
           clearFilter={clearFilter}
           setCurrentDate={setCurrentDate}
