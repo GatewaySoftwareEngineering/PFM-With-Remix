@@ -19,6 +19,11 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.modal form {
+  background-color: #f8fafc;
+  width: 100%;
+  border-radius: 0 0 15px 15px;
+}
 
 .modal-header {
   width: 100%;
@@ -48,4 +53,170 @@
   border: none;
   padding: 0.5rem 1rem;
   font-size: 1.5rem;
+}
+
+.modal-body {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding: 1rem;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+
+.modal-body form {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.modal-body .form-group {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 2rem;
+  flex: 1;
+}
+
+.modal-body .form-group:nth-child(2) {
+  flex: 2;
+}
+
+.modal-body .form-group:nth-child(2) > label {
+  width: 100%;
+}
+
+.modal-body .form-group label {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.modal-body select,
+.modal-body input,
+.modal-body textarea {
+  padding: 0.5rem 1rem;
+  border: 1px solid #eee;
+  border-radius: 7px;
+  margin-top: 0.5rem;
+  background: #ffffff;
+  box-shadow: inset 0px 0px 1px 0.1px rgba(0, 0, 0, 0.25);
+  width: 100%;
+}
+
+.modal-body input {
+  width: fit-content;
+}
+
+.modal-body label {
+  font-size: 0.9rem;
+  color: #222831;
+}
+
+.modal-body select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.8rem center;
+  background-size: 1em;
+}
+
+.modal-body fieldset {
+  width: fit-content;
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.modal-body .radio-group {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.modal-body .radio-group label {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.modal-body .radio-group label input {
+  margin-right: 0.5rem;
+  margin-top: auto;
+}
+
+.modal-body .date-amount {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.modal-body label .input-dollar-sign {
+  position: relative;
+  display: flex;
+}
+
+.modal-body label .input-dollar-sign input {
+  padding-left: 4em;
+}
+
+.input-dollar-sign:before {
+  position: absolute;
+  top: 0.5rem;
+  content: "IQD";
+  color: #ffffff;
+  left: 0;
+  background-color: #222831;
+  padding: 0.5rem 0.7rem;
+  border-radius: 7px 0 0 7px;
+}
+
+.modal-footer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.modal-footer button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+  border: none;
+}
+
+.modal-footer button[type="submit"] {
+  background-color: #222831;
+  color: #ffffff;
+}
+
+.modal-footer button[type="button"] {
+  background-color: #ffffff;
+  color: #222831;
+  border: 1px solid #222831;
+}
+
+.modal .form-validation-error {
+  margin: 0;
+  margin-top: 0.25em;
+  color: #f05454;
+  font-size: 0.8rem;
 }
