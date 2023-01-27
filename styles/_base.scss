@@ -1,0 +1,88 @@
+// palette
+
+$white: #ffffff;
+$black: #000000;
+
+$primary-color: #1c658c;
+$primary-color-background: #1c658c26;
+
+$secondary-color: #f05454;
+
+$success-color: #059669;
+$success-color-background: #05966933;
+
+$error-color: #ef2a4c;
+$error-color-background: #ef2a4c26;
+
+$info-color: #0ea5e9;
+$info-color-background: #0ea5e926;
+
+$neutral-color: #71717a;
+$neutral-color-background: #71717a26;
+
+$paper-color: #f8fafc;
+$background-color: #e8e8e8;
+
+$text-primary: $black;
+$text-secondary: #334155;
+$text-black-contrast-primary: $white;
+$text-black-contrast-secondary: #d4d4d8;
+
+// typography
+$font-family: 'Inter', sans-serif;
+$font-size: 16px;
+$font-weight: 400;
+$font-weight-bold: 600;
+$font-weight-bolder: 800;
+$font-weight-light: 300;
+
+h1 {
+  font-size: 28px;
+  font-weight: $font-weight-bold;
+}
+
+h2 {
+  font-size: 26px;
+  font-weight: $font-weight-bold;
+}
+
+h3 {
+  font-size: 24px;
+  font-weight: $font-weight-bold;
+}
+
+h4 {
+  font-size: 22px;
+  font-weight: $font-weight-bold;
+}
+
+h5 {
+  font-size: 20px;
+  font-weight: $font-weight-bold;
+}
+
+h6 {
+  font-size: 18px;
+  font-weight: $font-weight-bold;
+}
+
+// spacing
+$spacing: 4px;
+@function spacing($amount) {
+  @return $spacing * $amount;
+}
+
+// shape
+$border-radius: 0.25rem;
+
+// shadows
+$shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+
+// z-index
+$z-index-0: 0;
+$z-index-10: 10;
+
+body {
+  background-color: $background-color;
+  font-family: $font-family;
+}
