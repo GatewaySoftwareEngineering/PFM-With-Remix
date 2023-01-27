@@ -1,3 +1,4 @@
+import { Link, useLocation } from '@remix-run/react'
 import React from 'react'
 import { seedTransactions } from '../seeders/transaction.seeder'
 
@@ -22,8 +23,18 @@ export const links = () => [
   },
 ]
 
+const navLinks = [
+  {
+    label: 'Overview',
+    to: '/',
+  },
+  { label: 'Transaction History', to: '/transaction-history' },
+]
+
 export default function Index() {
   const [isSideBarOpen, setIsSideBarOpen] = React.useState(undefined)
+
+  const location = useLocation()
 
   React.useEffect(() => {
     seedTransactions()
@@ -61,6 +72,24 @@ export default function Index() {
             />
           )}
         </div>
+        <nav>
+          <ul>
+            {navLinks.map((link, i) => (
+              <li key={i}>
+                <Link
+                  to={link.to}
+                  className={
+                    location.pathname === link.to
+                      ? 'current-nav-link'
+                      : undefined
+                  }
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
       <div className="main">
         <div className="top-bar">
