@@ -1,1 +1,63 @@
+.overview-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+}
 
+.dashboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-top: 1rem;
+  max-width: 1200px;
+  gap: 1rem;
+}
+
+.overview-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+}
+
+.transactions-container {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.transactions-container h3 {
+  font-weight: 600;
+  font-size: .9rem;
+  color: #222831;
+  margin-bottom: 1rem;
+}
+
+.add-transaction-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding: 1rem;
+}
+
+.add-transaction-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(28, 101, 140, 0.15);
+  color: #1c658c;
+  font-weight: 600;
+  border-radius: 1rem;
+  border: none;
+  padding: 0.5rem 1rem;
+}
