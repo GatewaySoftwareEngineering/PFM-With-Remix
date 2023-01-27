@@ -5,16 +5,16 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-} from "@remix-run/react"
+} from '@remix-run/react'
 
-import rootStyles from "~/styles/root.css"
+import rootStyles from '~/styles/root.css'
 
 /**
  * @returns {import("@remix-run/node").LinkDescriptor[]}
  */
 export const links = () => [
   {
-    rel: "stylesheet",
+    rel: 'stylesheet',
     href: rootStyles,
   },
 ]
@@ -23,9 +23,9 @@ export const links = () => [
  * @returns {import("@remix-run/node").MetaFunction}
  */
 export const meta = () => ({
-  charset: "utf-8",
-  title: "New Remix App",
-  viewport: "width=device-width,initial-scale=1",
+  charset: 'utf-8',
+  title: 'Finance Manager',
+  viewport: 'width=device-width,initial-scale=1',
 })
 
 export default function App() {
