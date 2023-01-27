@@ -1,3 +1,7 @@
+import {
+  Form,
+  useNavigate,
+} from "@remix-run/react"
 import { useState } from "react"
 import styleUrl from "../styles/transactions.css"
 import transactionStyleUrl from "~/styles/transaction.css"
@@ -5,6 +9,7 @@ import Transaction from "~/components/transaction"
 import { CATEGORIES as categories } from "~/utils/constants"
 export let links = () => [
   { rel: "stylesheet", href: styleUrl },
+  { rel: "stylesheet", href: transactionStyleUrl },
 ]
 
 export const meta = () => {
@@ -14,6 +19,7 @@ export const meta = () => {
   }
 }
 export default function Transactions() {
+  const navigate = useNavigate()
   const [fromDate, setFromDate] = useState("")
   const [toDate, setToDate] = useState("")
   return (
