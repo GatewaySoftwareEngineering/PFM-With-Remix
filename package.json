@@ -1,6 +1,9 @@
 {
   "private": true,
   "sideEffects": false,
+  "prisma": {
+    "seed": "node --require esbuild-register prisma/seed.js"
+  },
   "scripts": {
     "dev": "concurrently \"yarn sass:dev\" \"yarn remix dev\"",
     "sass:dev": "sass -q --no-source-map --watch styles/:app/styles",
@@ -9,6 +12,7 @@
     "start": "remix-serve build"
   },
   "dependencies": {
+    "@prisma/client": "^4.9.0",
     "@remix-run/node": "^1.9.0",
     "@remix-run/react": "^1.9.0",
     "@remix-run/serve": "^1.9.0",
@@ -24,7 +28,9 @@
   "devDependencies": {
     "@remix-run/dev": "^1.9.0",
     "@remix-run/eslint-config": "^1.9.0",
-    "eslint": "^8.31.0"
+    "esbuild-register": "^3.4.2",
+    "eslint": "^8.31.0",
+    "prisma": "^4.9.0"
   },
   "engines": {
     "node": ">=14"
