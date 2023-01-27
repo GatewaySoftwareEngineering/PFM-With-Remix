@@ -2,12 +2,13 @@ import {
   Links,
   LiveReload,
   Meta,
-  Outlet,
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react'
 
 import rootStyles from '~/styles/root.css'
+
+import Layout from './components/layout'
 
 /**
  * @returns {import("@remix-run/node").LinkDescriptor[]}
@@ -36,7 +37,7 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet />
+        <Layout />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
