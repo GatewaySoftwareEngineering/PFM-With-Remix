@@ -1,1 +1,83 @@
+.transcation-history {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap:1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
+.filters {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 1rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 7px;
+  padding: 0.5rem 1rem;
+  background: #f8fafc;
+  gap: 1rem;
+}
+
+.filter-inputs {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.filter-bar .filter-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.filter-bar input,
+.filter-bar select {
+  background: #ffffff;
+}
+
+.filter-bar button {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(28, 101, 140, 0.75);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 7px;
+}
+
+.filter-bar select,
+.filter-bar input {
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  padding: 0.5rem 1rem;
+}
+
+.filter-bar label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #222831;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}

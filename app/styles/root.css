@@ -105,6 +105,12 @@
   font-weight: 600;
   color: #222831;
 }
+
+.appdata {
+  width: 100%;
+  padding: 1rem;
+}
+
 .recent-transactions,
 .transaction-list {
   width: 100%;
