@@ -31,6 +31,13 @@ export default function Add() {
       onDismiss={onDismiss}
       className="modal modal-content"
     >
+      {transition.state === "submitting" ? <div>Saving...</div> : null}
+      <div className="modal-header">
+        <h3>Add transaction</h3>
+        <button className="close-modal" onClick={onDismiss} disabled={disabled}>
+          &times;
+        </button>
+      </div>
     </Dialog>
   )
 }

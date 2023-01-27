@@ -1,0 +1,51 @@
+.modal.modal-content[data-reach-dialog-content] {
+  width: fit-content;
+  padding: 0;
+}
+
+.modal {
+  border-radius: 0.5rem;
+}
+
+.modal-content {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.modal-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  gap: 1rem;
+  background: #ffffff;
+  border-radius: 15px 15px 0 0;
+}
+
+.modal-header h3 {
+  font-weight: 600;
+  color: #222831;
+  font-size: 0.9rem;
+}
+
+.modal-header .close-modal {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  color: #222831;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+}
