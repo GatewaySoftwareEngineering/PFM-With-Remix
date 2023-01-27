@@ -23,11 +23,39 @@
       width: 14px;
       height: 14px;
       margin-left: spacing(4);
-      transition: all 0.1s ease-in-out;
+      transition: $primary-transition;
       &:hover {
         cursor: pointer;
         width: 16px;
         height: 16px;
+      }
+    }
+  }
+
+  nav {
+    margin-top: spacing(12);
+
+    ul {
+      list-style-type: none;
+
+      li {
+        margin-top: spacing(4);
+      }
+
+      a {
+        color: $text-black-contrast-secondary;
+        font-size: 20px;
+        font-weight: $font-weight-semi-bold;
+        text-decoration: none;
+        transition: $primary-transition;
+        &:hover {
+          color: $secondary-color;
+        }
+      }
+
+      .current-nav-link {
+        font-size: 22px;
+        color: $text-black-contrast-primary;
       }
     }
   }
@@ -59,7 +87,7 @@
   height: 26px;
   margin-right: spacing(6);
   margin-left: spacing(4);
-  transition: all 0.1s ease-in-out;
+  transition: $primary-transition;
   &:hover {
     cursor: pointer;
     width: 28px;
