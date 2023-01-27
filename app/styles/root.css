@@ -69,12 +69,35 @@ body {
   width: 14px;
   height: 14px;
   margin-left: 16px;
-  transition: all 0.1s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 .sidebar .logo .close-sidebar-icon:hover {
   cursor: pointer;
   width: 16px;
   height: 16px;
+}
+.sidebar nav {
+  margin-top: 48px;
+}
+.sidebar nav ul {
+  list-style-type: none;
+}
+.sidebar nav ul li {
+  margin-top: 16px;
+}
+.sidebar nav ul a {
+  color: #d4d4d8;
+  font-size: 20px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+.sidebar nav ul a:hover {
+  color: #f05454;
+}
+.sidebar nav ul .current-nav-link {
+  font-size: 22px;
+  color: #ffffff;
 }
 
 .mobile-sidebar {
@@ -103,7 +126,7 @@ body {
   height: 26px;
   margin-right: 24px;
   margin-left: 16px;
-  transition: all 0.1s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 .top-bar-menu-icon:hover {
   cursor: pointer;
