@@ -19,13 +19,13 @@
 //   note: string
 // }
 
-export const getTransactions = async () => {
+export const getTransactions = () => {
   const transactions = JSON.parse(localStorage.getItem('transactions') || '[]')
   return transactions
 }
 
-export const createTransaction = async (transaction) => {
-  const transactions = await getTransactions()
+export const createTransaction = (transaction) => {
+  const transactions = getTransactions()
   transactions.push(transaction)
 
   setTransactions(transactions)
