@@ -125,6 +125,7 @@ button:hover, .dismiss-button:hover {
 .main-section {
   width: 100%;
   padding: 16px;
+  padding-bottom: 40px;
   overflow-x: hidden;
 }
 
@@ -421,4 +422,40 @@ input[type=number], .input-container .input textarea[type=number], .input-contai
   font-size: 18px;
   font-weight: 600;
   margin-left: 12px;
+}
+
+.pagination {
+  max-width: 904px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 16px;
+}
+.pagination ul {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+}
+.pagination ul li {
+  margin: 0 4px;
+}
+.pagination button, .pagination .dismiss-button {
+  font-size: 20px;
+  background-color: transparent;
+  border-radius: 50%;
+  padding: 6px 12px;
+}
+.pagination .nav-button-active {
+  color: #ffffff;
+  background-color: #1c658c;
+}
+.pagination .nav-button-inactive {
+  border: 1px solid #1c658c;
+}
+.pagination .nav-button-disabled {
+  color: #a0aec0;
+}
+.pagination .nav-button-disabled:hover {
+  cursor: not-allowed;
+  box-shadow: none;
 }
