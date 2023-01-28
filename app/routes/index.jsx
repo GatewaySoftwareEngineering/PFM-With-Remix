@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { useLoaderData } from "@remix-run/react"
 import Card from "~/components/Card"
 import CardDeatails from "~/data/CardDeatails"
@@ -7,6 +8,7 @@ import {
   getLastYearTransactions,
 } from "~/utils/transactions"
 import TransactionItem from "~/components/TransactionItem"
+import AddTransaction from "~/components/AddTransaction"
 
 export const loader = async () => {
   const res = await fetch(" http://localhost:8000/mockedTransactions", {
@@ -18,8 +20,16 @@ export const loader = async () => {
 }
 
 export default function Index() {
+  const [istransactions, setIsTransactions] = useState(false)
   const transactions = useLoaderData()
 
+  const handleOpen = () => {
+    setIsTransactions(true)
+  }
+
+  const handleCancel = () => {
+    setIsTransactions(false)
+  }
   // for card month balance
   const monthAchievements = getLastMonthTransactions(transactions)
   // for transaction
@@ -72,6 +82,12 @@ export default function Index() {
               />
             ))}
         </div>
+      </div>
+      <div className="transaction_btn_container">
+        <AddTransaction
+          handleTransaction={handleOpen}
+          className="transaction_btn"
+        />
       </div>
     </div>
   )

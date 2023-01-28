@@ -255,3 +255,35 @@ body {
   color: #ef2a4c;
 }
 /* END - transactionOverview */
+/* START - transaction btn*/
+.transaction_btn_container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding-top: 30px;
+}
+
+.transaction_btn {
+  background: rgba(28, 101, 140, 0.15);
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  border: none;
+  padding: 8px 16px;
+  color: #1c658c;
+  cursor: pointer;
+}
+
+.transaction_footer_btn {
+  background: rgba(28, 101, 140, 0.15);
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  border: none;
+  padding: 4px 8px;
+  color: #1c658c;
+  cursor: pointer;
+}
+/* START - transaction btn */
