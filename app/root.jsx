@@ -61,7 +61,7 @@ function Layout({ children }) {
           ))}
         </div>
       </div>
-      <div className={isSidebarOpen ? "sub-container-active" : "sub-container"}>
+      <div className={isSidebarOpen ? "sub_container_active" : "sub_container"}>
         <div className="header">
           <button onClick={toggleSidebar}>
             <Collapse />
