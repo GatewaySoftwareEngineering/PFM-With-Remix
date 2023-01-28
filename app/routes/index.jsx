@@ -1,9 +1,11 @@
+import { json } from '@remix-run/node'
+import { useActionData } from '@remix-run/react'
 import React from 'react'
 import AddTransactionModal from '~/components/AddTransactionModal'
 import TransactionsList from '~/components/TransactionsList'
 import { filterAnOverviewOfTransactions } from '~/helpers/filterAnOverviewOfTransactions'
 import { filterByRelativeTime } from '~/helpers/filterByRelativeTime'
-import { getTransactions } from '~/models/transaction'
+import { createTransaction, getTransactions } from '~/models/transaction'
 
 const overviewCards = (transactions) => [
   {
@@ -46,10 +48,25 @@ export const action = async ({ request }) => {
   const date = formData.get('date')
   const note = formData.get('note')
 
-  return { type, amount, category, date, note }
+  const errors = {
+    type: type ? null : 'Type is required',
+    amount: amount ? null : 'Amount is required',
+    category: category ? null : 'Category is required',
+    date: date ? null : 'Date is required',
+    note: note ? null : 'Note is required',
+  }
+  const hasErrors = Object.values(errors).some((errorMessage) => errorMessage)
+
+  return json({
+    errors,
+    isValid: !hasErrors,
+    data: { type, amount: amount && parseInt(amount), category, date, note },
+  })
 }
 
 export default function Index() {
+  const data = useActionData()
+
   const [isAddTransactionModalOpen, setIsAddTransactionModalOpen] =
     React.useState(false)
   const [transactions, setTransactions] = React.useState([])
@@ -57,6 +74,16 @@ export default function Index() {
   React.useEffect(() => {
     setTransactions(getTransactions())
   }, [])
+
+  React.useEffect(() => {
+    if (data?.isValid) {
+      console.log('Creating transaction...')
+
+      setIsAddTransactionModalOpen(false)
+      const updatedTransactions = createTransaction(data.data)
+      setTransactions(updatedTransactions)
+    }
+  }, [data])
 
   return (
     <>

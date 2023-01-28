@@ -24,6 +24,7 @@ export const createTransaction = (transaction) => {
   transactions.unshift(transaction)
 
   setTransactions(transactions)
+  return transactions
 }
 
 export const setTransactions = (transactions) => {
