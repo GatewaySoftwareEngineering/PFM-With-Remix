@@ -21,7 +21,7 @@ $info-color-background: #38bdf8bf;
 $neutral-color: #58585d;
 $neutral-color-background: #71717abf;
 
-$paper-color: #f8fafc;
+$paper-color: #f7f4f3;
 $background-color: #e8e8e8;
 
 $text-primary: $black;
@@ -107,6 +107,13 @@ button {
   &:hover {
     cursor: pointer;
     box-shadow: $shadow;
+  }
+}
+
+.icon-button {
+  transition: $primary-transition;
+  &:hover {
+    cursor: pointer;
   }
 }
 
