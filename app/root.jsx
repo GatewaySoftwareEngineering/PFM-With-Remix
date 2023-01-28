@@ -9,7 +9,7 @@ import React from 'react'
 
 import rootStyles from '~/styles/root.css'
 
-import Layout from './components/layout'
+import Layout from './components/Layout'
 import { seedTransactions } from './seeders/transaction.seeder'
 
 /**
