@@ -13,8 +13,10 @@ export const seedTransactions = () => {
 
     const type = Math.random() > 0.5 ? 'income' : 'expense'
 
+    const category = type === 'income' ? 'Salary' : 'Sports'
+
     transactions.push({
-      category: 'Bills',
+      category,
       amount: Math.floor(Math.random() * 99) + 1,
       date: date.toISOString(),
       type,
