@@ -37,6 +37,18 @@ const overviewCards = (transactions) => [
   },
 ]
 
+export const action = async ({ request }) => {
+  const formData = await request.formData()
+
+  const type = formData.get('type')
+  const amount = formData.get('amount')
+  const category = formData.get('category')
+  const date = formData.get('date')
+  const note = formData.get('note')
+
+  return { type, amount, category, date, note }
+}
+
 export default function Index() {
   const [isAddTransactionModalOpen, setIsAddTransactionModalOpen] =
     React.useState(false)
