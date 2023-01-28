@@ -12,6 +12,8 @@ import PropTypes from "prop-types"
 import PagesRoutes from "~/data/PagesRoutes"
 import Logo from "~/assets/logo/Logo.svg"
 import rootStyles from "~/styles/root.css"
+import { useState } from "react"
+import Collapse from "./assets/Icons/Collapse"
 
 /**
  * @returns {import("@remix-run/node").LinkDescriptor[]}
@@ -35,9 +37,11 @@ export const meta = () => ({
 function Layout({ children }) {
   const location = useLocation()
   const currentPath = location.pathname
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+
   return (
     <nav className="container">
-      <div className="sidebar">
+      <div className={isSidebarOpen ? "colapse" : "sidebar"}>
         <Link to="/">
           <img src={Logo} alt="logo" width="232px" height="40px" />
         </Link>
@@ -53,8 +57,11 @@ function Layout({ children }) {
           ))}
         </div>
       </div>
-      <div className="sub_container">
+      <div className={isSidebarOpen ? "sub_container_active" : "sub_container"}>
         <div className="header">
+          <button onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+            <Collapse />
+          </button>
           <h1>
             {currentPath === "/" && "Overview"}
             {currentPath === "/transaction" && "Transaction History"}

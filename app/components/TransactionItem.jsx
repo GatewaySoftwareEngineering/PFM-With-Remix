@@ -20,7 +20,7 @@ const categoryIcons = {
   SPORTS: <Sports />,
   HEALTH: <Health />,
   CLOTHS: <Cloths />,
-};
+}
 
 function TransactionItem({ note, amount, date, category, type }) {
   return (
@@ -37,7 +37,7 @@ function TransactionItem({ note, amount, date, category, type }) {
         </h3>
       </div>
     </div>
-  );
+  )
 }
 
 TransactionItem.propTypes = {
@@ -46,6 +46,6 @@ TransactionItem.propTypes = {
   date: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-};
+}
 
-export default TransactionItem;
+export default TransactionItem

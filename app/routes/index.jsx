@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Card from "~/components/Card"
 import CardDeatails from "~/data/CardDeatails"
 import TransactionItem from "~/components/TransactionItem"
@@ -32,7 +32,9 @@ export default function Index() {
   const handleCancel = () => {
     setIsTransactions(false)
   }
-
+  // for card month balance
+  const monthAchievements = getLastMonthTransactions(transactions)
+  // for transaction
   const thisWeekTransactions = getLastWeekTransactions(transactions)
   const thisMonthTransactions = getLastMonthTransactions(transactions)
   const thisYearTransactions = getLastYearTransactions(transactions)
@@ -40,27 +42,31 @@ export default function Index() {
   let shownTitle = ""
 
   if (thisWeekTransactions.length > 0) {
-    showntransactions = thisWeekTransactions.slice(0, 10)
+    showntransactions = thisWeekTransactions
     shownTitle = "This Week"
   } else if (thisMonthTransactions.length > 0) {
-    showntransactions = thisMonthTransactions.slice(0, 10)
+    showntransactions = thisMonthTransactions
     shownTitle = "This Month"
   } else if (thisYearTransactions.length > 0) {
-    showntransactions = thisYearTransactions.slice(0, 10)
+    showntransactions = thisYearTransactions
     shownTitle = "This Year"
   } else {
-    showntransactions = transactions.slice(0, 10)
+    showntransactions = transactions
     shownTitle = "All Transactions"
   }
+
+  useEffect(() => {
+    fetch("http://localhost:8000/mockedTransactions", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    })
+  }, [])
 
   return (
     <div className="overview-page">
       {istransactions && (
         <PopUps handleCancel={handleCancel} title="Add Transaction">
-          <FormTransaction
-            handleCancel={handleCancel}
-            setIsTransactions={setIsTransactions}
-          />
+          <FormTransaction handleCancel={handleCancel} />
         </PopUps>
       )}
       {istransactions && (
@@ -72,23 +78,26 @@ export default function Index() {
             key={card.title}
             className={card.className}
             title={card.title}
-            mockedTransactions={transactions}
+            mockedTransactions={monthAchievements}
           />
         ))}
       </div>
       <div className="overview_transaction_container">
         <h2>{shownTitle}</h2>
         <div className="overview_transaction_data">
-          {showntransactions.map((transaction) => (
-            <TransactionItem
-              key={transaction.id}
-              note={transaction.note}
-              amount={transaction.amount}
-              date={transaction.createdAt}
-              category={transaction.category}
-              type={transaction.type}
-            />
-          ))}
+          {showntransactions
+            .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+            .slice(0, 10)
+            .map((transaction) => (
+              <TransactionItem
+                key={transaction.id}
+                note={transaction.note}
+                amount={transaction.amount}
+                date={transaction.createdAt}
+                category={transaction.category}
+                type={transaction.type}
+              />
+            ))}
         </div>
       </div>
       <div className="transaction">

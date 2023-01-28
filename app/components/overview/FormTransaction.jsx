@@ -1,9 +1,9 @@
 import { useState } from "react"
+import { Form, useNavigate } from "@remix-run/react"
 import PropTypes from "prop-types"
 import AddTransaction from "../AddTransaction"
-import { Form } from "@remix-run/react"
 
-function FormTransaction({ handleCancel, setIsTransactions }) {
+function FormTransaction({ handleCancel }) {
   const [formData, setFormData] = useState({
     category: "",
     createdAt: new Date().toISOString().slice(0, 10),
@@ -12,6 +12,14 @@ function FormTransaction({ handleCancel, setIsTransactions }) {
     note: "",
   })
 
+  const [error, setError] = useState({
+    category: false,
+    amount: false,
+    note: false,
+  })
+
+  const navigate = useNavigate()
+
   const handleSubmit = (e) => {
     e.preventDefault()
     if (
@@ -19,7 +27,12 @@ function FormTransaction({ handleCancel, setIsTransactions }) {
       formData.category === "" ||
       formData.note === ""
     ) {
-      return alert("Please select a category")
+      setError({
+        category: formData.category === "" ? true : false,
+        amount: formData.amount === null ? true : false,
+        note: formData.note === "" ? true : false,
+      })
+      return alert("Please fill all the fields")
     } else {
       fetch("http://localhost:8000/mockedTransactions", {
         method: "POST",
@@ -35,7 +48,10 @@ function FormTransaction({ handleCancel, setIsTransactions }) {
         }),
       })
     }
-    setIsTransactions(false)
+    handleCancel()
+    setTimeout(() => {
+      navigate("/")
+    }, 500)
   }
 
   const handleChange = (e) => {
@@ -55,7 +71,6 @@ function FormTransaction({ handleCancel, setIsTransactions }) {
             placeholder="category"
             value={formData.category}
             onChange={handleChange}
-            required
           >
             <option value="">Choose</option>
             {formData.type === "INCOME" ? (
@@ -75,6 +90,9 @@ function FormTransaction({ handleCancel, setIsTransactions }) {
               </>
             )}
           </select>
+          <span className={error.category ? "error" : ""}>
+            {error.category && "Please select a category"}
+          </span>
         </div>
         <div className="form_label">
           <label htmlFor="Date">Date</label>
@@ -98,6 +116,9 @@ function FormTransaction({ handleCancel, setIsTransactions }) {
             min="0"
             onChange={handleChange}
           />
+          <span className={error.amount ? "error" : ""}>
+            {error.amount && "Please enter an amount"}
+          </span>
         </div>
       </div>
       <div className="form_group">
@@ -137,6 +158,9 @@ function FormTransaction({ handleCancel, setIsTransactions }) {
             value={formData.note}
             onChange={handleChange}
           />
+          <span className={error.note ? "error" : ""}>
+            {error.note && "Please enter a note"}
+          </span>
         </div>
       </div>
       <div className="popup_footer">
@@ -154,7 +178,6 @@ function FormTransaction({ handleCancel, setIsTransactions }) {
 
 FormTransaction.propTypes = {
   handleCancel: PropTypes.func.isRequired,
-  setIsTransactions: PropTypes.func.isRequired,
 }
 
 export default FormTransaction
