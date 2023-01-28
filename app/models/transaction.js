@@ -1,23 +1,9 @@
-// export type Category =
-//   | 'Salary'
-//   | 'Loan'
-//   | 'Gift'
-//   | 'Tech'
-//   | 'Food'
-//   | 'Bills'
-//   | 'Sports'
-//   | 'Health'
-//   | 'Cloths'
+export const transactionTypes = ['income', 'expense']
 
-// export type TransactionType = 'income' | 'expense'
-
-// export type Transaction = {
-//   category: Category
-//   type: TransactionType
-//   date: string
-//   amount: number
-//   note: string
-// }
+export const categories = {
+  income: ['Salary', 'Loan', 'Gift'],
+  expense: ['Tech', 'Food', 'Bills', 'Sports', 'Health', 'Cloths'],
+}
 
 export const getTransactions = () => {
   const transactions = JSON.parse(localStorage.getItem('transactions') || '[]')
