@@ -10,6 +10,15 @@ export const getTransactions = () => {
   return transactions
 }
 
+/**
+ * Create a new transaction.
+ * @param {Object} transaction
+ * @param {string} transaction.type
+ * @param {string} transaction.category
+ * @param {number} transaction.amount
+ * @param {string} transaction.note
+ * @param {string} transaction.date
+ */
 export const createTransaction = (transaction) => {
   const transactions = getTransactions()
   transactions.unshift(transaction)
