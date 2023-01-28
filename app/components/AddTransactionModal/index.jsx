@@ -7,11 +7,22 @@ export default function AddTransactionModal({ isOpen, onClose }) {
   const data = useActionData()
   const transition = useTransition()
 
+  const [errors, setErrors] = React.useState({})
+
   const [type, setType] = React.useState('income')
 
-  console.log('data?.errors', data?.errors)
+  let formRef = React.useRef()
 
-  console.log('transition', transition)
+  React.useEffect(() => {
+    if (!isOpen) {
+      formRef.current?.reset()
+      setErrors({})
+    }
+  }, [isOpen])
+
+  React.useEffect(() => {
+    if (data?.errors) setErrors(data.errors)
+  }, [data])
 
   return (
     <div
@@ -34,7 +45,7 @@ export default function AddTransactionModal({ isOpen, onClose }) {
         </div>
 
         <div className="modal-content">
-          <Form method="post">
+          <Form ref={formRef} method="post">
             <div className="input-container">
               <div className="input">
                 <label htmlFor="category-input">Category</label>
@@ -42,7 +53,7 @@ export default function AddTransactionModal({ isOpen, onClose }) {
                 <select
                   name="category"
                   id="category-input"
-                  className={data?.errors?.category ? 'error-input' : ''}
+                  className={errors?.category ? 'error-input' : ''}
                 >
                   <option value="" defaultChecked></option>
                   {categories[type].map((category, i) => (
@@ -52,8 +63,8 @@ export default function AddTransactionModal({ isOpen, onClose }) {
                   ))}
                 </select>
 
-                {data?.errors?.category ? (
-                  <em className="error-message">{data?.errors.category}</em>
+                {errors?.category ? (
+                  <em className="error-message">{errors.category}</em>
                 ) : null}
               </div>
 
@@ -66,11 +77,11 @@ export default function AddTransactionModal({ isOpen, onClose }) {
                   name="date"
                   defaultValue={new Date().toLocaleDateString('en-ca')}
                   max={new Date().toLocaleDateString('en-ca')}
-                  className={data?.errors?.date ? 'error-input' : ''}
+                  className={errors?.date ? 'error-input' : ''}
                 />
 
-                {data?.errors?.date ? (
-                  <em className="error-message">{data?.errors.date}</em>
+                {errors?.date ? (
+                  <em className="error-message">{errors.date}</em>
                 ) : null}
               </div>
 
@@ -84,11 +95,11 @@ export default function AddTransactionModal({ isOpen, onClose }) {
                   id="amount-input"
                   name="amount"
                   min="0"
-                  className={data?.errors?.amount ? 'error-input' : ''}
+                  className={errors?.amount ? 'error-input' : ''}
                 />
 
-                {data?.errors?.amount ? (
-                  <em className="error-message">{data?.errors.amount}</em>
+                {errors?.amount ? (
+                  <em className="error-message">{errors.amount}</em>
                 ) : null}
               </div>
 
@@ -120,8 +131,8 @@ export default function AddTransactionModal({ isOpen, onClose }) {
                   </div>
                 </div>
 
-                {data?.errors?.type ? (
-                  <em className="error-message">{data?.errors.type}</em>
+                {errors?.type ? (
+                  <em className="error-message">{errors.type}</em>
                 ) : null}
               </div>
 
@@ -134,11 +145,11 @@ export default function AddTransactionModal({ isOpen, onClose }) {
                   rows="5"
                   cols="33"
                   maxLength={350}
-                  className={data?.errors?.amount ? 'error-input' : ''}
+                  className={errors?.note ? 'error-input' : ''}
                 ></textarea>
 
-                {data?.errors?.note ? (
-                  <em className="error-message">{data?.errors.note}</em>
+                {errors?.note ? (
+                  <em className="error-message">{errors.note}</em>
                 ) : null}
               </div>
             </div>
