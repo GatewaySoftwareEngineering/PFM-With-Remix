@@ -48,4 +48,18 @@
       font-weight: $font-weight-bold;
     }
   }
+
+  .modal-content {
+    padding: spacing(8);
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: spacing(8);
+
+      .dismiss-button {
+        margin-right: spacing(4);
+      }
+    }
+  }
 }

@@ -39,7 +39,7 @@ body {
   font-family: "Inter", sans-serif;
 }
 
-button {
+button, .dismiss-button {
   border: none;
   border-radius: 1rem;
   padding: 5.6px 18px;
@@ -49,9 +49,15 @@ button {
   background-color: rgba(28, 101, 140, 0.1490196078);
   transition: all 0.2s ease-in-out;
 }
-button:hover {
+button:hover, .dismiss-button:hover {
   cursor: pointer;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.dismiss-button {
+  color: #1c658c;
+  background-color: transparent;
+  border: 1px solid #1c658c;
 }
 
 .icon-button, .top-bar-menu-icon, .sidebar .logo .close-sidebar-icon {
@@ -150,6 +156,17 @@ button:hover {
 }
 .modal .modal-header .modal-close-icon {
   font-weight: 600;
+}
+.modal .modal-content {
+  padding: 32px;
+}
+.modal .modal-content .modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 32px;
+}
+.modal .modal-content .modal-actions .dismiss-button {
+  margin-right: 16px;
 }
 
 .sidebar {
@@ -274,7 +291,7 @@ button:hover {
   color: #ffffff;
   font-size: 32px;
 }
-.overview-card button {
+.overview-card button, .overview-card .dismiss-button {
   color: #ffffff;
   border-radius: 1rem;
   font-size: 14px;
