@@ -95,3 +95,87 @@ body {
   width: 100%;
 }
 /* END - topbar */
+/* START - main */
+.main {
+  padding: 24px;
+}
+/* END - main */
+/* START - card */
+.card_row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.card_container {
+  width: 100%;
+  max-width: 500px;
+  min-width: 100px;
+  border-radius: 7px;
+  display: flex;
+  padding: 0 20px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.income {
+  background: linear-gradient(90deg, #7dd3fc 0%, #bae6fd 102.82%);
+}
+
+.balance {
+  background: linear-gradient(90deg, #d4d4d8 0%, #e4e4e7 102.82%);
+}
+
+.expense {
+  background: linear-gradient(90deg, #fda4af 0%, #fecdd3 102.82%);
+}
+
+.card_deatils {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card_deatils p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 13px;
+  border-radius: 12px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.income .card_deatils p {
+  background: rgba(56, 189, 248, 0.75);
+}
+
+.income .card_deatils h3 {
+  color: #1a74c7;
+}
+
+.balance .card_deatils p {
+  background: rgba(113, 113, 122, 0.75);
+}
+
+.balance .card_deatils h3 {
+  color: #71717a;
+}
+
+.expense .card_deatils p {
+  background: rgba(251, 113, 133, 0.75);
+}
+
+.expense .card_deatils h3 {
+  color: #ef2a4c;
+}
+
+.card_container h2 {
+  font-weight: 500;
+  font-size: 27px;
+  line-height: 36px;
+  color: #fff;
+}
+/* END - card */
