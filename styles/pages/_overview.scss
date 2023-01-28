@@ -48,8 +48,18 @@
   margin-top: spacing(12);
 }
 
+$transactions-list-max-width: 904px;
+
+.transactions-section-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  max-width: $transactions-list-max-width;
+}
+
 .transactions-list {
-  max-width: 904px;
+  max-width: $transactions-list-max-width;
   display: flex;
   flex-direction: column;
   margin-top: spacing(3);

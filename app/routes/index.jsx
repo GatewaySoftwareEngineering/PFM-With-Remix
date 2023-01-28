@@ -1,5 +1,6 @@
 import React from 'react'
 import TransactionsList from '~/components/TransactionsList'
+import { filterAnOverviewOfTransactions } from '~/helpers/filterAnOverviewOfTransactions'
 import { filterByRelativeTime } from '~/helpers/filterByRelativeTime'
 import { getTransactions } from '~/models/transaction'
 
@@ -60,9 +61,14 @@ export default function Index() {
       </div>
 
       <div className="transactions-section">
-        <h4>This Week</h4>
+        <div className="transactions-section-header">
+          <h4>This Week</h4>
+          <button>Add Transaction</button>
+        </div>
 
-        <TransactionsList transactions={transactions} />
+        <TransactionsList
+          transactions={filterAnOverviewOfTransactions(transactions)}
+        />
       </div>
     </div>
   )

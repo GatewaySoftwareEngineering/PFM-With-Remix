@@ -239,6 +239,14 @@ button:hover {
   margin-top: 48px;
 }
 
+.transactions-section-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 904px;
+}
+
 .transactions-list {
   max-width: 904px;
   display: flex;
