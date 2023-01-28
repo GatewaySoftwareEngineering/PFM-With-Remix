@@ -1,14 +1,17 @@
 import { useState } from "react"
 import { useLoaderData } from "@remix-run/react"
 import Card from "~/components/Card"
+import TransactionItem from "~/components/TransactionItem"
+import AddTransaction from "~/components/AddTransaction"
+import PopUps from "~/components/PopUps"
+import FormTransaction from "~/components/overview/FormTransaction"
+
 import CardDeatails from "~/data/CardDeatails"
 import {
   getLastWeekTransactions,
   getLastMonthTransactions,
   getLastYearTransactions,
 } from "~/utils/transactions"
-import TransactionItem from "~/components/TransactionItem"
-import AddTransaction from "~/components/AddTransaction"
 
 export const loader = async () => {
   const res = await fetch(" http://localhost:8000/mockedTransactions", {
@@ -55,6 +58,14 @@ export default function Index() {
 
   return (
     <div className="overview-page">
+      {istransactions && (
+        <PopUps handleCancel={handleCancel} title="Add Transaction">
+          <FormTransaction handleCancel={handleCancel} />
+        </PopUps>
+      )}
+      {istransactions && (
+        <div className="shadow" onClick={handleCancel} aria-hidden />
+      )}
       <div className="card_row">
         {CardDeatails.map((card) => (
           <Card
