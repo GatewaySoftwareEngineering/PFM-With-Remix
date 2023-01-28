@@ -72,6 +72,14 @@ button:hover, .dismiss-button:hover {
   background-color: rgba(251, 113, 133, 0.7490196078);
 }
 
+.error-message {
+  color: #ef2a4c;
+}
+
+.error-input {
+  border: 1px solid #ef2a4c !important;
+}
+
 .error-chip {
   color: #ef2a4c;
   background-color: rgba(239, 42, 76, 0.1490196078);
@@ -202,6 +210,9 @@ button:hover, .dismiss-button:hover {
 .input-container .input input:focus, .input-container .input select:focus, .input-container .input textarea:focus {
   border: 1px solid #1c658c;
 }
+.input-container .input em {
+  margin-top: 8px;
+}
 .input-container .input textarea {
   resize: none;
 }
@@ -219,7 +230,7 @@ input[type=number], .input-container .input textarea[type=number], .input-contai
 
 .amount-currency {
   position: absolute;
-  bottom: 15.2px;
+  top: 40px;
   left: 10px;
 }
 

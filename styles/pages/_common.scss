@@ -102,6 +102,10 @@
       }
     }
 
+    em {
+      margin-top: spacing(2);
+    }
+
     textarea {
       resize: none;
       @extend input;
@@ -128,6 +132,6 @@ input[type='number'] {
 
 .amount-currency {
   position: absolute;
-  bottom: spacing(3.8);
+  top: spacing(10);
   left: spacing(2.5);
 }
