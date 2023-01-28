@@ -77,7 +77,7 @@ $spacing: 4px;
 }
 
 // shape
-$border-radius: 0.25rem;
+$border-radius: 0.6rem;
 $button-border-radius: $border-radius * 4;
 
 // shadows
@@ -99,9 +99,9 @@ body {
 button {
   border: none;
   border-radius: $button-border-radius;
-  padding: spacing(1.4) spacing(4.5);
-  font-size: 20px;
-  font-weight: $font-weight-semi-bold;
+  padding: spacing(1.8) spacing(4.5);
+  font-size: 18px;
+  font-weight: $font-weight-bold;
   color: $primary-color;
   background-color: $primary-color-background;
   transition: $primary-transition;

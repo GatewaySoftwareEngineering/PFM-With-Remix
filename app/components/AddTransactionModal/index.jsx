@@ -6,6 +6,8 @@ import React from 'react'
 export default function AddTransactionModal({ isOpen, onClose }) {
   const data = useActionData()
 
+  const [type, setType] = React.useState('income')
+
   React.useEffect(() => {
     console.log('data', data)
     if (data) createTransaction(data)
@@ -38,13 +40,11 @@ export default function AddTransactionModal({ isOpen, onClose }) {
                 <label htmlFor="category-input">Category</label>
 
                 <select name="category" id="category-input">
-                  {[...categories.income, ...categories.expense].map(
-                    (category, i) => (
-                      <option key={i} value={category}>
-                        {category}
-                      </option>
-                    )
-                  )}
+                  {categories[type].map((category, i) => (
+                    <option key={i} value={category}>
+                      {category}
+                    </option>
+                  ))}
                 </select>
               </div>
 
@@ -55,6 +55,7 @@ export default function AddTransactionModal({ isOpen, onClose }) {
                   type="date"
                   id="date-input"
                   name="date"
+                  defaultValue={new Date().toLocaleDateString('en-ca')}
                   max={new Date().toLocaleDateString('en-ca')}
                 />
               </div>
@@ -62,30 +63,37 @@ export default function AddTransactionModal({ isOpen, onClose }) {
               <div className="input">
                 <label htmlFor="amount-input">Amount</label>
 
+                <span className="amount-currency">$</span>
+
                 <input type="number" id="amount-input" name="amount" min="0" />
               </div>
 
-              <div className="input">
+              <div className="input ">
                 <label htmlFor="income-input">Type</label>
 
-                <div>
-                  <input
-                    type="radio"
-                    id="income-input"
-                    name="type"
-                    value="income"
-                  />
-                  <label htmlFor="income-input">Huey</label>
-                </div>
+                <div className="radio-buttons-container">
+                  <div>
+                    <input
+                      type="radio"
+                      id="income-input"
+                      name="type"
+                      value="income"
+                      onChange={(e) => e.target.checked && setType('income')}
+                      defaultChecked
+                    />
+                    <label htmlFor="income-input">Income</label>
+                  </div>
 
-                <div>
-                  <input
-                    type="radio"
-                    id="expense-input"
-                    name="type"
-                    value="expense"
-                  />
-                  <label htmlFor="expense-input">Dewey</label>
+                  <div>
+                    <input
+                      type="radio"
+                      id="expense-input"
+                      name="type"
+                      value="expense"
+                      onChange={(e) => e.target.checked && setType('expense')}
+                    />
+                    <label htmlFor="expense-input">Expense</label>
+                  </div>
                 </div>
               </div>
 

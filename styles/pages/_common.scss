@@ -24,7 +24,7 @@
 }
 
 .modal {
-  width: 1012px;
+  max-width: 1012px;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -71,8 +71,9 @@
 
   .input {
     width: 250px;
-    min-width: 250px;
+    max-width: 250px;
 
+    position: relative;
     display: flex;
     flex-direction: column;
     margin: spacing(4);
@@ -109,5 +110,24 @@
     select {
       @extend input;
     }
+
+    .radio-buttons-container {
+      display: flex;
+      align-items: center;
+
+      & > div input {
+        margin: 0 spacing(2);
+      }
+    }
   }
+}
+
+input[type='number'] {
+  text-indent: spacing(4);
+}
+
+.amount-currency {
+  position: absolute;
+  bottom: spacing(3.8);
+  left: spacing(2.5);
 }

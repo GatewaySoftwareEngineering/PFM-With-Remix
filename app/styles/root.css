@@ -41,10 +41,10 @@ body {
 
 button, .dismiss-button {
   border: none;
-  border-radius: 1rem;
-  padding: 5.6px 18px;
-  font-size: 20px;
-  font-weight: 500;
+  border-radius: 2.4rem;
+  padding: 7.2px 18px;
+  font-size: 18px;
+  font-weight: 600;
   color: #1c658c;
   background-color: rgba(28, 101, 140, 0.1490196078);
   transition: all 0.2s ease-in-out;
@@ -75,7 +75,7 @@ button:hover, .dismiss-button:hover {
 .error-chip {
   color: #ef2a4c;
   background-color: rgba(239, 42, 76, 0.1490196078);
-  border-radius: 0.25rem;
+  border-radius: 0.6rem;
   padding: 4px 16px;
 }
 
@@ -104,7 +104,7 @@ button:hover, .dismiss-button:hover {
 .success-chip {
   color: #059669;
   background-color: rgba(5, 150, 105, 0.2);
-  border-radius: 0.25rem;
+  border-radius: 0.6rem;
   padding: 4px 16px;
 }
 
@@ -134,7 +134,7 @@ button:hover, .dismiss-button:hover {
 }
 
 .modal {
-  width: 1012px;
+  max-width: 1012px;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -143,7 +143,7 @@ button:hover, .dismiss-button:hover {
   flex-direction: column;
   background-color: #f8fafc;
   z-index: 10;
-  border-radius: 0.25rem;
+  border-radius: 0.6rem;
   margin: 8px;
 }
 .modal .modal-header {
@@ -152,7 +152,7 @@ button:hover, .dismiss-button:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-radius: 0.25rem 0.25rem 0 0;
+  border-radius: 0.6rem 0.6rem 0 0;
 }
 .modal .modal-header .modal-close-icon {
   font-weight: 600;
@@ -176,7 +176,8 @@ button:hover, .dismiss-button:hover {
 }
 .input-container .input {
   width: 250px;
-  min-width: 250px;
+  max-width: 250px;
+  position: relative;
   display: flex;
   flex-direction: column;
   margin: 16px;
@@ -186,7 +187,7 @@ button:hover, .dismiss-button:hover {
 }
 .input-container .input input, .input-container .input select, .input-container .input textarea {
   border: 1px solid rgba(231, 231, 233, 0.7490196078);
-  border-radius: 0.25rem;
+  border-radius: 0.6rem;
   padding: 12px 8px;
   font-size: 16px;
   font-weight: 500;
@@ -204,6 +205,24 @@ button:hover, .dismiss-button:hover {
 .input-container .input textarea {
   resize: none;
 }
+.input-container .input .radio-buttons-container {
+  display: flex;
+  align-items: center;
+}
+.input-container .input .radio-buttons-container > div input, .input-container .input .radio-buttons-container > div textarea, .input-container .input .radio-buttons-container > div select {
+  margin: 0 8px;
+}
+
+input[type=number], .input-container .input textarea[type=number], .input-container .input select[type=number] {
+  text-indent: 16px;
+}
+
+.amount-currency {
+  position: absolute;
+  bottom: 15.2px;
+  left: 10px;
+}
+
 .sidebar {
   display: flex;
   flex-direction: column;
@@ -312,7 +331,7 @@ button:hover, .dismiss-button:hover {
   justify-content: space-between;
   padding: 24px;
   margin: 16px;
-  border-radius: 0.25rem;
+  border-radius: 0.6rem;
 }
 .overview-card div {
   display: flex;
@@ -328,7 +347,7 @@ button:hover, .dismiss-button:hover {
 }
 .overview-card button, .overview-card .dismiss-button {
   color: #ffffff;
-  border-radius: 1rem;
+  border-radius: 2.4rem;
   font-size: 14px;
   font-weight: 600;
 }
@@ -359,7 +378,7 @@ button:hover, .dismiss-button:hover {
 
 .transaction-card {
   background-color: #f8fafc;
-  border-radius: 0.25rem;
+  border-radius: 0.6rem;
   margin: 12px;
   padding: 24px;
   display: flex;
