@@ -59,6 +59,13 @@ button:hover {
   background-color: rgba(251, 113, 133, 0.7490196078);
 }
 
+.error-chip {
+  color: #ef2a4c;
+  background-color: rgba(239, 42, 76, 0.1490196078);
+  border-radius: 0.25rem;
+  padding: 4px 16px;
+}
+
 .error-gradient {
   background: linear-gradient(to right, rgba(251, 113, 133, 0.7490196078), rgba(254, 237, 240, 0.7490196078));
 }
@@ -79,6 +86,13 @@ button:hover {
 
 .neutral-gradient {
   background: linear-gradient(to right, rgba(113, 113, 122, 0.7490196078), rgba(178, 178, 184, 0.7490196078));
+}
+
+.success-chip {
+  color: #059669;
+  background-color: rgba(5, 150, 105, 0.2);
+  border-radius: 0.25rem;
+  padding: 4px 16px;
 }
 
 .page {
@@ -269,9 +283,21 @@ button:hover {
   flex-wrap: wrap;
   align-items: center;
 }
+.transaction-card div .transaction-category-icon-container {
+  margin-right: 12px;
+  border-radius: 50%;
+  padding: 8px 8px;
+}
+.transaction-card div .transaction-category-icon-container .transaction-category-icon {
+  width: 22px;
+  height: 22px;
+}
 .transaction-card div .transaction-note {
   max-width: 400px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.transaction-card div .transaction-amount-chip {
+  margin-left: 12px;
 }

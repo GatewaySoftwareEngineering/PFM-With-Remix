@@ -13,6 +13,7 @@ $success-color-background: #05966933;
 
 $error-color: #ef2a4c;
 $error-color-background: #fb7185bf;
+$error-color-background-lighter: #ef2a4c26;
 
 $info-color: #1a74c7;
 $info-color-background: #38bdf8bf;
@@ -109,9 +110,25 @@ button {
   }
 }
 
+@mixin chip {
+  border-radius: $border-radius;
+  padding: spacing(1) spacing(4);
+}
+
+@mixin circle-chip {
+  border-radius: 50%;
+  padding: spacing(2) spacing(2);
+}
+
 .error {
   color: $error-color;
   background-color: $error-color-background;
+}
+
+.error-chip {
+  color: $error-color;
+  background-color: $error-color-background-lighter;
+  @include chip;
 }
 
 .error-gradient {
@@ -146,4 +163,10 @@ button {
     $neutral-color-background,
     lighten($neutral-color-background, 25%)
   );
+}
+
+.success-chip {
+  color: $success-color;
+  background-color: $success-color-background;
+  @include chip;
 }

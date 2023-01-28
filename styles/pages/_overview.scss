@@ -80,11 +80,25 @@ $transactions-list-max-width: 904px;
     flex-wrap: wrap;
     align-items: center;
 
+    .transaction-category-icon-container {
+      margin-right: spacing(3);
+      @include circle-chip;
+
+      .transaction-category-icon {
+        width: 22px;
+        height: 22px;
+      }
+    }
+
     .transaction-note {
       max-width: 400px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+    }
+
+    .transaction-amount-chip {
+      margin-left: spacing(3);
     }
   }
 }
