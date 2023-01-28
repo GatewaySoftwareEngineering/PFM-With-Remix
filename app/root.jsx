@@ -5,10 +5,12 @@ import {
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react'
+import React from 'react'
 
 import rootStyles from '~/styles/root.css'
 
 import Layout from './components/layout'
+import { seedTransactions } from './seeders/transaction.seeder'
 
 /**
  * @returns {import("@remix-run/node").LinkDescriptor[]}
@@ -30,6 +32,10 @@ export const meta = () => ({
 })
 
 export default function App() {
+  React.useEffect(() => {
+    seedTransactions()
+  }, [])
+
   return (
     <html lang="en">
       <head>
