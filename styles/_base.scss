@@ -21,8 +21,10 @@ $info-color-background: #38bdf8bf;
 $neutral-color: #58585d;
 $neutral-color-background: #71717abf;
 
-$paper-color: #f7f4f3;
+$paper-color: #f8fafc;
 $background-color: #e8e8e8;
+
+$border-color: lighten($neutral-color-background, 45%);
 
 $text-primary: $black;
 $text-secondary: #334155;

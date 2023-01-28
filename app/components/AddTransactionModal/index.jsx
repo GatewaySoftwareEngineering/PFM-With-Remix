@@ -33,70 +33,72 @@ export default function AddTransactionModal({ isOpen, onClose }) {
 
         <div className="modal-content">
           <Form method="post">
-            <div>
-              <label htmlFor="category-input">Category</label>
+            <div className="input-container">
+              <div className="input">
+                <label htmlFor="category-input">Category</label>
 
-              <select name="category" id="category-input">
-                {[...categories.income, ...categories.expense].map(
-                  (category, i) => (
-                    <option key={i} value={category}>
-                      {category}
-                    </option>
-                  )
-                )}
-              </select>
-            </div>
-
-            <div>
-              <label htmlFor="date-input">Date</label>
-
-              <input
-                type="date"
-                id="date-input"
-                name="date"
-                max={new Date().toLocaleDateString('en-ca')}
-              />
-            </div>
-
-            <div>
-              <label htmlFor="amount-input">Amount</label>
-
-              <input type="number" id="amount-input" name="amount" min="0" />
-            </div>
-
-            <div>
-              <label htmlFor="income-input">Type</label>
-
-              <div>
-                <input
-                  type="radio"
-                  id="income-input"
-                  name="type"
-                  value="income"
-                />
-                <label htmlFor="income-input">Huey</label>
+                <select name="category" id="category-input">
+                  {[...categories.income, ...categories.expense].map(
+                    (category, i) => (
+                      <option key={i} value={category}>
+                        {category}
+                      </option>
+                    )
+                  )}
+                </select>
               </div>
 
-              <div>
+              <div className="input">
+                <label htmlFor="date-input">Date</label>
+
                 <input
-                  type="radio"
-                  id="expense-input"
-                  name="type"
-                  value="expense"
+                  type="date"
+                  id="date-input"
+                  name="date"
+                  max={new Date().toLocaleDateString('en-ca')}
                 />
-                <label htmlFor="expense-input">Dewey</label>
               </div>
-            </div>
 
-            <div>
-              <label htmlFor="note-input">Note</label>
+              <div className="input">
+                <label htmlFor="amount-input">Amount</label>
 
-              <textarea
-                id="note-input"
-                name="note"
-                rows="5"
-                cols="33"
-              ></textarea>
+                <input type="number" id="amount-input" name="amount" min="0" />
+              </div>
+
+              <div className="input">
+                <label htmlFor="income-input">Type</label>
+
+                <div>
+                  <input
+                    type="radio"
+                    id="income-input"
+                    name="type"
+                    value="income"
+                  />
+                  <label htmlFor="income-input">Huey</label>
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    id="expense-input"
+                    name="type"
+                    value="expense"
+                  />
+                  <label htmlFor="expense-input">Dewey</label>
+                </div>
+              </div>
+
+              <div className="input">
+                <label htmlFor="note-input">Note</label>
+
+                <textarea
+                  id="note-input"
+                  name="note"
+                  rows="5"
+                  cols="33"
+                ></textarea>
+              </div>
             </div>
 
             <div className="modal-actions">

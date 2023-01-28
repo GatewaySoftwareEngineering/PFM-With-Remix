@@ -24,7 +24,7 @@
 }
 
 .modal {
-  width: 700px;
+  width: 1012px;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -60,6 +60,54 @@
       .dismiss-button {
         margin-right: spacing(4);
       }
+    }
+  }
+}
+
+.input-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+
+  .input {
+    width: 250px;
+    min-width: 250px;
+
+    display: flex;
+    flex-direction: column;
+    margin: spacing(4);
+
+    label {
+      margin-bottom: spacing(2);
+    }
+
+    input {
+      border: 1px solid $border-color;
+      border-radius: $border-radius;
+      padding: spacing(3) spacing(2);
+      font-size: $font-size;
+      font-weight: $font-weight-semi-bold;
+      background-color: $white;
+      transition: $primary-transition;
+      outline: none;
+
+      &:hover {
+        cursor: pointer;
+        box-shadow: $shadow;
+      }
+
+      &:focus {
+        border: 1px solid $primary-color;
+      }
+    }
+
+    textarea {
+      resize: none;
+      @extend input;
+    }
+
+    select {
+      @extend input;
     }
   }
 }

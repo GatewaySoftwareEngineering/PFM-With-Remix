@@ -134,14 +134,14 @@ button:hover, .dismiss-button:hover {
 }
 
 .modal {
-  width: 700px;
+  width: 1012px;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
-  background-color: #f7f4f3;
+  background-color: #f8fafc;
   z-index: 10;
   border-radius: 0.25rem;
   margin: 8px;
@@ -169,6 +169,41 @@ button:hover, .dismiss-button:hover {
   margin-right: 16px;
 }
 
+.input-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.input-container .input {
+  width: 250px;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  margin: 16px;
+}
+.input-container .input label {
+  margin-bottom: 8px;
+}
+.input-container .input input, .input-container .input select, .input-container .input textarea {
+  border: 1px solid rgba(231, 231, 233, 0.7490196078);
+  border-radius: 0.25rem;
+  padding: 12px 8px;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: #ffffff;
+  transition: all 0.2s ease-in-out;
+  outline: none;
+}
+.input-container .input input:hover, .input-container .input select:hover, .input-container .input textarea:hover {
+  cursor: pointer;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+.input-container .input input:focus, .input-container .input select:focus, .input-container .input textarea:focus {
+  border: 1px solid #1c658c;
+}
+.input-container .input textarea {
+  resize: none;
+}
 .sidebar {
   display: flex;
   flex-direction: column;
@@ -237,7 +272,7 @@ button:hover, .dismiss-button:hover {
 .top-bar {
   width: 100%;
   height: 80px;
-  background: #f7f4f3;
+  background: #f8fafc;
   color: #000000;
   padding: 16px;
   display: flex;
@@ -323,7 +358,7 @@ button:hover, .dismiss-button:hover {
 }
 
 .transaction-card {
-  background-color: #f7f4f3;
+  background-color: #f8fafc;
   border-radius: 0.25rem;
   margin: 12px;
   padding: 24px;
