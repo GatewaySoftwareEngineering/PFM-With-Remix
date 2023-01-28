@@ -44,6 +44,7 @@ export default function AddTransactionModal({ isOpen, onClose }) {
                   id="category-input"
                   className={data?.errors?.category ? 'error-input' : ''}
                 >
+                  <option value="" defaultChecked></option>
                   {categories[type].map((category, i) => (
                     <option key={i} value={category}>
                       {category}
