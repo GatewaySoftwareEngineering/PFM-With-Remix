@@ -60,7 +60,13 @@ export const action = async ({ request }) => {
   return json({
     errors,
     isValid: !hasErrors,
-    data: { type, amount: amount && parseInt(amount), category, date, note },
+    data: {
+      type,
+      amount: amount && parseInt(amount),
+      category,
+      date: date && new Date(date).toISOString(),
+      note,
+    },
   })
 }
 
