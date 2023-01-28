@@ -12,7 +12,7 @@ export const getTransactions = () => {
 
 export const createTransaction = (transaction) => {
   const transactions = getTransactions()
-  transactions.push(transaction)
+  transactions.unshift(transaction)
 
   setTransactions(transactions)
 }
