@@ -7,15 +7,17 @@ export const seedTransactions = () => {
 
   console.log('Seeding transactions...')
 
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 40; i++) {
     const date = new Date()
     date.setDate(date.getDate() - i)
+
+    const type = Math.random() > 0.5 ? 'income' : 'expense'
 
     transactions.push({
       category: 'Bills',
       amount: Math.floor(Math.random() * 99) + 1,
       date: date.toISOString(),
-      type: 'expense',
+      type,
       note: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate.',
     })
   }
