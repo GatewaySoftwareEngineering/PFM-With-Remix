@@ -10,7 +10,7 @@
   align-items: flex-start;
   justify-content: space-between;
   padding: spacing(6);
-  margin: spacing(6);
+  margin: spacing(4);
   border-radius: $border-radius;
 
   div {
@@ -40,6 +40,41 @@
   .overview-card {
     div {
       margin-bottom: spacing(2.5);
+    }
+  }
+}
+
+.transactions-section {
+  margin-top: spacing(12);
+}
+
+.transactions-list {
+  max-width: 904px;
+  display: flex;
+  flex-direction: column;
+  margin-top: spacing(3);
+}
+
+.transaction-card {
+  background-color: $white;
+  border-radius: $border-radius;
+  margin: spacing(3);
+  padding: spacing(6);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+
+  div {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    .transaction-note {
+      max-width: 400px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 }

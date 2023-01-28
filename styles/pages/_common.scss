@@ -4,6 +4,12 @@
   display: flex;
 }
 
+.main-section {
+  width: 100%;
+  padding: spacing(4);
+  overflow-x: hidden;
+}
+
 .dollar:before {
   content: '$';
 }

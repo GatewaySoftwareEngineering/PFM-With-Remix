@@ -87,6 +87,12 @@ button:hover {
   display: flex;
 }
 
+.main-section {
+  width: 100%;
+  padding: 16px;
+  overflow-x: hidden;
+}
+
 .dollar:before {
   content: "$";
 }
@@ -202,7 +208,7 @@ button:hover {
   align-items: flex-start;
   justify-content: space-between;
   padding: 24px;
-  margin: 24px;
+  margin: 16px;
   border-radius: 0.25rem;
 }
 .overview-card div {
@@ -228,4 +234,36 @@ button:hover {
   .overview-card div {
     margin-bottom: 10px;
   }
+}
+.transactions-section {
+  margin-top: 48px;
+}
+
+.transactions-list {
+  max-width: 904px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 12px;
+}
+
+.transaction-card {
+  background-color: #ffffff;
+  border-radius: 0.25rem;
+  margin: 12px;
+  padding: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.transaction-card div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.transaction-card div .transaction-note {
+  max-width: 400px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
