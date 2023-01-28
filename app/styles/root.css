@@ -299,5 +299,7 @@ button:hover {
   text-overflow: ellipsis;
 }
 .transaction-card div .transaction-amount-chip {
+  font-size: 18px;
+  font-weight: 600;
   margin-left: 12px;
 }

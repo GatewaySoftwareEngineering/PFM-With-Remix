@@ -40,7 +40,9 @@ export default function TransactionsList({ transactions }) {
                 transaction.type === 'income' ? 'success-chip' : 'error-chip'
               }`}
             >
-              <p className="dollar">{transaction.amount}</p>
+              <p>
+                {transaction.type === 'income' ? '+' : '-'}${transaction.amount}
+              </p>
             </div>
           </div>
         </div>

@@ -98,6 +98,8 @@ $transactions-list-max-width: 904px;
     }
 
     .transaction-amount-chip {
+      font-size: 18px;
+      font-weight: $font-weight-bold;
       margin-left: spacing(3);
     }
   }
