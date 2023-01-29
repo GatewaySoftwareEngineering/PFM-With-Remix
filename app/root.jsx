@@ -6,7 +6,6 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react"
-import PropTypes from "prop-types"
 import rootStyles from "~/styles/root.css"
 import Navbar from "./layout/Navbar"
 
