@@ -150,40 +150,44 @@ export default function TransactionHistory() {
           transactions={paginateTransactions(filteredTransactions, page, limit)}
         />
 
-        <div className="pagination">
-          <button
-            className={page === 0 ? 'nav-button-disabled' : ''}
-            onClick={() => {
-              if (page === 0) return
-              setPage((i) => i - 1)
-            }}
-          >
-            {'<'}
-          </button>
-          <ul>
-            {Array.from({ length: pages }, (_, i) => (
-              <li key={i}>
-                <button
-                  className={
-                    i === page ? 'nav-button-active' : 'nav-button-inactive'
-                  }
-                  onClick={() => setPage(i)}
-                >
-                  {i + 1}
-                </button>
-              </li>
-            ))}
-          </ul>
-          <button
-            className={page + 1 === pages ? 'nav-button-disabled' : ''}
-            onClick={() => {
-              if (page + 1 === pages) return
-              setPage((i) => i + 1)
-            }}
-          >
-            {'>'}
-          </button>
-        </div>
+        {filteredTransactions.length === 0 ? (
+          <></>
+        ) : (
+          <div className="pagination">
+            <button
+              className={page === 0 ? 'nav-button-disabled' : ''}
+              onClick={() => {
+                if (page === 0) return
+                setPage((i) => i - 1)
+              }}
+            >
+              {'<'}
+            </button>
+            <ul>
+              {Array.from({ length: pages }, (_, i) => (
+                <li key={i}>
+                  <button
+                    className={
+                      i === page ? 'nav-button-active' : 'nav-button-inactive'
+                    }
+                    onClick={() => setPage(i)}
+                  >
+                    {i + 1}
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <button
+              className={page + 1 === pages ? 'nav-button-disabled' : ''}
+              onClick={() => {
+                if (page + 1 === pages) return
+                setPage((i) => i + 1)
+              }}
+            >
+              {'>'}
+            </button>
+          </div>
+        )}
       </div>
     </div>
   )
