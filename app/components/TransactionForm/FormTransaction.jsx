@@ -23,13 +23,13 @@ function FormTransaction({ handleCancel }) {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (
-      formData.amount === null ||
+      formData.amount === "" ||
       formData.category === "" ||
       formData.note === ""
     ) {
       setError({
         category: formData.category === "" ? true : false,
-        amount: formData.amount === null ? true : false,
+        amount: formData.amount === "" ? true : false,
         note: formData.note === "" ? true : false,
       })
       return alert("Please fill all the fields")
