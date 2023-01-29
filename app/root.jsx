@@ -4,7 +4,7 @@ import {
   Meta,
   Outlet,
   Scripts,
-  ScrollRestoration
+  ScrollRestoration,
 } from "@remix-run/react"
 import PropTypes from "prop-types"
 import rootStyles from "~/styles/root.css"
@@ -29,18 +29,6 @@ export const meta = () => ({
   viewport: "width=device-width,initial-scale=1",
 })
 
-function Layout({ children }) {
-  return (
-   <Navbar>
-      {children}
-   </Navbar>
-  )
-}
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-}
-
 export default function App() {
   return (
     <html lang="en">
@@ -49,9 +37,9 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Layout>
+        <Navbar>
           <Outlet />
-        </Layout>
+        </Navbar>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
