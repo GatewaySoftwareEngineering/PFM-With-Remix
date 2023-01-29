@@ -7,7 +7,7 @@ function FormTransaction({ handleCancel }) {
   const [formData, setFormData] = useState({
     category: "",
     createdAt: new Date().toISOString().slice(0, 10),
-    amount: null,
+    amount: "",
     type: "INCOME",
     note: "",
   })
@@ -71,6 +71,7 @@ function FormTransaction({ handleCancel }) {
             placeholder="category"
             value={formData.category}
             onChange={handleChange}
+            required
           >
             <option value="">Choose</option>
             {formData.type === "INCOME" ? (
@@ -103,6 +104,7 @@ function FormTransaction({ handleCancel }) {
             placeholder="Date"
             value={formData.createdAt}
             onChange={handleChange}
+            required
           />
         </div>
         <div className="form_label">
@@ -115,6 +117,7 @@ function FormTransaction({ handleCancel }) {
             value={formData.amount}
             min="0"
             onChange={handleChange}
+            required
           />
           <span className={error.amount ? "error" : ""}>
             {error.amount && "Please enter an amount"}
@@ -133,6 +136,7 @@ function FormTransaction({ handleCancel }) {
                 value="INCOME"
                 checked={formData.type === "INCOME"}
                 onChange={handleChange}
+                required
               />
               <label htmlFor="income">Income</label>
               <input
@@ -142,6 +146,7 @@ function FormTransaction({ handleCancel }) {
                 value="EXPENSE"
                 checked={formData.type === "EXPENSE"}
                 onChange={handleChange}
+                required
               />
               <label htmlFor="expense">Expense</label>
             </div>
@@ -157,6 +162,7 @@ function FormTransaction({ handleCancel }) {
             form="usrform"
             value={formData.note}
             onChange={handleChange}
+            required
           />
           <span className={error.note ? "error" : ""}>
             {error.note && "Please enter a note"}
