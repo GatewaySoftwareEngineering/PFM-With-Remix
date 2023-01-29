@@ -1,7 +1,5 @@
 import { useState } from "react"
 import { useLoaderData } from "@remix-run/react"
-import Card from "~/components/Card"
-import CardDeatails from "~/data/CardDeatails"
 import {
   getLastWeekTransactions,
   getLastMonthTransactions,
@@ -10,6 +8,7 @@ import {
 import TransactionList from "~/components/transaction/TransactionList"
 import FormTransaction from "../components/formtransaction"
 import { redirect } from "@remix-run/node"
+import CardList from "~/components/CardList"
 
 export const loader = async () => {
   const res = await fetch(" http://localhost:8000/mockedTransactions", {
@@ -58,16 +57,7 @@ export default function Index() {
   return (
     <div className="overview-page">
       {istransactions && <FormTransaction handleClose={handleClose} />}
-      <div className="card_row">
-        {CardDeatails.map((card) => (
-          <Card
-            key={card.title}
-            className={card.className}
-            title={card.title}
-            mockedTransactions={monthAchievements}
-          />
-        ))}
-      </div>
+      <CardList transactions={monthAchievements} />
       <div className="overview_transaction_container">
         <h2>{shownTitle}</h2>
         <TransactionList

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { Form } from "@remix-run/react"
 import PropTypes from "prop-types"
 
@@ -10,6 +10,8 @@ function FormTransaction({ handleClose }) {
     type: "INCOME",
     note: "",
   })
+
+  const formRef = useRef(null)
 
   const handleChange = (e) => {
     e.preventDefault()
@@ -25,7 +27,10 @@ function FormTransaction({ handleClose }) {
       type: "INCOME",
       note: "",
     })
+    handleClose()
   }
+
+
 
   return (
     <div>
@@ -35,7 +40,7 @@ function FormTransaction({ handleClose }) {
           <button onClick={handleClose}>X</button>
         </div>
         <div className="popup_body">
-          <Form method="post" replace>
+          <Form method="post" ref={formRef}>
             <div className="form_group">
               <div className="form_label">
                 <label htmlFor="category">Category</label>
@@ -95,13 +100,14 @@ function FormTransaction({ handleClose }) {
             <div className="form_group">
               <div className="form_label">
                 <label htmlFor="type">Type</label>
-                <fieldset onChange={handleChange} className="fieldset">
+                <fieldset className="fieldset">
                   <input
                     type="radio"
                     name="type"
                     id="income"
                     value="INCOME"
                     checked={formData.type === "INCOME"}
+                    onChange={handleChange}
                   />
                   <label htmlFor="income">Income</label>
                   <input
@@ -110,6 +116,7 @@ function FormTransaction({ handleClose }) {
                     id="expense"
                     value="EXPENSE"
                     checked={formData.type === "EXPENSE"}
+                    onChange={handleChange}
                   />
                   <label htmlFor="expense">Expense</label>
                 </fieldset>
@@ -145,7 +152,7 @@ function FormTransaction({ handleClose }) {
 }
 
 FormTransaction.propTypes = {
-  handleClose: PropTypes.func.isRequired,
+  handleClose: PropTypes.func.isRequired
 }
 
 export default FormTransaction

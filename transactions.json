@@ -80,6 +80,42 @@
       "amount": 100,
       "createdAt": "2023-01-27",
       "currency": "USD"
+    },
+    {
+      "id": 21569,
+      "note": "bjk",
+      "category": "SALARY",
+      "type": "INCOME",
+      "amount": 1,
+      "createdAt": "2023-01-29",
+      "currency": "USD"
+    },
+    {
+      "id": 66063,
+      "note": "ljk",
+      "category": "FOOD",
+      "type": "EXPENSE",
+      "amount": 1,
+      "createdAt": "2023-01-29",
+      "currency": "USD"
+    },
+    {
+      "id": 8847,
+      "note": "hgv",
+      "category": "SALARY",
+      "type": "INCOME",
+      "amount": 1,
+      "createdAt": "2022-10-20",
+      "currency": "USD"
+    },
+    {
+      "id": 78743,
+      "note": "hbjk",
+      "category": "LOAN",
+      "type": "INCOME",
+      "amount": 2,
+      "createdAt": "2023-01-29",
+      "currency": "USD"
     }
   ]
 }
