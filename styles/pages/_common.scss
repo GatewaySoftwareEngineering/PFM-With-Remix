@@ -83,37 +83,8 @@
       margin-bottom: spacing(2);
     }
 
-    input {
-      border: 1px solid $border-color;
-      border-radius: $border-radius;
-      padding: spacing(3) spacing(2);
-      font-size: $font-size;
-      font-weight: $font-weight-semi-bold;
-      background-color: $white;
-      transition: $primary-transition;
-      outline: none;
-
-      &:hover {
-        cursor: pointer;
-        box-shadow: $shadow;
-      }
-
-      &:focus {
-        border: 1px solid $primary-color;
-      }
-    }
-
     em {
       margin-top: spacing(2);
-    }
-
-    textarea {
-      resize: none;
-      @extend input;
-    }
-
-    select {
-      @extend input;
     }
 
     .radio-buttons-container {
@@ -125,6 +96,35 @@
       }
     }
   }
+}
+
+input {
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  padding: spacing(3) spacing(2);
+  font-size: $font-size;
+  font-weight: $font-weight-semi-bold;
+  background-color: $white;
+  transition: $primary-transition;
+  outline: none;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: $shadow;
+  }
+
+  &:focus {
+    border: 1px solid $primary-color;
+  }
+}
+
+textarea {
+  resize: none;
+  @extend input;
+}
+
+select {
+  @extend input;
 }
 
 input[type='number'] {

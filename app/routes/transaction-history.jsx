@@ -1,13 +1,33 @@
-import { Form } from '@remix-run/react'
 import React from 'react'
 import TransactionsList from '~/components/TransactionsList'
-import { getTransactions } from '~/models/transaction'
+import { categories, getTransactions } from '~/models/transaction'
+
+export const links = () => [
+  {
+    rel: 'preload',
+    href: '/assets/icons/search.svg',
+    as: 'image',
+    type: 'image/svg+xml',
+  },
+  {
+    rel: 'preload',
+    href: '/assets/icons/filter.svg',
+    as: 'image',
+    type: 'image/svg+xml',
+  },
+]
 
 export default function TransactionHistory() {
   const [transactions, setTransactions] = React.useState([])
 
-  const [page, setPage] = React.useState(0)
   const limit = 10
+  const [page, setPage] = React.useState(0)
+  const [search, setSearch] = React.useState('') // search by note or amount
+  const [filters, setFilters] = React.useState({
+    categories: [], // filter by multiple category
+    from: '', // filter transactions from this date until now
+    to: '', // filter transactions until this date
+  })
 
   React.useEffect(() => {
     setTransactions(getTransactions())
@@ -18,13 +38,82 @@ export default function TransactionHistory() {
   return (
     <div className="main-section">
       <div className="transactions-section">
-        <Form method="get">
-          <div className="search-bar">
-            <input type="text" name="search" placeholder="Search" />
+        <div className="bar search-bar">
+          <div>
+            <img src="/assets/icons/search.svg" alt="search" />
+
+            <input
+              type="text"
+              name="search"
+              placeholder="Search"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
           </div>
 
-          <div className="filter-bar"></div>
-        </Form>
+          <button onClick={() => setSearch('')}>Clear</button>
+        </div>
+
+        <div className="bar filter-bar">
+          <div>
+            <img src="/assets/icons/filter.svg" alt="filter" />
+
+            <div className="filter-bar-input-container">
+              <select
+                name="category"
+                id="category-input"
+                placeholder="Categories"
+              >
+                <option value="" defaultChecked>
+                  Categories
+                </option>
+                {[...categories.income, ...categories.expense].map(
+                  (category, i) => (
+                    <option key={i} value={category}>
+                      {category}
+                    </option>
+                  )
+                )}
+              </select>
+
+              <input
+                type="text"
+                id="from-input"
+                name="from"
+                max={new Date().toLocaleDateString('en-ca')}
+                placeholder="From"
+                onFocus={(e) => (e.target.type = 'date')}
+                onBlur={(e) => {
+                  if (!e.target.value) e.target.type = 'text'
+                }}
+              />
+
+              <input
+                type="text"
+                id="to-input"
+                name="to"
+                max={new Date().toLocaleDateString('en-ca')}
+                placeholder="To"
+                onFocus={(e) => (e.target.type = 'date')}
+                onBlur={(e) => {
+                  if (!e.target.value) e.target.type = 'text'
+                }}
+              />
+            </div>
+          </div>
+
+          <button
+            onClick={() => {
+              setFilters({
+                categories: [],
+                from: '',
+                to: '',
+              })
+            }}
+          >
+            Clear
+          </button>
+        </div>
 
         <TransactionsList transactions={transactions} />
 

@@ -194,7 +194,18 @@ button:hover, .dismiss-button:hover {
 .input-container .input label {
   margin-bottom: 8px;
 }
-.input-container .input input, .input-container .input select, .input-container .input textarea {
+.input-container .input em {
+  margin-top: 8px;
+}
+.input-container .input .radio-buttons-container {
+  display: flex;
+  align-items: center;
+}
+.input-container .input .radio-buttons-container > div input, .input-container .input .radio-buttons-container > div select, .input-container .input .radio-buttons-container > div textarea {
+  margin: 0 8px;
+}
+
+input, select, textarea {
   border: 1px solid rgba(231, 231, 233, 0.7490196078);
   border-radius: 0.6rem;
   padding: 12px 8px;
@@ -204,28 +215,19 @@ button:hover, .dismiss-button:hover {
   transition: all 0.2s ease-in-out;
   outline: none;
 }
-.input-container .input input:hover, .input-container .input select:hover, .input-container .input textarea:hover {
+input:hover, select:hover, textarea:hover {
   cursor: pointer;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
-.input-container .input input:focus, .input-container .input select:focus, .input-container .input textarea:focus {
+input:focus, select:focus, textarea:focus {
   border: 1px solid #1c658c;
 }
-.input-container .input em {
-  margin-top: 8px;
-}
-.input-container .input textarea {
+
+textarea {
   resize: none;
 }
-.input-container .input .radio-buttons-container {
-  display: flex;
-  align-items: center;
-}
-.input-container .input .radio-buttons-container > div input, .input-container .input .radio-buttons-container > div textarea, .input-container .input .radio-buttons-container > div select {
-  margin: 0 8px;
-}
 
-input[type=number], .input-container .input textarea[type=number], .input-container .input select[type=number] {
+input[type=number], textarea[type=number], select[type=number] {
   text-indent: 16px;
 }
 
@@ -458,4 +460,65 @@ input[type=number], .input-container .input textarea[type=number], .input-contai
 .pagination .nav-button-disabled:hover {
   cursor: not-allowed;
   box-shadow: none;
+}
+
+.bar {
+  background-color: #ffffff;
+  border-radius: 0.6rem;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  min-height: 50px;
+}
+.bar button, .bar .dismiss-button {
+  color: #ffffff;
+  border-radius: 0;
+  font-size: 16px;
+  padding-left: 24px;
+  padding-right: 24px;
+  background-color: #1c658c;
+  border-radius: 0 0.6rem 0.6rem 0;
+}
+.bar img {
+  margin: 0 16px;
+  width: 20px;
+}
+.bar div {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  .bar {
+    flex-direction: column;
+    align-items: center;
+  }
+  .bar button, .bar .dismiss-button {
+    border-radius: 0.6rem;
+    margin: 8px;
+  }
+}
+.search-bar input, .search-bar textarea, .search-bar select {
+  height: 100%;
+  width: 100%;
+  font-size: 16px;
+  border: none;
+}
+.search-bar input:focus, .search-bar textarea:focus, .search-bar select:focus {
+  outline: none;
+}
+
+.filter-bar input, .filter-bar textarea, .filter-bar select {
+  width: 250px;
+  margin: 8px;
+}
+.filter-bar select {
+  width: 250px;
+  margin: 8px;
+}
+.filter-bar .filter-bar-input-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
