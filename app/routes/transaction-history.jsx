@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import TransactionsList from '~/components/TransactionsList'
 import { filterTransactions } from '~/helpers/filterTransactions'
+import { paginateTransactions } from '~/helpers/paginateTransactions'
 import { categories, getTransactions } from '~/models/transaction'
 
 export const links = () => [
@@ -44,6 +45,7 @@ export default function TransactionHistory() {
       setFilteredTransactions(
         filterTransactions(transactions, { search, category, from, to })
       )
+      setPage(0)
     }
   }, [search, filters])
 
@@ -144,7 +146,9 @@ export default function TransactionHistory() {
           </button>
         </div>
 
-        <TransactionsList transactions={filteredTransactions} />
+        <TransactionsList
+          transactions={paginateTransactions(filteredTransactions, page, limit)}
+        />
 
         <div className="pagination">
           <button
