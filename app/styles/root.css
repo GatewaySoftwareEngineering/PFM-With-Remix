@@ -508,6 +508,9 @@ input[type=number], textarea[type=number], select[type=number] {
 .search-bar input:focus, .search-bar textarea:focus, .search-bar select:focus {
   outline: none;
 }
+.search-bar input:hover, .search-bar textarea:hover, .search-bar select:hover {
+  box-shadow: none;
+}
 
 .filter-bar input, .filter-bar textarea, .filter-bar select {
   width: 250px;
