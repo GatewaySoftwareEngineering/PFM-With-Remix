@@ -3,7 +3,7 @@ import { Form, useNavigate } from "@remix-run/react"
 import PropTypes from "prop-types"
 import AddTransaction from "../AddTransaction"
 
-function FormTransaction({ handleCancel }) {
+function FormTransaction() {
   const [formData, setFormData] = useState({
     category: "",
     createdAt: new Date().toISOString().slice(0, 10),
@@ -48,7 +48,6 @@ function FormTransaction({ handleCancel }) {
         }),
       })
     }
-    handleCancel()
     setTimeout(() => {
       navigate("/")
     }, 500)
@@ -170,7 +169,7 @@ function FormTransaction({ handleCancel }) {
         </div>
       </div>
       <div className="popup_footer">
-        <button className="dismiss" onClick={handleCancel}>
+        <button className="dismiss">
           Dismiss
         </button>
         <AddTransaction

@@ -1,6 +1,6 @@
 const PagesRoutes = [
   {
-    path: "/",
+    path: "/overview",
     name: "Overview",
   },
   {
