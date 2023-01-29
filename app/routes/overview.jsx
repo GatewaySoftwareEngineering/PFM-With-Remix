@@ -1,7 +1,6 @@
 import { useState } from "react"
-import { Outlet, useLoaderData } from "@remix-run/react"
+import { useLoaderData } from "@remix-run/react"
 import Card from "~/components/Card"
-import { useNavigate } from "react-router-dom"
 import CardDeatails from "~/data/CardDeatails"
 import {
   getLastWeekTransactions,
@@ -9,7 +8,8 @@ import {
   getLastYearTransactions,
 } from "~/utils/transactions"
 import TransactionList from "~/components/transaction/TransactionList"
-import FormTransaction from "./overview/formtransaction"
+import FormTransaction from "../components/formtransaction"
+import { redirect } from "@remix-run/node"
 
 export const loader = async () => {
   const res = await fetch(" http://localhost:8000/mockedTransactions", {
@@ -24,11 +24,12 @@ export default function Index() {
   const [istransactions, setIsTransactions] = useState(false)
   const transactions = useLoaderData()
 
-  const navigate = useNavigate()
-
   const handleOpen = () => {
     setIsTransactions(true)
-    navigate("/overview/formtransaction")
+  }
+
+  const handleClose = () => {
+    setIsTransactions(false)
   }
 
   // for card month balance
@@ -56,11 +57,7 @@ export default function Index() {
 
   return (
     <div className="overview-page">
-      {istransactions && (
-        <Outlet>
-          <FormTransaction />
-        </Outlet>
-      )}
+      {istransactions && <FormTransaction handleClose={handleClose} />}
       <div className="card_row">
         {CardDeatails.map((card) => (
           <Card
@@ -85,4 +82,29 @@ export default function Index() {
       </div>
     </div>
   )
+}
+
+export const action = async ({ request }) => {
+  const body = new URLSearchParams(await request.text())
+  const category = body.get("category")
+  const createdAt = body.get("createdAt")
+  const amount = body.get("amount")
+  const type = body.get("type")
+  const note = body.get("note")
+  if (amount !== "" || category !== "" || note !== "") {
+    fetch("http://localhost:8000/mockedTransactions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        id: Number(Math.floor(Math.random() * 100000) + 1),
+        note: note,
+        category: category,
+        type: type,
+        amount: Number(amount),
+        createdAt: createdAt,
+        currency: "USD",
+      }),
+    })
+  }
+  return redirect("/overview")
 }

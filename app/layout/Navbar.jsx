@@ -38,7 +38,6 @@ const Navbar = ({children}) => {
           </button>
           <h1>
             {currentPath === "/overview"  && "Overview"}
-            {currentPath === "/overview/formtransaction" && "Overview"}
             {currentPath === "/transaction" && "Transaction History"}
           </h1>
         </div>

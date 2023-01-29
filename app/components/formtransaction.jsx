@@ -1,34 +1,8 @@
 import { useState } from "react"
 import { Form } from "@remix-run/react"
-import { redirect } from "@remix-run/node"
-import { useNavigate } from "react-router-dom"
+import PropTypes from "prop-types"
 
-export const action = async ({ request }) => {
-  const body = new URLSearchParams(await request.text())
-  const category = body.get("category")
-  const createdAt = body.get("createdAt")
-  const amount = body.get("amount")
-  const type = body.get("type")
-  const note = body.get("note")
-  if (amount !== "" || category !== "" || note !== "") {
-    fetch("http://localhost:8000/mockedTransactions", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        id: Number(Math.floor(Math.random() * 100000) + 1),
-        note: note,
-        category: category,
-        type: type,
-        amount: Number(amount),
-        createdAt: createdAt,
-        currency: "USD",
-      }),
-    })
-  }
-  return redirect("/overview")
-}
-
-function FormTransaction() {
+function FormTransaction({ handleClose }) {
   const [formData, setFormData] = useState({
     category: "",
     createdAt: new Date().toISOString().slice(0, 10),
@@ -39,7 +13,7 @@ function FormTransaction() {
 
   const handleChange = (e) => {
     e.preventDefault()
-    const { name, value } = e.target
+    let { name, value } = e.target
     setFormData((prevState) => ({ ...prevState, [name]: value }))
   }
 
@@ -52,18 +26,13 @@ function FormTransaction() {
       note: "",
     })
   }
-  const navigate = useNavigate()
-  const handleCancel = () => {
-    handleReseat()
-    navigate("/overview")
-  }
 
   return (
     <div>
       <div className="popup">
         <div className="popup_header">
           <h2>Add Transaction</h2>
-          <button onClick={handleCancel}>X</button>
+          <button onClick={handleClose}>X</button>
         </div>
         <div className="popup_body">
           <Form method="post" replace>
@@ -126,30 +95,24 @@ function FormTransaction() {
             <div className="form_group">
               <div className="form_label">
                 <label htmlFor="type">Type</label>
-                <div className="radio_group">
-                  <div className="radio">
-                    <input
-                      type="radio"
-                      id="income"
-                      name="type"
-                      value="INCOME"
-                      checked={formData.type === "INCOME"}
-                      onChange={handleChange}
-                      required
-                    />
-                    <label htmlFor="income">Income</label>
-                    <input
-                      type="radio"
-                      id="expense"
-                      name="type"
-                      value="EXPENSE"
-                      checked={formData.type === "EXPENSE"}
-                      onChange={handleChange}
-                      required
-                    />
-                    <label htmlFor="expense">Expense</label>
-                  </div>
-                </div>
+                <fieldset onChange={handleChange} className="fieldset">
+                  <input
+                    type="radio"
+                    name="type"
+                    id="income"
+                    value="INCOME"
+                    checked={formData.type === "INCOME"}
+                  />
+                  <label htmlFor="income">Income</label>
+                  <input
+                    type="radio"
+                    name="type"
+                    id="expense"
+                    value="EXPENSE"
+                    checked={formData.type === "EXPENSE"}
+                  />
+                  <label htmlFor="expense">Expense</label>
+                </fieldset>
               </div>
               <div className="form_label2">
                 <label htmlFor="note">note</label>
@@ -176,9 +139,13 @@ function FormTransaction() {
           </Form>
         </div>
       </div>
-      <div className="shadow" onClick={handleCancel} aria-hidden />
+      <div className="shadow" onClick={handleClose} aria-hidden />
     </div>
   )
+}
+
+FormTransaction.propTypes = {
+  handleClose: PropTypes.func.isRequired,
 }
 
 export default FormTransaction
