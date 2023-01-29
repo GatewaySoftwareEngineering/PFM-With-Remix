@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import TransactionsList from '~/components/TransactionsList'
+import { filterTransactions } from '~/helpers/filterTransactions'
 import { categories, getTransactions } from '~/models/transaction'
 
 export const links = () => [
@@ -19,21 +20,34 @@ export const links = () => [
 
 export default function TransactionHistory() {
   const [transactions, setTransactions] = React.useState([])
+  const [filteredTransactions, setFilteredTransactions] = React.useState([])
 
   const limit = 10
   const [page, setPage] = React.useState(0)
   const [search, setSearch] = React.useState('') // search by note or amount
   const [filters, setFilters] = React.useState({
-    categories: [], // filter by multiple category
-    from: '', // filter transactions from this date until now
-    to: '', // filter transactions until this date
+    categories: [],
+    from: '',
+    to: '',
   })
 
   React.useEffect(() => {
-    setTransactions(getTransactions())
+    const allTransactions = getTransactions()
+    setTransactions(allTransactions)
+    setFilteredTransactions(allTransactions)
   }, [])
 
-  const pages = Math.ceil(transactions.length / limit)
+  useEffect(() => {
+    const { categories, from, to } = filters
+
+    if (transactions.length > 0) {
+      setFilteredTransactions(
+        filterTransactions(transactions, { search, categories, from, to })
+      )
+    }
+  }, [search, filters])
+
+  const pages = Math.ceil(filteredTransactions.length / limit)
 
   return (
     <div className="main-section">
@@ -115,7 +129,7 @@ export default function TransactionHistory() {
           </button>
         </div>
 
-        <TransactionsList transactions={transactions} />
+        <TransactionsList transactions={filteredTransactions} />
 
         <div className="pagination">
           <button
