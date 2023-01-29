@@ -2,7 +2,6 @@ import { useState } from "react"
 import { useLoaderData } from "@remix-run/react"
 import FilterData from "~/components/filterTransaction/FilterData"
 import SearchFilter from "~/components/filterTransaction/SearchFilter"
-import TransactionItem from "~/components/transaction/TransactionItem"
 import TransactionList from "~/components/transaction/TransactionList"
 
 export const loader = async () => {

@@ -1,7 +1,6 @@
 import { useState } from "react"
 import { useLoaderData } from "@remix-run/react"
 import Card from "~/components/Card"
-import TransactionItem from "~/components/transaction/TransactionItem"
 import AddTransaction from "~/components/AddTransaction"
 import PopUps from "~/components/PopUps"
 import FormTransaction from "~/components/TransactionForm/FormTransaction"
