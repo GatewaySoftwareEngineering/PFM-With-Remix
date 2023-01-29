@@ -104,3 +104,9 @@ $transactions-list-max-width: 904px;
     }
   }
 }
+
+@media only screen and (max-width: 992px) {
+  .transaction-note {
+    max-width: 200px !important;
+  }
+}

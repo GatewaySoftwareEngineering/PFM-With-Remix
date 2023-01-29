@@ -426,6 +426,11 @@ input[type=number], textarea[type=number], select[type=number] {
   margin-left: 12px;
 }
 
+@media only screen and (max-width: 992px) {
+  .transaction-note {
+    max-width: 200px !important;
+  }
+}
 .pagination {
   max-width: 904px;
   display: flex;
