@@ -1,6 +1,6 @@
 export const filterTransactions = (
   transactions = [],
-  { search, categories = [], to, from }
+  { search, category, to, from }
 ) => {
   return transactions.filter((transaction) => {
     const isSearchMatch = search
@@ -9,8 +9,7 @@ export const filterTransactions = (
           .includes(search.toLowerCase())
       : true
 
-    const isCategoryMatch =
-      categories.length > 0 ? categories.includes(transaction.category) : true
+    const isCategoryMatch = category ? transaction.category === category : true
 
     let isToDateMatch = true
     if (to) {

@@ -14,39 +14,44 @@ export const links = () =>
 export default function TransactionsList({ transactions }) {
   return (
     <div className="transactions-list">
-      {transactions.map((transaction, i) => (
-        <div key={i} className="transaction-card">
-          <div>
-            <div
-              className={`transaction-category-icon-container ${
-                categories.income.includes(transaction.category)
-                  ? 'success-chip'
-                  : 'error-chip'
-              }`}
-            >
-              <img
-                className="transaction-category-icon"
-                src={categoryIcons[transaction.category]}
-                alt={transaction.category}
-              />
+      {transactions.length === 0 ? (
+        <p>No Transactions</p>
+      ) : (
+        transactions.map((transaction, i) => (
+          <div key={i} className="transaction-card">
+            <div>
+              <div
+                className={`transaction-category-icon-container ${
+                  categories.income.includes(transaction.category)
+                    ? 'success-chip'
+                    : 'error-chip'
+                }`}
+              >
+                <img
+                  className="transaction-category-icon"
+                  src={categoryIcons[transaction.category]}
+                  alt={transaction.category}
+                />
+              </div>
+              <p className="transaction-note">{transaction.note}</p>
             </div>
-            <p className="transaction-note">{transaction.note}</p>
-          </div>
 
-          <div>
-            <p>{displayRelativeDate(transaction.date)}</p>
-            <div
-              className={`transaction-amount-chip ${
-                transaction.type === 'income' ? 'success-chip' : 'error-chip'
-              }`}
-            >
-              <p>
-                {transaction.type === 'income' ? '+' : '-'}${transaction.amount}
-              </p>
+            <div>
+              <p>{displayRelativeDate(transaction.date)}</p>
+              <div
+                className={`transaction-amount-chip ${
+                  transaction.type === 'income' ? 'success-chip' : 'error-chip'
+                }`}
+              >
+                <p>
+                  {transaction.type === 'income' ? '+' : '-'}$
+                  {transaction.amount}
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))
+      )}
     </div>
   )
 }

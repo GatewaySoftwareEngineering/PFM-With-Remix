@@ -26,7 +26,7 @@ export default function TransactionHistory() {
   const [page, setPage] = React.useState(0)
   const [search, setSearch] = React.useState('') // search by note or amount
   const [filters, setFilters] = React.useState({
-    categories: [],
+    category: '',
     from: '',
     to: '',
   })
@@ -38,11 +38,11 @@ export default function TransactionHistory() {
   }, [])
 
   useEffect(() => {
-    const { categories, from, to } = filters
+    const { category, from, to } = filters
 
     if (transactions.length > 0) {
       setFilteredTransactions(
-        filterTransactions(transactions, { search, categories, from, to })
+        filterTransactions(transactions, { search, category, from, to })
       )
     }
   }, [search, filters])
@@ -74,12 +74,17 @@ export default function TransactionHistory() {
 
             <div className="filter-bar-input-container">
               <select
-                name="category"
-                id="category-input"
-                placeholder="Categories"
+                placeholder="Category"
+                value={filters.category}
+                onChange={(e) => {
+                  setFilters((filters) => ({
+                    ...filters,
+                    category: e.target.value,
+                  }))
+                }}
               >
                 <option value="" defaultChecked>
-                  Categories
+                  Category
                 </option>
                 {[...categories.income, ...categories.expense].map(
                   (category, i) => (
@@ -92,25 +97,35 @@ export default function TransactionHistory() {
 
               <input
                 type="text"
-                id="from-input"
-                name="from"
                 max={new Date().toLocaleDateString('en-ca')}
                 placeholder="From"
                 onFocus={(e) => (e.target.type = 'date')}
                 onBlur={(e) => {
                   if (!e.target.value) e.target.type = 'text'
                 }}
+                value={filters.from}
+                onChange={(e) => {
+                  setFilters((filters) => ({
+                    ...filters,
+                    from: e.target.value,
+                  }))
+                }}
               />
 
               <input
                 type="text"
-                id="to-input"
-                name="to"
                 max={new Date().toLocaleDateString('en-ca')}
                 placeholder="To"
                 onFocus={(e) => (e.target.type = 'date')}
                 onBlur={(e) => {
                   if (!e.target.value) e.target.type = 'text'
+                }}
+                value={filters.to}
+                onChange={(e) => {
+                  setFilters((filters) => ({
+                    ...filters,
+                    to: e.target.value,
+                  }))
                 }}
               />
             </div>
@@ -119,7 +134,7 @@ export default function TransactionHistory() {
           <button
             onClick={() => {
               setFilters({
-                categories: [],
+                category: '',
                 from: '',
                 to: '',
               })
