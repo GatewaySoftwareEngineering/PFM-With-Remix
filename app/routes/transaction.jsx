@@ -1,8 +1,9 @@
 import { useState } from "react"
 import { useLoaderData } from "@remix-run/react"
-import FilterData from "~/components/transaction/FilterData"
-import SearchFilter from "~/components/transaction/SearchFilter"
-import TransactionItem from "~/components/TransactionItem"
+import FilterData from "~/components/filterTransaction/FilterData"
+import SearchFilter from "~/components/filterTransaction/SearchFilter"
+import TransactionItem from "~/components/transaction/TransactionItem"
+import TransactionList from "~/components/transaction/TransactionList"
 
 export const loader = async () => {
   const res = await fetch(" http://localhost:8000/mockedTransactions", {
@@ -74,18 +75,10 @@ function Transaction() {
           perviousDate={perviousDate}
         />
       </div>
-      <div className="transaction_history">
-        {paginatedTransactions.map((transaction) => (
-          <TransactionItem
-            key={transaction.id}
-            note={transaction.note}
-            amount={transaction.amount}
-            date={transaction.createdAt}
-            category={transaction.category}
-            type={transaction.type}
-          />
-        ))}
-      </div>
+      <TransactionList
+        showntransactions={paginatedTransactions}
+        className="transaction_history"
+      />
       <div className="pagination_container">
         <button
           onClick={() => setCurrentPage(currentPage - 1)}

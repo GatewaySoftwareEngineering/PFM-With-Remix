@@ -1,10 +1,10 @@
 import { useState } from "react"
 import { useLoaderData } from "@remix-run/react"
 import Card from "~/components/Card"
-import TransactionItem from "~/components/TransactionItem"
+import TransactionItem from "~/components/transaction/TransactionItem"
 import AddTransaction from "~/components/AddTransaction"
 import PopUps from "~/components/PopUps"
-import FormTransaction from "~/components/overview/FormTransaction"
+import FormTransaction from "~/components/TransactionForm/FormTransaction"
 
 import CardDeatails from "~/data/CardDeatails"
 import {
@@ -12,6 +12,7 @@ import {
   getLastMonthTransactions,
   getLastYearTransactions,
 } from "~/utils/transactions"
+import TransactionList from "~/components/transaction/TransactionList"
 
 export const loader = async () => {
   const res = await fetch(" http://localhost:8000/mockedTransactions", {
@@ -78,21 +79,10 @@ export default function Index() {
       </div>
       <div className="overview_transaction_container">
         <h2>{shownTitle}</h2>
-        <div className="overview_transaction_data">
-          {showntransactions
-            .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-            .slice(0, 10)
-            .map((transaction) => (
-              <TransactionItem
-                key={transaction.id}
-                note={transaction.note}
-                amount={transaction.amount}
-                date={transaction.createdAt}
-                category={transaction.category}
-                type={transaction.type}
-              />
-            ))}
-        </div>
+        <TransactionList
+          showntransactions={showntransactions}
+          className="overview_transaction_data"
+        />
       </div>
       <div className="transaction_btn_container">
         <AddTransaction
