@@ -1,12 +1,14 @@
 .pagination {
   max-width: $transactions-list-max-width;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: flex-end;
   margin: spacing(4);
 
   ul {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     list-style-type: none;
 
@@ -80,6 +82,20 @@
       margin: spacing(2);
     }
   }
+
+  .pagination {
+    justify-content: center;
+  }
+
+  .filter-bar {
+    input {
+      width: 100% !important;
+    }
+
+    select {
+      width: 100% !important;
+    }
+  }
 }
 
 .search-bar {
@@ -113,5 +129,6 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    width: 100%;
   }
 }

@@ -429,12 +429,14 @@ input[type=number], textarea[type=number], select[type=number] {
 .pagination {
   max-width: 904px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: flex-end;
   margin: 16px;
 }
 .pagination ul {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   list-style-type: none;
 }
@@ -498,6 +500,15 @@ input[type=number], textarea[type=number], select[type=number] {
     border-radius: 0.6rem;
     margin: 8px;
   }
+  .pagination {
+    justify-content: center;
+  }
+  .filter-bar input, .filter-bar textarea, .filter-bar select {
+    width: 100% !important;
+  }
+  .filter-bar select {
+    width: 100% !important;
+  }
 }
 .search-bar input, .search-bar textarea, .search-bar select {
   height: 100%;
@@ -524,4 +535,5 @@ input[type=number], textarea[type=number], select[type=number] {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  width: 100%;
 }
