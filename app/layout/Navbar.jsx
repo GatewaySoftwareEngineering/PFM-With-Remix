@@ -37,7 +37,8 @@ const Navbar = ({children}) => {
             <Collapse />
           </button>
           <h1>
-            {(currentPath === "/overview" || "/overview/formtransaction") && "Overview"}
+            {currentPath === "/overview"  && "Overview"}
+            {currentPath === "/overview/formtransaction" && "Overview"}
             {currentPath === "/transaction" && "Transaction History"}
           </h1>
         </div>
