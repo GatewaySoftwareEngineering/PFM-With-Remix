@@ -4,8 +4,11 @@ import Transaction from "~/Components/Transaction"
 import Dropdown from "~/Components/dropdown"
 import overviewStyles from "~/styles/overview.css"
 import { IoClose } from "react-icons/io5"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { BsCalendar2Date } from "react-icons/bs"
+
+import { mockedTransactions } from "~/mocks/transactions"
+
 
 export const links = () => [
   {
@@ -99,6 +102,48 @@ Modal.propTypes = {
 }
 
 export default function Overview() {
+  // use useEffect to set the state of the transactions
+  // only set the transactions from the mockedTransactions that are from this week if empty, set the transactions from last month if empty, set the transactions from last year
+  // only show 10 transactions
+  const [transactions, setTransactions] = useState([])
+  const [timeline, setTimeline] = useState("This Week")
+  useEffect(() => {
+    const today = new Date()
+    const thisWeek = mockedTransactions.filter((transaction) => {
+      const transactionDate = new Date(transaction.createdAt)
+      return (
+        transactionDate.getFullYear() === today.getFullYear() &&
+        transactionDate.getMonth() === today.getMonth() &&
+        transactionDate.getDate() >= today.getDate() - 7
+      )
+    })
+    if (thisWeek.length > 0) {
+      setTransactions(thisWeek.slice(0, 10))
+      setTimeline("This Week")
+    } else {
+      const lastMonth = mockedTransactions.filter((transaction) => {
+        const transactionDate = new Date(transaction.createdAt)
+        return (
+          transactionDate.getFullYear() === today.getFullYear() &&
+          transactionDate.getMonth() === today.getMonth() - 1
+        )
+      })
+      if (lastMonth.length > 0) {
+        setTransactions(lastMonth.slice(0, 10))
+        setTimeline("Last Month")
+      } else {
+        const lastYear = mockedTransactions.filter((transaction) => {
+          const transactionDate = new Date(transaction.createdAt)
+          return transactionDate.getFullYear() === today.getFullYear() - 1
+        })
+        if (lastYear.length > 0) {
+          setTransactions(lastYear.slice(0, 10))
+          setTimeline("Last Year")
+        }
+      }
+    }
+  }, [])
+
   const [modal, setModal] = useState(false)
   function handleClick() {
     console.log("Clicked")
@@ -134,26 +179,17 @@ export default function Overview() {
           />
         </div>
         <div className="week_list">
-          <h1 className="week_list_header">This Week</h1>
+          <h1 className="week_list_header">{timeline}</h1>
           <div className="week_lists">
-            <Transaction
-              category="Education"
-              amount="1000"
-              date="01/17/2023"
-              note="12 Rules for life by Jordan Peterson signed by himself..."
-            />
-            <Transaction
-              category="Salary"
-              amount="1000"
-              date="01/16/2023"
-              note="Salary After Promotion"
-            />
-            <Transaction
-              category="Tech"
-              amount="1000"
-              date="01/15/2023"
-              note="Latest blue yeti microphone"
-            />
+            {transactions.map((transaction) => ( // map through the transactions and render a Transaction component for each transaction
+              <Transaction
+                key={transaction.id}
+                category={transaction.category}
+                amount={transaction.amount}
+                date={transaction.createdAt}
+                note={transaction.note}
+              />
+            ))}
           </div>
         </div>
         <div className="list-Add">
