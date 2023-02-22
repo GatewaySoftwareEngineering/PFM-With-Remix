@@ -1,6 +1,5 @@
 import { useReducer, useState, useEffect, useCallback } from "react"
 import { HiOutlineFilter } from "react-icons/hi"
-import { BsCalendar2Date } from "react-icons/bs"
 import SearchBar from "~/Components/SearchBar"
 import Transaction from "~/Components/Transaction"
 
@@ -15,17 +14,15 @@ export const links = () => [
 ]
 
 export default function Transactions() {
-  // sort by date function useCallback
   const sortByDate = useCallback((transactions) => {
-    const sortedTransactions = transactions.sort((a, b) => {
-      const dateA = new Date(a.createdAt)
-      const dateB = new Date(b.createdAt)
-      return dateB - dateA
-    })
+    const sortedTransactions = transactions.sort(
+      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+    )
     return sortedTransactions
   }, [])
 
   const [date, setDate] = useState({ start: "", end: "" })
+  const [pageTransaction, setPageTransaction] = useState([])
   const [event, updateEvent] = useReducer(
     (prev, next) => {
       return { ...prev, ...next }
@@ -36,6 +33,19 @@ export default function Transactions() {
       dateFilter: false,
     }
   )
+
+  useEffect(() => {
+    if (event.transactions.length > 10) {
+      setPageTransaction(
+        event.transactions.slice(
+          (event.transactionPage - 1) * 10,
+          (event.transactionPage * 10)
+        )
+      )
+    } else {
+      setPageTransaction(event.transactions)
+    }
+  }, [event.transactionPage, event.transactions])
 
   const options = [
     { id: 1, value: "all", label: "All" },
@@ -52,13 +62,12 @@ export default function Transactions() {
   const filterByCategory = (category) => {
     const newTransactions = sortByDate(mockedTransactions)
     if (category === "all") {
-      updateEvent({ transactions: newTransactions })
-      return
+      updateEvent({ transactions: newTransactions, transactionPage: 1 })
     } else {
       const filteredTransactions = newTransactions.filter(
         (transaction) => transaction.category === category
       )
-      updateEvent({ transactions: filteredTransactions })
+      updateEvent({ transactions: filteredTransactions, transactionPage: 1 })
     }
   }
 
@@ -133,7 +142,6 @@ export default function Transactions() {
                 onFocus={(e) => (e.target.type = "date")}
                 onBlur={(e) => (e.target.type = "text")}
               />
-              <BsCalendar2Date className="calendar-icon" />
             </div>
             <span className="date-elements">
               <input
@@ -146,7 +154,6 @@ export default function Transactions() {
                 onBlur={(e) => (e.target.type = "text")}
                 onChange={handleDateFilter}
               />
-              <BsCalendar2Date className="calendar-icon" />
             </span>
           </div>
           <button className="SearchBar__Btn" onClick={ResetFilters}>
@@ -154,7 +161,7 @@ export default function Transactions() {
           </button>
         </div>
         <div className="Transaction__Table">
-          {event.transactions.map((transaction) => (
+          {pageTransaction.map((transaction) => (
             <Transaction
               category={transaction.category}
               amount={transaction.amount}
@@ -163,6 +170,45 @@ export default function Transactions() {
               key={transaction.id}
             />
           ))}
+        </div>
+        <div className="Pagination">
+          <button className="Pagination__Btn">
+            <span className="Pagination__Btn__Text">{"<"}</span>
+          </button>
+          {console.log(
+            event.transactions.length,
+            event.transactionPage,
+            pageTransaction,
+            event.transactionPage,
+            (event.transactionPage - 1) * 10,
+            (event.transactionPage * 10) - 1
+          )}
+          {event.transactions.length > 10 && (
+            <>
+              {event.transactions.map((transaction, index) => {
+                if (index % 10 === 0) {
+                  return (
+                    <button
+                      className="Pagination__Btn"
+                      key={index}
+                      onClick={() =>
+                        updateEvent({ transactionPage: index / 10 + 1 })
+                      }
+                    >
+                      <span className="Pagination__Btn__Text">
+                        {index / 10 + 1}
+                      </span>
+                    </button>
+                  )
+                } else {
+                  return null
+                }
+              })}
+            </>
+          )}
+          <button className="Pagination__Btn">
+            <span className="Pagination__Btn__Text">{">"}</span>
+          </button>
         </div>
       </div>
     </div>

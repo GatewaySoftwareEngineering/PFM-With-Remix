@@ -92,12 +92,6 @@
   position: relative;
 }
 
-.calendar-icon {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
-
 .transaction-item {
   margin: 0 0 20px 0;
   display: flex;
@@ -174,6 +168,4 @@
 
 .Transaction__Table {
   margin: 20px 0 0 0;
-  height: 620px;
-  overflow: scroll;
 }
