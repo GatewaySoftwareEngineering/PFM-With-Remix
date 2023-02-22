@@ -9,7 +9,7 @@ export default function Dropdown({ title, options, setCategory }) {
     <div className="elements">
       {" "}
       <label className="input-title">{title}</label>
-      <Select options={options} onChange={onChange} />
+      <Select name="select" options={options} onChange={onChange} required />
     </div>
   )
 }
@@ -18,6 +18,5 @@ export default function Dropdown({ title, options, setCategory }) {
 Dropdown.propTypes = {
   title: PropTypes.string.isRequired,
   options: PropTypes.array.isRequired,
-  value: PropTypes.string.isRequired,
   setCategory: PropTypes.func.isRequired,
 }

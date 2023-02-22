@@ -4,11 +4,10 @@ import Transaction from "~/Components/Transaction"
 import Dropdown from "~/Components/dropdown"
 import overviewStyles from "~/styles/overview.css"
 import { IoClose } from "react-icons/io5"
-import { useState, useEffect } from "react"
-import { BsCalendar2Date } from "react-icons/bs"
+import { useState, useEffect, useMemo } from "react"
+import CurrencyInput from "react-currency-input-field"
 
 import { mockedTransactions } from "~/mocks/transactions"
-
 
 export const links = () => [
   {
@@ -20,16 +19,58 @@ export const links = () => [
 function Modal({ handleClose }) {
   const [category, setCategory] = useState("")
   const [startDate, setDate] = useState(new Date())
+  const [amount, setAmount] = useState(0)
+  const [type, setType] = useState("INCOME")
+  const [note, setNote] = useState("")
 
-  const selectDateHandler = (e) => {
-    setDate(e.target.value)
+  const [categoryType, setCategoryType] = useState([])
+
+  const TypeIncomeOptions = useMemo(
+    () => [
+      { value: "Loan", label: "Loan" },
+      { value: "Salary", label: "Salary" },
+      { value: "Gift", label: "Gift" },
+    ],
+    []
+  )
+
+  const TypeExpenseOptions = useMemo(
+    () => [
+      { value: "Tech", label: "Tech" },
+      { value: "Food", label: "Food" },
+      { value: "Bills", label: "Bills" },
+      { value: "Sports", label: "Sports" },
+      { value: "Health", label: "Health" },
+      { value: "Cloths", label: "Cloths" },
+    ],
+    []
+  )
+
+  useEffect(() => {
+    if (type === "INCOME") {
+      setCategoryType([...TypeIncomeOptions])
+    } else if (type === "EXPENSE") {
+      setCategoryType([...TypeExpenseOptions])
+    } else {
+      setCategoryType([])
+    }
+  }, [type, TypeIncomeOptions, TypeExpenseOptions])
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    const transaction = {
+      category,
+      createdAt: startDate,
+      amount,
+      type,
+      note,
+      currency: "USD",
+    }
+    console.log(transaction)
+    handleClose()
   }
 
-  const options = [
-    { value: "Education", label: "Education" },
-    { value: "Salary", label: "Salary" },
-    { value: "Tech", label: "Tech" },
-  ]
   return (
     <div className="modal-container">
       <div className="modal-content">
@@ -38,58 +79,85 @@ function Modal({ handleClose }) {
           <IoClose className="modal-close-button-icon" onClick={handleClose} />
         </div>
 
-        <form className="modal-body">
+        <form className="modal-body" onSubmit={handleSubmit}>
           <div className="modal-body-row-1">
             <Dropdown
               title="Category"
-              options={options}
+              options={categoryType}
               setCategory={setCategory}
-              selected={category}
             />
             <div className="elements">
               <label className="input-title">Date</label>
               <span className="date-elements">
                 <input
                   className="date-picker"
-                  type="date"
-                  value={startDate}
-                  onChange={selectDateHandler}
+                  type="text"
+                  name="date"
+                  placeholder={
+                    startDate && startDate.toISOString().slice(0, 10)
+                  }
+                  defaultValue={startDate && startDate.toISOString().slice(0, 10)}
+                  onFocus={(e) => (e.target.type = "date")}
+                  onBlur={(e) => (e.target.type = "text")}
+                  onChange={(e) => setDate(new Date(e.target.value))}
+                  required
                 />
-                <BsCalendar2Date className="calendar-icon" />
               </span>
             </div>
             <div className="elements">
               <label className="input-title">Amount</label>
-              <input type="number" className="amount" placeholder="$" />
+              <CurrencyInput
+                className="amount"
+                name="input-name"
+                placeholder="$"
+                prefix="$"
+                decimalsLimit={2}
+                allowDecimals={true}
+                onValueChange={(value) => setAmount(value)}
+                required
+              />
             </div>
           </div>
           <div className="modal-body-row-2">
             <div className="radio-group">
-              <label className="input-title">Type</label>
-              <div className="radio-elements">
-                <span className="radio-element">
-                  <input type="radio" name="type" value="INCOME" />
-                  <label>income</label>
-                </span>
-                <span className="radio-element">
+              <span className="input-title">Type</span>
+              <div
+                className="radio-elements"
+                onChange={(e) => setType(e.target.value)}
+              >
+                <label className="radio-element">
                   <input
                     type="radio"
                     name="type"
-                    value="EXPENSE"
-                    onChange={() => {}}
+                    value="INCOME"
+                    checked={true}
                   />
-                  <label>expense</label>
-                </span>
+                  income
+                </label>
+                <label className="radio-element">
+                  <input type="radio" name="type" value="EXPENSE" />
+                  expense
+                </label>
               </div>
             </div>
             <div className="note-group">
               <label>Note</label>
-              <textarea name="note" className="note"></textarea>
+              <textarea
+                maxLength="350"
+                name="note"
+                className="note"
+                onChange={(e) => setNote(e.target.value)}
+                required
+                onInvalid={F => F.target.setCustomValidity('Enter Transaction Note Here')} 
+              ></textarea>
+              <span>{`${note.length}/350`}</span>
             </div>
           </div>
           <div className="modal-footer">
             <button className="btn-dismiss">Dismiss</button>
-            <button className="btn-transaction">Add Transaction</button>
+            <button className="btn-transaction" type="submit">
+              Add Transaction
+            </button>
           </div>
         </form>
       </div>
@@ -181,15 +249,19 @@ export default function Overview() {
         <div className="week_list">
           <h1 className="week_list_header">{timeline}</h1>
           <div className="week_lists">
-            {transactions.map((transaction) => ( // map through the transactions and render a Transaction component for each transaction
-              <Transaction
-                key={transaction.id}
-                category={transaction.category}
-                amount={transaction.amount}
-                date={transaction.createdAt}
-                note={transaction.note}
-              />
-            ))}
+            {transactions.map(
+              (
+                transaction // map through the transactions and render a Transaction component for each transaction
+              ) => (
+                <Transaction
+                  key={transaction.id}
+                  category={transaction.category}
+                  amount={transaction.amount}
+                  date={transaction.createdAt}
+                  note={transaction.note}
+                />
+              )
+            )}
           </div>
         </div>
         <div className="list-Add">
