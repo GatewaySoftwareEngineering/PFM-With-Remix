@@ -52,6 +52,7 @@
   height: 20px;
   border-radius: 12px;
   border: none;
+  cursor: pointer;
 }
 
 .blue_button {
@@ -168,6 +169,7 @@
   font-size: 20px;
   line-height: 24px;
   color: #1c658c;
+  cursor: pointer;
 }
 
 .modal-container {
@@ -267,6 +269,7 @@ label {
   border: 1px solid #c4c4c4;
   border-radius: 6px;
   padding: 10px;
+  padding-inline: 1rem;
 }
 
 .date-elements {
