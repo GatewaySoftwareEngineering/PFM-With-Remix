@@ -4,7 +4,6 @@ import { FiChevronLeft, FiChevronRight } from "react-icons/fi"
 import SearchBar from "~/Components/SearchBar"
 import Transaction from "~/Components/Transaction"
 import transactionStyles from "~/styles/transactions.css"
-import { mockedTransactions } from "~/mocks/transactions"
 import Dropdown from "~/Components/dropdown"
 
 export const links = () => [
@@ -45,7 +44,7 @@ export default function Transactions() {
       return { ...prev, ...next }
     },
     {
-      transactions: sortByDate(mockedTransactions),
+      transactions: sortByDate([]),
       filteredTransactions: [],
       transactionPage: 1,
       dateFilter: false,

@@ -6,8 +6,44 @@ import overviewStyles from "~/styles/overview.css"
 import { IoClose } from "react-icons/io5"
 import { useState, useEffect, useMemo } from "react"
 import CurrencyInput from "react-currency-input-field"
+import { redirect } from "@remix-run/node"
 
-import { mockedTransactions } from "~/mocks/transactions"
+import { useLoaderData } from "@remix-run/react"
+
+export const loader = async () => {
+  const res = await fetch(" http://localhost:3000/Data", {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  })
+  const data = await res.json()
+  console.log(data)
+  return data
+}
+
+export const action = async ({ request }) => {
+  const body = new URLSearchParams(await request.text())
+  const category = body.get("category")
+  const createdAt = body.get("createdAt")
+  const amount = body.get("amount")
+  const type = body.get("type")
+  const note = body.get("note")
+  if (amount !== "" || category !== "" || note !== "") {
+    fetch("http://localhost:3000/Data", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        id: Number(Math.floor(Math.random() * 100000) + 1),
+        note: note,
+        category: category,
+        type: type,
+        amount: Number(amount),
+        createdAt: createdAt,
+        currency: "USD",
+      }),
+    })
+  }
+  return redirect("/overview")
+}
 
 export const links = () => [
   {
@@ -175,9 +211,11 @@ export default function Overview() {
   // only show 10 transactions
   const [transactions, setTransactions] = useState([])
   const [timeline, setTimeline] = useState("This Week")
+  const data = useLoaderData()
   useEffect(() => {
+    console.log(data)
     const today = new Date()
-    const thisWeek = mockedTransactions.filter((transaction) => {
+    const thisWeek = data.filter((transaction) => {
       const transactionDate = new Date(transaction.createdAt)
       return (
         transactionDate.getFullYear() === today.getFullYear() &&
@@ -189,7 +227,7 @@ export default function Overview() {
       setTransactions(thisWeek.slice(0, 10))
       setTimeline("This Week")
     } else {
-      const lastMonth = mockedTransactions.filter((transaction) => {
+      const lastMonth = data.filter((transaction) => {
         const transactionDate = new Date(transaction.createdAt)
         return (
           transactionDate.getFullYear() === today.getFullYear() &&
@@ -200,7 +238,7 @@ export default function Overview() {
         setTransactions(lastMonth.slice(0, 10))
         setTimeline("Last Month")
       } else {
-        const lastYear = mockedTransactions.filter((transaction) => {
+        const lastYear = data.filter((transaction) => {
           const transactionDate = new Date(transaction.createdAt)
           return transactionDate.getFullYear() === today.getFullYear() - 1
         })

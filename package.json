@@ -17,6 +17,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.11",
     "isbot": "^3.6.5",
+    "json-server": "^0.17.2",
     "react": "^18.2.0",
     "react-currency-input-field": "^3.6.10",
     "react-date-range": "^1.4.0",
