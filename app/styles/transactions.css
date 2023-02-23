@@ -169,3 +169,9 @@
 .Transaction__Table {
   margin: 20px 0 0 0;
 }
+
+.custom-select {
+  width: 33%;
+  max-width: 300px;
+  min-width: 150px;
+}
