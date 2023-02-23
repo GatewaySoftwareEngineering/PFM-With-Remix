@@ -152,6 +152,7 @@ export default function Transactions() {
                 }}
                 onFocus={(e) => (e.target.type = "date")}
                 onBlur={(e) => (e.target.type = "text")}
+                max = {new Date().toISOString().slice(0, 10)}
               />
             </div>
             <span className="date-elements">
@@ -166,6 +167,7 @@ export default function Transactions() {
                 onChange={(e) => {
                   setDate({ ...date, end: e.target.value })
                 }}
+                max = {new Date().toISOString().slice(0, 10)}
               />
             </span>
           </div>
