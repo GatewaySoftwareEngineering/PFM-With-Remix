@@ -165,20 +165,6 @@ function Modal({ handleClose }) {
   )
 }
 
-export function ErrorBoundary({ error }) {
-  return (
-    <div className="ErrorBoundary">
-      <h1 className="ErrorBoundary__Text">Something went wrong</h1>
-      <p className="ErrorBoundary__Text">{error.message}</p>
-    </div>
-  )
-}
-
-// props validation
-ErrorBoundary.propTypes = {
-  error: PropTypes.object.isRequired,
-}
-
 Modal.propTypes = {
   handleClose: PropTypes.func.isRequired,
 }
