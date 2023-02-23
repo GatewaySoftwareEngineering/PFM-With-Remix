@@ -1,4 +1,4 @@
-import propTypes from "prop-types"
+import { PropTypes } from 'prop-types';
 import Card from "~/Components/Card"
 import Transaction from "~/Components/Transaction"
 import Dropdown from "~/Components/dropdown"
@@ -165,8 +165,22 @@ function Modal({ handleClose }) {
   )
 }
 
+export function ErrorBoundary({ error }) {
+  return (
+    <div className="ErrorBoundary">
+      <h1 className="ErrorBoundary__Text">Something went wrong</h1>
+      <p className="ErrorBoundary__Text">{error.message}</p>
+    </div>
+  )
+}
+
+// props validation
+ErrorBoundary.propTypes = {
+  error: PropTypes.object.isRequired,
+}
+
 Modal.propTypes = {
-  handleClose: propTypes.func.isRequired,
+  handleClose: PropTypes.func.isRequired,
 }
 
 export default function Overview() {
@@ -273,3 +287,5 @@ export default function Overview() {
     </>
   )
 }
+
+

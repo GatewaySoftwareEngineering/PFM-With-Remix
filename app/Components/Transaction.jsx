@@ -1,4 +1,4 @@
-import PropTypes from "prop-types"
+import {PropTypes} from "prop-types"
 import { HiOutlineAcademicCap, HiOutlineChip } from "react-icons/hi"
 import { TbBriefcase } from "react-icons/tb"
 
@@ -41,4 +41,18 @@ Transaction.propTypes = {
   amount: PropTypes.number.isRequired,
   date: PropTypes.string.isRequired,
   note: PropTypes.string.isRequired,
+}
+
+export function ErrorBoundary({ error }) {
+  return (
+    <div className="ErrorBoundary">
+      <h1 className="ErrorBoundary__Text">Something went wrong</h1>
+      <p className="ErrorBoundary__Text">{error.message}</p>
+    </div>
+  )
+}
+
+// props validation
+ErrorBoundary.propTypes = {
+  error: PropTypes.object.isRequired,
 }

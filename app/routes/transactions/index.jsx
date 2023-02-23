@@ -3,6 +3,7 @@ import { HiOutlineFilter } from "react-icons/hi"
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi"
 import SearchBar from "~/Components/SearchBar"
 import Transaction from "~/Components/Transaction"
+import {PropTypes} from "prop-types"
 
 import transactionStyles from "~/styles/transactions.css"
 import { mockedTransactions } from "~/mocks/transactions"
@@ -144,7 +145,7 @@ export default function Transactions() {
             <div className="date-elements">
               <input
                 className="date-picker"
-                placeholder="from"
+                placeholder="From"
                 type="text"
                 name="start"
                 value={date.start}
@@ -158,7 +159,7 @@ export default function Transactions() {
             <span className="date-elements">
               <input
                 className="date-picker"
-                placeholder="to"
+                placeholder="To"
                 type="text"
                 name="end"
                 value={date.end}
@@ -236,4 +237,18 @@ export default function Transactions() {
       </div>
     </div>
   )
+}
+
+export function ErrorBoundary({ error }) {
+  return (
+    <div className="ErrorBoundary">
+      <h1 className="ErrorBoundary__Text">Something went wrong</h1>
+      <p className="ErrorBoundary__Text">{error.message}</p>
+    </div>
+  )
+}
+
+// props validation
+ErrorBoundary.propTypes = {
+  error: PropTypes.object.isRequired,
 }

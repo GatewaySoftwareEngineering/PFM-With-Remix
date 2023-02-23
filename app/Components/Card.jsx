@@ -1,4 +1,4 @@
-import PropTypes from "prop-types"
+import {PropTypes} from "prop-types"
 
 export default function Card({ title, value, color, onClick }) {
   return (
@@ -15,6 +15,20 @@ export default function Card({ title, value, color, onClick }) {
       <span className="card-value">${value}</span>
     </div>
   )
+}
+
+export function ErrorBoundary({ error }) {
+  return (
+    <div className="ErrorBoundary">
+      <h1 className="ErrorBoundary__Text">Something went wrong</h1>
+      <p className="ErrorBoundary__Text">{error.message}</p>
+    </div>
+  )
+}
+
+// props validation
+ErrorBoundary.propTypes = {
+  error: PropTypes.object.isRequired,
 }
 
 Card.propTypes = {

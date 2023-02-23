@@ -1,4 +1,4 @@
-import PropTypes from "prop-types"
+import {PropTypes} from "prop-types"
 import { IoSearchSharp } from "react-icons/io5"
 
 function SearchBar({ setSearch, clearSearch }) {
@@ -36,6 +36,20 @@ function SearchBar({ setSearch, clearSearch }) {
 SearchBar.propTypes = {
   setSearch: PropTypes.func.isRequired,
   clearSearch: PropTypes.func.isRequired,
+}
+
+export function ErrorBoundary({ error }) {
+  return (
+    <div className="ErrorBoundary">
+      <h1 className="ErrorBoundary__Text">Something went wrong</h1>
+      <p className="ErrorBoundary__Text">{error.message}</p>
+    </div>
+  )
+}
+
+// props validation
+ErrorBoundary.propTypes = {
+  error: PropTypes.object.isRequired,
 }
 
 export default SearchBar
