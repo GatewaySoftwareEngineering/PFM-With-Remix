@@ -44,6 +44,24 @@ export default function App() {
   )
 }
 
+export function ErrorBoundary({ error }) {
+  return (
+    <Document>
+    <Layout>
+      <div className="ErrorBoundary">
+        <h1 className="ErrorBoundary__Text">Something went wrong</h1>
+        <p className="ErrorBoundary__Text">{error.message}</p>
+      </div>
+    </Layout>
+    </Document>
+  )
+}
+
+// props validation
+ErrorBoundary.propTypes = {
+  error: PropTypes.object.isRequired,
+}
+
 // Layout component
 function Layout({ children }) {
   const activeStyle = {

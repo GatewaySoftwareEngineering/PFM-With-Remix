@@ -3,8 +3,6 @@ import { HiOutlineFilter } from "react-icons/hi"
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi"
 import SearchBar from "~/Components/SearchBar"
 import Transaction from "~/Components/Transaction"
-import {PropTypes} from "prop-types"
-
 import transactionStyles from "~/styles/transactions.css"
 import { mockedTransactions } from "~/mocks/transactions"
 import Dropdown from "~/Components/dropdown"
@@ -237,18 +235,4 @@ export default function Transactions() {
       </div>
     </div>
   )
-}
-
-export function ErrorBoundary({ error }) {
-  return (
-    <div className="ErrorBoundary">
-      <h1 className="ErrorBoundary__Text">Something went wrong</h1>
-      <p className="ErrorBoundary__Text">{error.message}</p>
-    </div>
-  )
-}
-
-// props validation
-ErrorBoundary.propTypes = {
-  error: PropTypes.object.isRequired,
 }
