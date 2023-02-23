@@ -1,7 +1,7 @@
 import PropTypes from "prop-types"
 import { IoSearchSharp } from "react-icons/io5"
 
-function SearchBar({ setSearch }) {
+function SearchBar({ setSearch, clearSearch }) {
   const onInActive = (e) => {
     e.target.placeholder = "Search"
   }
@@ -28,13 +28,14 @@ function SearchBar({ setSearch }) {
         onChange={onChangeInput}
         onBlur={onInActive}
       />
-      <button className="SearchBar__Btn">Clear</button>
+      <button className="SearchBar__Btn" onClick={clearSearch}>Clear</button>
     </div>
   )
 }
 
 SearchBar.propTypes = {
   setSearch: PropTypes.func.isRequired,
+  clearSearch: PropTypes.func.isRequired,
 }
 
 export default SearchBar
