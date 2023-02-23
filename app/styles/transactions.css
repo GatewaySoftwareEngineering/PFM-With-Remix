@@ -99,7 +99,6 @@
   justify-content: space-between;
   align-items: center;
   background: #f8fafc;
-  width: 904px;
   padding: 15px 12px;
   border-radius: 7px;
 }
@@ -168,10 +167,61 @@
 
 .Transaction__Table {
   margin: 20px 0 0 0;
+  min-width: 750px;
+  width: 90%;
 }
 
 .custom-select {
   width: 33%;
   max-width: 300px;
   min-width: 150px;
+}
+
+.Pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0 0 0;
+}
+
+.Pagination__Btn {
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border-radius: 50%;
+  border: none;
+  color: #959fb4;
+}
+
+.Pagination__Btn_Icon {
+  color: #959fb4;
+}
+
+.Pagination__Btn_Icon_active {
+  color: #111827;
+}
+
+.Pagination__Btn__Number_inactive {
+  width: 32px;
+  height: 32px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: #1c658c;
+  border: 3px solid #1C658C;
+  border-radius: 16px;
+}
+
+.Pagination__Btn__Number_active {
+  width: 32px;
+  height: 32px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: white;
+  background: #1c658c;
+  border: 3px solid #1C658C;
+  border-radius: 16px;
 }

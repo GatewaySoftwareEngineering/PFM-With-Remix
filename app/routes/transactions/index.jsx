@@ -1,5 +1,6 @@
 import { useReducer, useState, useEffect, useCallback } from "react"
 import { HiOutlineFilter } from "react-icons/hi"
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi"
 import SearchBar from "~/Components/SearchBar"
 import Transaction from "~/Components/Transaction"
 
@@ -84,7 +85,10 @@ export default function Transactions() {
     if (filteredTransactions.length === 0) {
       updateEvent({ filteredTransactions: transactions, transactionPage: 1 })
     } else {
-      updateEvent({ filteredTransactions: filteredTransactions, transactionPage: 1 })
+      updateEvent({
+        filteredTransactions: filteredTransactions,
+        transactionPage: 1,
+      })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search, category, date])
@@ -141,7 +145,7 @@ export default function Transactions() {
               <input
                 className="date-picker"
                 placeholder="from"
-                type="date"
+                type="text"
                 name="start"
                 value={date.start}
                 onChange={(e) => {
@@ -155,7 +159,7 @@ export default function Transactions() {
               <input
                 className="date-picker"
                 placeholder="to"
-                type="date"
+                type="text"
                 name="end"
                 value={date.end}
                 onFocus={(e) => (e.target.type = "date")}
@@ -180,39 +184,54 @@ export default function Transactions() {
               key={transaction.id}
             />
           ))}
-        </div>
-        <div className="Pagination">
-          <button
-            className="Pagination__Btn"
-            onClick={() => handlePagination("decrease")}
-          >
-            <span className="Pagination__Btn__Text">{"<"}</span>
-          </button>
-          {event.filteredTransactions.map((transaction, index) => {
-            if (index % 10 === 0) {
-              return (
-                <button
-                  className="Pagination__Btn"
-                  key={index}
-                  onClick={() =>
-                    updateEvent({ transactionPage: index / 10 + 1 })
-                  }
-                >
-                  <span className="Pagination__Btn__Text">
-                    {index / 10 + 1}
-                  </span>
-                </button>
-              )
-            } else {
-              return null
-            }
-          })}
-          <button
-            className="Pagination__Btn"
-            onClick={() => handlePagination("increase")}
-          >
-            <span className="Pagination__Btn__Text">{">"}</span>
-          </button>
+          <div className="Pagination">
+            <button
+              className="Pagination__Btn"
+              onClick={() => handlePagination("decrease")}
+            >
+              <FiChevronLeft
+                className={`${
+                  event.transactionPage !== 1
+                    ? "Pagination__Btn_Icon_active"
+                    : "Pagination__Btn_Icon"
+                }`}
+                size={40}
+              />
+            </button>
+            {event.filteredTransactions.map((transaction, index) => {
+              if (index % 10 === 0) {
+                return (
+                  <button
+                    className={`${event.transactionPage === (index /10 +1)? "Pagination__Btn__Number_active" : "Pagination__Btn__Number_inactive"}`}
+                    key={index}
+                    onClick={() =>
+                      updateEvent({ transactionPage: index / 10 + 1 })
+                    }
+                  >
+                    <span >
+                      {index / 10 + 1}
+                    </span>
+                  </button>
+                )
+              } else {
+                return null
+              }
+            })}
+            <button
+              className="Pagination__Btn"
+              onClick={() => handlePagination("increase")}
+            >
+              <FiChevronRight
+                className={`${
+                  event.transactionPage ===
+                  Math.ceil(event.filteredTransactions.length / 10)
+                    ? "Pagination__Btn_Icon"
+                    : "Pagination__Btn_Icon_active"
+                }`}
+                size={40}
+              />
+            </button>
+          </div>
         </div>
       </div>
     </div>
