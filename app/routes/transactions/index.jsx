@@ -82,13 +82,12 @@ export default function Transactions() {
       })
     }
     if (filteredTransactions.length === 0) {
-      updateEvent({ filteredTransactions: transactions })
+      updateEvent({ filteredTransactions: transactions, transactionPage: 1 })
     } else {
-      updateEvent({ filteredTransactions: filteredTransactions })
+      updateEvent({ filteredTransactions: filteredTransactions, transactionPage: 1 })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search, category, date])
-
 
   useEffect(() => {
     const { filteredTransactions, transactionPage } = event
@@ -106,15 +105,15 @@ export default function Transactions() {
   }
 
   const handlePagination = (button) => {
-      if (button === "decrease" && event.transactionPage !== 1) {
-        updateEvent({ transactionPage: event.transactionPage - 1 })
-      } else if (
-        button === "increase" &&
-        event.transactionPage !==
-          Math.ceil(event.filteredTransactions.length / 10)
-      ) {
-        updateEvent({ transactionPage: event.transactionPage + 1 })
-      }
+    if (button === "decrease" && event.transactionPage !== 1) {
+      updateEvent({ transactionPage: event.transactionPage - 1 })
+    } else if (
+      button === "increase" &&
+      event.transactionPage !==
+        Math.ceil(event.filteredTransactions.length / 10)
+    ) {
+      updateEvent({ transactionPage: event.transactionPage + 1 })
+    }
   }
 
   return (
@@ -183,57 +182,34 @@ export default function Transactions() {
           ))}
         </div>
         <div className="Pagination">
-          <button className="Pagination__Btn" onClick={() =>
-              handlePagination("decrease")
-            }>
-            <span className="Pagination__Btn__Text">{"<"}</span>
-          </button>
-          {event.filteredTransactions.length > 0
-            ? event.filteredTransactions.length > 10 && (
-                <>
-                  {event.filteredTransactions.map((transaction, index) => {
-                    if (index % 10 === 0) {
-                      return (
-                        <button
-                          className="Pagination__Btn"
-                          key={index}
-                          onClick={() =>
-                            updateEvent({ transactionPage: index / 10 + 1 })
-                          }
-                        >
-                          <span className="Pagination__Btn__Text">
-                            {index / 10 + 1}
-                          </span>
-                        </button>
-                      )
-                    } else {
-                      return null
-                    }
-                  })}
-                </>
-              )
-            : event.transactions.length > 10 && (
-                <>
-                  {event.transactions.map((transaction, index) => (
-                    <button
-                      className="Pagination__Btn"
-                      key={index}
-                      onClick={() =>
-                        updateEvent({ transactionPage: index / 10 + 1 })
-                      }
-                    >
-                      <span className="Pagination__Btn__Text">
-                        {index / 10 + 1}
-                      </span>
-                    </button>
-                  ))}
-                </>
-              )}
           <button
             className="Pagination__Btn"
-            onClick={() =>
-              handlePagination("increase")
+            onClick={() => handlePagination("decrease")}
+          >
+            <span className="Pagination__Btn__Text">{"<"}</span>
+          </button>
+          {event.filteredTransactions.map((transaction, index) => {
+            if (index % 10 === 0) {
+              return (
+                <button
+                  className="Pagination__Btn"
+                  key={index}
+                  onClick={() =>
+                    updateEvent({ transactionPage: index / 10 + 1 })
+                  }
+                >
+                  <span className="Pagination__Btn__Text">
+                    {index / 10 + 1}
+                  </span>
+                </button>
+              )
+            } else {
+              return null
             }
+          })}
+          <button
+            className="Pagination__Btn"
+            onClick={() => handlePagination("increase")}
           >
             <span className="Pagination__Btn__Text">{">"}</span>
           </button>
