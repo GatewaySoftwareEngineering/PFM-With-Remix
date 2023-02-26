@@ -5,6 +5,11 @@ import SearchBar from "~/Components/SearchBar"
 import Transaction from "~/Components/Transaction"
 import transactionStyles from "~/styles/transactions.css"
 import Dropdown from "~/Components/dropdown"
+import { GetData } from "~/API/API"
+import { useLoaderData } from "@remix-run/react"
+import { TypeOptions } from "~/utlis/Options"
+
+export const loader = async () =>  await GetData()
 
 export const links = () => [
   {
@@ -14,17 +19,6 @@ export const links = () => [
 ]
 
 export default function Transactions() {
-  const options = [
-    { value: "Tech", label: "Tech" },
-    { value: "Food", label: "Food" },
-    { value: "Bills", label: "Bills" },
-    { value: "Sports", label: "Sports" },
-    { value: "Health", label: "Health" },
-    { value: "Cloths", label: "Cloths" },
-    { value: "Loan", label: "Loan" },
-    { value: "Salary", label: "Salary" },
-    { value: "Gift", label: "Gift" },
-  ]
 
   const sortByDate = useCallback(
     (transactions) =>
@@ -33,18 +27,16 @@ export default function Transactions() {
       ),
     []
   )
-
+  const [pageTransaction, setPageTransaction] = useState([])
   const [date, setDate] = useState({ start: "", end: "" })
   const [category, setCategory] = useState([])
   const [search, setSearch] = useState("")
-
-  const [pageTransaction, setPageTransaction] = useState([])
   const [event, updateEvent] = useReducer(
     (prev, next) => {
       return { ...prev, ...next }
     },
     {
-      transactions: sortByDate([]),
+      transactions: sortByDate(useLoaderData()),
       filteredTransactions: [],
       transactionPage: 1,
       dateFilter: false,
@@ -133,7 +125,7 @@ export default function Transactions() {
             </div>
             <div className="custom-select">
               <Dropdown
-                options={options}
+                options={TypeOptions("ALL")}
                 setCategory={setCategory}
                 isMulti={true}
               />

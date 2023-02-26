@@ -44,6 +44,7 @@
   border-radius: 0 10px 10px 0;
   background: #1c658cbf;
   color: #fff;
+  cursor: pointer;
 }
 
 .Filter_Section {
@@ -104,6 +105,8 @@
   background: #f8fafc;
   padding: 15px 12px;
   border-radius: 7px;
+  width: 100%;
+  min-width: 404px;
 }
 
 .transaction_head {
@@ -155,7 +158,7 @@
   color: #334155;
 }
 
-.transaction_amount {
+.transaction_amount__income {
   width: 81px;
   height: 31px;
   text-align: center;
@@ -163,9 +166,22 @@
   font-weight: 600;
   font-size: 18px;
   line-height: 22px;
-  color: #ef2a4c;
-  background: rgba(239, 42, 76, 0.15);
   border-radius: 6px;
+  color: #0284c7;
+  background: rgba(2, 132, 199, 0.2);
+}
+
+.transaction_amount__expense {
+  width: 81px;
+  height: 31px;
+  text-align: center;
+  padding: 4px 0;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  border-radius: 6px;
+  color: #c53030;
+  background: rgba(197, 48, 48, 0.2);
 }
 
 .Transaction__Table {
@@ -196,6 +212,7 @@
   border-radius: 50%;
   border: none;
   color: #959fb4;
+  cursor: pointer;
 }
 
 .Pagination__Btn_Icon {
@@ -215,6 +232,7 @@
   color: #1c658c;
   border: 3px solid #1C658C;
   border-radius: 16px;
+  cursor: pointer;
 }
 
 .Pagination__Btn__Number_active {
@@ -227,4 +245,5 @@
   background: #1c658c;
   border: 3px solid #1C658C;
   border-radius: 16px;
+  cursor: pointer;
 }

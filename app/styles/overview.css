@@ -217,6 +217,7 @@
 .modal-close-button-icon {
   width: 30px;
   height: 30px;
+  cursor: pointer;
 }
 
 .modal-body {
@@ -359,6 +360,7 @@ input[type="number"] {
   font-weight: 500;
   font-size: 20px;
   line-height: 24px;
+  cursor: pointer;
 }
 
 .btn-transaction {
@@ -371,4 +373,31 @@ input[type="number"] {
   font-size: 20px;
   line-height: 24px;
   color: #1c658c;
+  cursor: pointer;
+}
+
+.transaction_amount__income {
+  width: 81px;
+  height: 31px;
+  text-align: center;
+  padding: 4px 0;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  border-radius: 6px;
+  color: #0284c7;
+  background: rgba(2, 132, 199, 0.2);
+}
+
+.transaction_amount__expense {
+  width: 81px;
+  height: 31px;
+  text-align: center;
+  padding: 4px 0;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  border-radius: 6px;
+  color: #c53030;
+  background: rgba(197, 48, 48, 0.2);
 }
