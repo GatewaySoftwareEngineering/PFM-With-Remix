@@ -1,0 +1,249 @@
+.Transaction {
+  background: #e5e5e5;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.Main_Content__Body {
+  padding: 0 24px 24px;
+}
+
+.SearchBar {
+  position: relative;
+}
+
+.SearchBar__input {
+  width: 93%;
+  padding: 1rem 3rem;
+  margin: 1.5rem 0;
+  border-radius: 10px 0 0 10px;
+  border: none;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: #bec9d7;
+}
+
+.SearchBar__input:focus {
+  outline: none;
+}
+
+.SearchBar__Icon {
+  position: absolute;
+  left: 0.8rem;
+  top: 2.2rem;
+}
+
+.SearchBar__Btn {
+  width: 7%;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  padding: 1rem 1rem;
+  border: none;
+  border-radius: 0 10px 10px 0;
+  background: #1c658cbf;
+  color: #fff;
+  cursor: pointer;
+}
+
+.Filter_Section {
+  display: flex;
+  flex-direction: row;
+}
+
+.Filter_Content {
+  width: 93%;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  border-radius: 7px;
+  background: #f8fafc;
+  gap: 24px;
+}
+
+.Filter_Icon {
+  width: 18px;
+  height: 18px;
+  bakground: red;
+}
+
+.Filter_Select {
+  -webkit-appearance: none;
+  width: 300px;
+  height: 40px;
+  padding: 10px;
+}
+
+.Filter_Select:focus {
+  outline: none;
+}
+
+.date-picker {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #c4c4c4;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.date-elements {
+  position: relative;
+  width: 25%;
+  max-width: 300px;
+  min-width: 100px;
+}
+
+.transaction-item {
+  margin: 0 0 20px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8fafc;
+  padding: 15px 12px;
+  border-radius: 7px;
+  width: 100%;
+  min-width: 404px;
+}
+
+.transaction_head {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.Blue-Icon {
+  color: #0284c7;
+  background: rgba(2, 132, 199, 0.2);
+  border-radius: 50%;
+  padding: 4px;
+  width: 32px;
+  height: 32px;
+}
+
+.Green-Icon {
+  color: #059669;
+  background: rgba(5, 150, 105, 0.2);
+  border-radius: 50%;
+  padding: 4px;
+  width: 32px;
+  height: 32px;
+}
+
+.transaction_note {
+  width: 90%;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #334155;
+}
+
+.transaction_body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 22px;
+}
+
+.transaction_date {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #334155;
+}
+
+.transaction_amount__income {
+  width: 81px;
+  height: 31px;
+  text-align: center;
+  padding: 4px 0;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  border-radius: 6px;
+  color: #0284c7;
+  background: rgba(2, 132, 199, 0.2);
+}
+
+.transaction_amount__expense {
+  width: 81px;
+  height: 31px;
+  text-align: center;
+  padding: 4px 0;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  border-radius: 6px;
+  color: #c53030;
+  background: rgba(197, 48, 48, 0.2);
+}
+
+.Transaction__Table {
+  margin: 20px 0 0 0;
+  min-width: 750px;
+  width: 90%;
+}
+
+.custom-select {
+  width: 50%;
+  max-width: 700px;
+  min-width: 150px;
+}
+
+.Pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0 0 0;
+}
+
+.Pagination__Btn {
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border-radius: 50%;
+  border: none;
+  color: #959fb4;
+  cursor: pointer;
+}
+
+.Pagination__Btn_Icon {
+  color: #959fb4;
+}
+
+.Pagination__Btn_Icon_active {
+  color: #111827;
+}
+
+.Pagination__Btn__Number_inactive {
+  width: 32px;
+  height: 32px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: #1c658c;
+  border: 3px solid #1C658C;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.Pagination__Btn__Number_active {
+  width: 32px;
+  height: 32px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: white;
+  background: #1c658c;
+  border: 3px solid #1C658C;
+  border-radius: 16px;
+  cursor: pointer;
+}

@@ -101,3 +101,10 @@ to actions, but keep in mind, it's just a mock up, and real-world applications n
   - in `to` date input, future dates must be disabled.
 - When clicking on `Clear` button on the filter bar, all filters except search bar will be resetted to their initial values.
 - As a user, I want to see pagination on the screen so I can change pages of which transactions is shown. 
+
+
+### Solution
+To run follow these instructions
+
+- npx json-server --watch transactions.json --port 8000
+- yarn dev
