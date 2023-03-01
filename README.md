@@ -15,7 +15,7 @@ but don't worry, this is not for you, it's how stories in the real world applica
 
 ## Data
 
-The data representation for this application is kept simple due to the limited functionality. We have not integrated a backend or API, so you can use `localStorage` to store the application's data. You may also find some mock data and pre-installed tools to assist you in building your application.
+The application uses a simple data representation due to its limited functionality, and does not have a backend or API integrated. However, you are welcome to use your own backend or API if you prefer. Additionally, some pre-installed tools and mock data are available to help you develop your application.
 
 ## Best Practices
 
