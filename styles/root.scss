@@ -1,2 +1,68 @@
 @import "global";
-@import "pages/index";
+@import "fonts";
+@import "colors";
+@import "components/shared-styles";
+@import "react-date-range/dist/styles.css";
+@import "react-date-range/dist/theme/default.css";
+
+body {
+  font-family: "inter";
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  & .app-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: 80px 1fr;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 18px 2px rgba($color: #000000, $alpha: 0.1);
+
+    & .slidebar {
+      grid-row: span 2;
+      padding: 25px 15px;
+      display: flex;
+      flex-direction: column;
+      row-gap: 30px;
+      background: linear-gradient(#30475e, #222831);
+
+      & > :first-child {
+        margin-bottom: 60px;
+      }
+
+      & .navlink {
+        font-size: 22px;
+        text-transform: capitalize;
+        color: #d4d4d8;
+        text-decoration: none;
+        font-weight: 400;
+      }
+
+      & .navlink[aria-current="page"] {
+        color: #ffffff !important;
+      }
+    }
+
+    & .topbar {
+      background-color: #f7f4f3;
+      padding: 25px;
+      span {
+        font-size: 22px;
+        text-transform: capitalize;
+        color: #374151;
+        font-weight: 500;
+      }
+    }
+
+    & .main {
+      background-color: #ffffff;
+      overflow-y: auto;
+    }
+  }
+}
