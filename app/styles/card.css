@@ -1,0 +1,98 @@
+.card {
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  flex: 1;
+}
+
+.card.income {
+  background: linear-gradient(90deg, #7dd3fc 0%, #bae6fd 102.82%);
+}
+
+.card.balance {
+  background: linear-gradient(90deg, #d4d4d8 0%, #e4e4e7 102.82%);
+}
+
+.card.expenses {
+  background: linear-gradient(90deg, #fda4af 0%, #fecdd3 102.82%);
+}
+
+.card h5 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #222831;
+}
+
+.card.income h5 {
+  color: #1a74c7;
+}
+
+.card.balance h5 {
+  color: #71717a;
+}
+
+.card.card.expenses h5 {
+  color: #ef2a4c;
+}
+
+.card p {
+  font-weight: 400;
+  font-size: 1.7em;
+  margin-top: 0.5rem;
+}
+
+.card .card-body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 1rem;
+  flex: 1;
+}
+
+.card .card-action {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1rem;
+}
+
+.card .card-action button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.3rem 1rem;
+  background-color: #f05454;
+  border: none;
+  border-radius: 2rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.card.income .card-action button {
+  background: rgba(56, 189, 248, 0.75);
+}
+
+.card.balance .card-action button {
+  background: rgba(113, 113, 122, 0.75);
+}
+
+.card.expenses .card-action button {
+  background: rgba(251, 113, 133, 0.75);
+}
+
+@media (max-width: 768px) {
+  .card {
+    flex-wrap: wrap;
+  }
+
+  .card p {
+    font-size: 1.5em;
+  }
+}

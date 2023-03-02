@@ -6,6 +6,8 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react"
+import { Sidebar } from "~/components/sidebar"
+import { Topbar } from "~/components/topbar"
 
 import rootStyles from "~/styles/root.css"
 
@@ -24,7 +26,7 @@ export const links = () => [
  */
 export const meta = () => ({
   charset: "utf-8",
-  title: "New Remix App",
+  title: "Personal Finance Manager",
   viewport: "width=device-width,initial-scale=1",
 })
 
@@ -36,7 +38,15 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet />
+        <div className="index-page">
+          <Sidebar />
+          <div className="content">
+            <Topbar />
+            <div className="appdata">
+              <Outlet />
+            </div>
+          </div>
+        </div>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />

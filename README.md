@@ -2,6 +2,40 @@
 
 Personal Finance Manager is an application with limited financing functionality, used for tracking your income and expenses and managing your money efficiently.
 
+## Installation and Running
+
+Install dependencies
+
+```bash
+npm install   ## or yarn install
+```
+
+Create a `.env` file from `.env.example` file and modify it to your needs.
+```bash
+cp .env.example .env
+```
+
+You can use the following command to create a database with the name you specified in `.env` file.
+```bash
+npx prisma db push
+```
+
+You can use the following command to seed the database with some mock data.
+```bash
+node --require esbuild-register prisma/seed.js
+```
+
+Run the application
+
+```bash
+npm run dev   ## or yarn dev
+```
+
+Bonus: You can use the following command to open the database in a GUI.
+```bash
+npx prisma studio
+```
+
 ## The Assignment
 
 The assignment you're about to tackle is a simple application, you'll be building from the current template built with **Create Remix App**.
@@ -29,7 +63,7 @@ Following best practices is especially important because it helps us to ensure t
 
 ## Design
 
-You can find the Design for Personal Finance Manager in [this Figma file](https://www.figma.com/file/dJUAWU41JCpAPl0rRDGCx3/Money-Manager?node-id=0%3A1).  
+You can find the Design for Personal Finance Manager in [this Figma file](https://www.figma.com/file/dJUAWU41JCpAPl0rRDGCx3/Money-Manager?node-id=0%3A1).
 **Note**: Try to preview the application with Figma Preview functionality and interact with links and buttons to see how they respond
 to actions, but keep in mind, it's just a mock up, and real-world applications need more attention in terms of both design and functionality.
 
@@ -46,7 +80,7 @@ to actions, but keep in mind, it's just a mock up, and real-world applications n
 
 - As a user, I want to see a sidebar in the left of the screen so I can easily navigate through the application.
   Each link representing a page in the application, when I'm on a specific page, I want it's link to be `white`
-  
+
   When clicking on a link other than currently active link, user will be navigated to corresponding page.
 
   Sidebar contains two navigation links:
@@ -83,7 +117,7 @@ to actions, but keep in mind, it's just a mock up, and real-world applications n
   4. `type` input: multiple radio buttons, one can be selected at a time, determining the transactions type.
   5. `note` input: I want to be able to write up to 350 characters as a note attached to the transaction.
 - When `Dismiss` button clicked, the popup will be hidden and the state will be discarded.
-- When `Add Transaction` button clicked: 
+- When `Add Transaction` button clicked:
   - If one or more fields do not have acceptable values, each input will have an error message below it, showing a proper error message.
   - If the form is valid, then a transaction will be saved to the transactions list.
 
@@ -100,4 +134,4 @@ to actions, but keep in mind, it's just a mock up, and real-world applications n
 - As a user, I want to be able to see a Date input to select a `to` date to filter transactions until that date.
   - in `to` date input, future dates must be disabled.
 - When clicking on `Clear` button on the filter bar, all filters except search bar will be resetted to their initial values.
-- As a user, I want to see pagination on the screen so I can change pages of which transactions is shown. 
+- As a user, I want to see pagination on the screen so I can change pages of which transactions is shown.
