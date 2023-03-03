@@ -1,0 +1,58 @@
+.card {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
+  width: 280px;
+  height: 110px;
+  border-radius: 7px;
+
+  color: #fff;
+  padding: 20px;
+  &.blue {
+    background: linear-gradient(90deg, #7dd3fc 0%, #bae6fd 102.82%);
+  }
+  &.gray {
+    background: linear-gradient(90deg, #d4d4d8 0%, #e4e4e7 102.82%);
+  }
+  &.red {
+    background: linear-gradient(90deg, #fda4af 0%, #fecdd3 102.82%);
+  }
+  .title {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 22px;
+    &.blue {
+      color: #1a74c7;
+    }
+    &.gray {
+      color: #71717a;
+    }
+    &.red {
+      color: #ef2a4c;
+    }
+  }
+  .details-button {
+    width: 64px;
+    height: 20px;
+    border-radius: 12px;
+    font-size: 12px;
+    line-height: 15px;
+    border: none;
+    color: #fff;
+    justify-self: end;
+    &.blue {
+      background-color: rgba(56, 189, 248, 0.75);
+    }
+    &.gray {
+      background-color: rgba(113, 113, 122, 0.75);
+    }
+    &.red {
+      background-color: rgba(251, 113, 133, 0.75);
+    }
+  }
+  .amount {
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 36px;
+  }
+}

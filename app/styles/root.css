@@ -75,6 +75,71 @@ a {
   font-weight: 500;
 }
 
+.cards {
+  display: flex;
+  column-gap: 30px;
+  width: 80%;
+  padding: 30px;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
+  width: 280px;
+  height: 110px;
+  border-radius: 7px;
+  color: #fff;
+  padding: 20px;
+}
+.card.blue {
+  background: linear-gradient(90deg, #7dd3fc 0%, #bae6fd 102.82%);
+}
+.card.gray {
+  background: linear-gradient(90deg, #d4d4d8 0%, #e4e4e7 102.82%);
+}
+.card.red {
+  background: linear-gradient(90deg, #fda4af 0%, #fecdd3 102.82%);
+}
+.card .title {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
+}
+.card .title.blue {
+  color: #1a74c7;
+}
+.card .title.gray {
+  color: #71717a;
+}
+.card .title.red {
+  color: #ef2a4c;
+}
+.card .details-button {
+  width: 64px;
+  height: 20px;
+  border-radius: 12px;
+  font-size: 12px;
+  line-height: 15px;
+  border: none;
+  color: #fff;
+  justify-self: end;
+}
+.card .details-button.blue {
+  background-color: rgba(56, 189, 248, 0.75);
+}
+.card .details-button.gray {
+  background-color: rgba(113, 113, 122, 0.75);
+}
+.card .details-button.red {
+  background-color: rgba(251, 113, 133, 0.75);
+}
+.card .amount {
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 36px;
+}
+
 .index-page {
   font-family: system-ui, sans-serif;
   width: 100%;
