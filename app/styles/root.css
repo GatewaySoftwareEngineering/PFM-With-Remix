@@ -3,6 +3,7 @@
   font-family: inter;
   margin: 0;
   padding: 0;
+  font-size: 10px;
 }
 
 body {
@@ -79,6 +80,7 @@ a {
   display: flex;
   column-gap: 30px;
   width: 80%;
+  height: 25%;
   padding: 30px;
 }
 
@@ -86,7 +88,7 @@ a {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 5px;
-  width: 280px;
+  width: 32%;
   height: 110px;
   border-radius: 7px;
   color: #fff;
@@ -138,6 +140,81 @@ a {
   font-size: 30px;
   font-weight: 600;
   line-height: 36px;
+}
+
+.latest-transactions {
+  position: relative;
+  width: 80%;
+  max-height: 65%;
+  padding: 3rem;
+}
+.latest-transactions .title {
+  font-size: 2.2rem;
+  line-height: 2.7rem;
+}
+.latest-transactions .container {
+  display: block;
+  overflow: auto;
+  max-height: 430px;
+  margin: 2rem 0 4rem 0;
+}
+.latest-transactions .add-transaction {
+  position: absolute;
+  bottom: 0;
+  right: 30px;
+  width: 189px;
+  height: 40px;
+  border-radius: 50px;
+  background-color: rgba(28, 101, 140, 0.15);
+  font-size: 2rem;
+  line-height: 2.4rem;
+  color: rgb(28, 101, 140);
+  border: none;
+}
+
+.transaction {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: rgb(248, 250, 252);
+  border-radius: 7px;
+  margin-bottom: 10px;
+  color: rgb(51, 65, 85);
+}
+.transaction .wrapper {
+  display: flex;
+  align-items: center;
+  column-gap: 18px;
+}
+.transaction .icon {
+  width: 32px;
+  height: 32px;
+  padding: 5px;
+  border-radius: 50%;
+  background-color: rgba(2, 132, 199, 0.2);
+  color: rgb(2, 132, 199);
+}
+.transaction .title {
+  width: 40rem;
+  font-size: 16px;
+  line-height: 19px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.transaction .date {
+  font-size: 16px;
+  line-height: 19px;
+}
+.transaction .amount {
+  padding: 6px 20px;
+  border-radius: 6px;
+  background-color: rgba(239, 42, 76, 0.15);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
+  color: rgb(239, 42, 76);
+  text-align: center;
 }
 
 .index-page {

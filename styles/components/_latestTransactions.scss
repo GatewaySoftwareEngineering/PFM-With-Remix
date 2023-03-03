@@ -1,0 +1,29 @@
+.latest-transactions {
+  position: relative;
+  width: 80%;
+  max-height: 65%;
+  padding: 3rem;
+  .title {
+    font-size: 2.2rem;
+    line-height: 2.7rem;
+  }
+  .container {
+    display: block;
+    overflow: auto;
+    max-height: 430px;
+    margin: 2rem 0 4rem 0;
+  }
+  .add-transaction {
+    position: absolute;
+    bottom: 0;
+    right: 30px;
+    width: 189px;
+    height: 40px;
+    border-radius: 50px;
+    background-color: rgba(28, 101, 140, 0.15);
+    font-size: 2rem;
+    line-height: 2.4rem;
+    color: rgba(28, 101, 140, 1);
+    border: none;
+  }
+}

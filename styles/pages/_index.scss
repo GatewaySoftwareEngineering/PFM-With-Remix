@@ -1,10 +1,12 @@
-@import '../components/layout';
-@import '../components/header';
-@import '../components/navbar';
-@import '../components/nav-item';
-@import '../components/topbar';
-@import '../components/cards';
-@import '../components/card';
+@import "../components/layout";
+@import "../components/header";
+@import "../components/navbar";
+@import "../components/navItem";
+@import "../components/topbar";
+@import "../components/cards";
+@import "../components/card";
+@import "../components/latestTransactions";
+@import "../components/transaction";
 
 .index-page {
   font-family: system-ui, sans-serif;

@@ -1,4 +1,5 @@
 import Cards from "~/components/Cards"
+import LatestTransactions from "~/components/LatestTransactions"
 import Topbar from "~/components/Topbar"
 
 export default function Index() {
@@ -6,6 +7,7 @@ export default function Index() {
     <>
       <Topbar title="Overview" />
       <Cards />
+      <LatestTransactions />
     </>
   )
 }
