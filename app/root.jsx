@@ -8,6 +8,7 @@ import {
 } from "@remix-run/react"
 
 import rootStyles from "~/styles/root.css"
+import Layout from "~/components/Layout"
 
 /**
  * @returns {import("@remix-run/node").LinkDescriptor[]}
@@ -36,7 +37,10 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet />
+        <Layout>
+          <Outlet />
+        </Layout>
+
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
