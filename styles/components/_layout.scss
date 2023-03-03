@@ -1,0 +1,10 @@
+.layout{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    .header{
+        grid-column: 1 / 2;
+    }
+    .children{
+        grid-column: 2 / 6;
+    }
+}

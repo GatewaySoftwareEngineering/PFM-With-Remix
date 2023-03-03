@@ -3,10 +3,12 @@ import Header from "./Header"
 
 export default function Layout({ children }) {
   return (
-    <>
-      <Header />
-      {children}
-    </>
+    <div className="layout">
+      <div className="header">
+        <Header />
+      </div>
+      <div className="children">{children}</div>
+    </div>
   )
 }
 

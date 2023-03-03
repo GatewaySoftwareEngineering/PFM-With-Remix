@@ -5,8 +5,8 @@ export default function Header() {
   return (
     <header className="header">
       <Link to="/">
-        <h1 className="header-logo">
-          <CiDollar />
+        <h1 className="logo">
+          <CiDollar className="icon"/>
           Finance Manager
         </h1>
       </Link>

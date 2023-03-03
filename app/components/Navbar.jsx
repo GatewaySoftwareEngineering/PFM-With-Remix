@@ -3,7 +3,7 @@ import NavItem from "./NavItem"
 export default function Navbar() {
   return (
     <nav>
-      <ul>
+      <ul className="navbar">
         <NavItem to="/" title="Overview" />
         <NavItem to="/transactions" title="Transaction History" />
       </ul>

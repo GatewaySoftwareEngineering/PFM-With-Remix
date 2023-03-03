@@ -4,7 +4,9 @@ import propTypes from "prop-types"
 export default function NavItem({ to, title }) {
   return (
     <li>
-      <NavLink to={to}>{title}</NavLink>
+      <NavLink to={to} className="nav-item">
+        {title}
+      </NavLink>
     </li>
   )
 }
