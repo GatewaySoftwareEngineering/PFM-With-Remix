@@ -1,9 +1,10 @@
 import propTypes from "prop-types"
+import Header from "./Header"
 
 export default function Layout({ children }) {
   return (
     <>
-      <h1>My App</h1>
+      <Header />
       {children}
     </>
   )
