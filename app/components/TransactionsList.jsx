@@ -1,7 +1,6 @@
 import Transaction from "./Transaction"
 import Paginate from "react-paginate"
 import { GrFormNext, GrFormPrevious } from "react-icons/gr"
-import { MdNavigateNext } from "react-icons/md"
 export default function TransactionsList() {
   return (
     <section className="transactions-list">
@@ -64,7 +63,7 @@ export default function TransactionsList() {
       <Paginate
         pageCount={5}
         previousLabel={<GrFormPrevious />}
-        nextLabel={<MdNavigateNext />}
+        nextLabel={<GrFormNext />}
         renderOnZeroPageCount={null}
         className="pagination"
         pageClassName="page"
