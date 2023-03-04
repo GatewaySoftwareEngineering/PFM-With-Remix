@@ -1,6 +1,9 @@
 import { FiFilter } from "react-icons/fi"
 import Select from "react-select"
 import makeAnimated from "react-select/animated"
+import DatePicker from "react-datepicker"
+import { useState } from "react"
+
 const options = [
   { value: "all", label: "All" },
   { value: "pending", label: "Pending" },
@@ -8,6 +11,8 @@ const options = [
   { value: "rejected", label: "Rejected" },
 ]
 export default function Filter() {
+  const [startDate, setStartDate] = useState(new Date())
+  const [endDate, setEndDate] = useState(new Date())
   return (
     <div className="filter">
       <div className="wrapper">
@@ -21,8 +26,26 @@ export default function Filter() {
         />
       </div>
       <div className="wrapper">
-        <input type="date" name="from" className="date" />
-        <input type="date" name="to" className="date" />
+        <DatePicker
+          selected={startDate}
+          onChange={(date) => setStartDate(date)}
+          className="date"
+          closeOnScroll={true}
+          dateFormat="dd/MM/yyyy"
+          selectsStart
+          startDate={startDate}
+          endDate={endDate}
+        />
+        <DatePicker
+          selected={endDate}
+          onChange={(date) => setEndDate(date)}
+          className="date"
+          closeOnScroll={true}
+          dateFormat="dd/MM/yyyy"
+          selectsEnd
+          startDate={startDate}
+          endDate={endDate}
+        />
       </div>
       <button className="clear-button">Clear</button>
     </div>

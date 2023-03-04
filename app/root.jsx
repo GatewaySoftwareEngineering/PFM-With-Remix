@@ -9,7 +9,7 @@ import {
 
 import rootStyles from "~/styles/root.css"
 import Layout from "~/components/Layout"
-
+import datePickerStyles from "react-datepicker/dist/react-datepicker.css"
 /**
  * @returns {import("@remix-run/node").LinkDescriptor[]}
  */
@@ -17,6 +17,10 @@ export const links = () => [
   {
     rel: "stylesheet",
     href: rootStyles,
+  },
+  {
+    rel: "stylesheet",
+    href: datePickerStyles,
   },
 ]
 
