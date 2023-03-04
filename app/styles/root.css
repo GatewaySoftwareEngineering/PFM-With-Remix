@@ -276,7 +276,7 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 2rem auto;
+  margin: 0 auto;
   padding-left: 2.2rem;
   width: 95%;
   height: 6.8rem;
@@ -323,4 +323,23 @@ a {
   font-size: 2rem;
   line-height: 2.5rem;
   color: rgb(255, 255, 255);
+}
+
+.transactions-list {
+  position: relative;
+  width: 80%;
+  height: 68%;
+  padding: 3rem;
+}
+.transactions-list .container {
+  height: 100%;
+}
+.transactions-list .pagination {
+  position: absolute;
+  bottom: 0;
+  right: 3rem;
+}
+
+#transactions-page {
+  height: 100vh;
 }

@@ -1,17 +1,15 @@
 import Filter from "~/components/Filter"
 import SearchBar from "~/components/SearchBar"
 import Topbar from "~/components/Topbar"
+import TransactionsList from "~/components/TransactionsList"
 
 export default function Transactions() {
   return (
-    <div>
+    <div id="transactions-page">
       <Topbar title="Transaction History" />
       <SearchBar />
       <Filter />
-      <ul>
-        <li>Transaction 1</li>
-        <li>Transaction 2</li>
-      </ul>
+      <TransactionsList />
     </div>
   )
 }

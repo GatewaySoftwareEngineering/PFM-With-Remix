@@ -1,0 +1,14 @@
+.transactions-list{
+    position: relative;
+    width: 80%;
+    height: 68%;
+    padding: 3rem;
+    .container {
+        height: 100%;
+    }
+    .pagination {
+        position: absolute;
+        bottom: 0;
+        right: 3rem;
+    }
+}
