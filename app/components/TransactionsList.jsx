@@ -1,5 +1,7 @@
 import Transaction from "./Transaction"
-
+import Paginate from "react-paginate"
+import { GrFormNext, GrFormPrevious } from "react-icons/gr"
+import { MdNavigateNext } from "react-icons/md"
 export default function TransactionsList() {
   return (
     <section className="transactions-list">
@@ -46,10 +48,31 @@ export default function TransactionsList() {
           date={new Date(Date.now())}
           amount={45}
         />
-        
-        
+        <Transaction
+          type="tech"
+          title="lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit ametlorem ipsum dolor sit amet lorem ipsum dolor sit amet"
+          date={new Date(Date.now())}
+          amount={45}
+        />
+        <Transaction
+          type="tech"
+          title="lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit ametlorem ipsum dolor sit amet lorem ipsum dolor sit amet"
+          date={new Date(Date.now())}
+          amount={45}
+        />
       </div>
-      <div className="pagination">Pagination</div>
+      <Paginate
+        pageCount={5}
+        previousLabel={<GrFormPrevious />}
+        nextLabel={<MdNavigateNext />}
+        renderOnZeroPageCount={null}
+        className="pagination"
+        pageClassName="page"
+        activeClassName="active"
+        previousClassName="previous"
+        nextClassName="next"
+        disabledClassName="disabled"
+      />
     </section>
   )
 }

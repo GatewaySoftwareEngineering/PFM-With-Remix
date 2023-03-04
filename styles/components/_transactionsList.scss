@@ -1,14 +1,58 @@
-.transactions-list{
-    position: relative;
-    width: 80%;
-    height: 68%;
-    padding: 3rem;
-    .container {
-        height: 100%;
+.transactions-list {
+  position: relative;
+  width: 80%;
+  height: 68%;
+  padding: 3rem;
+  .container {
+    height: 100%;
+  }
+  .pagination {
+    position: absolute;
+    bottom: 0;
+    right: 3rem;
+    display: flex;
+    list-style: none;
+    column-gap: 0.5rem;
+    .page {
+      width: 3rem;
+      height: 3rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 1);
+      border-radius: 1.6rem;
+      cursor: pointer;
+      a {
+        font-size: 1.6rem;
+        line-height: 1.9rem;
+        color: rgba(28, 101, 140, 1);
+      }
     }
-    .pagination {
-        position: absolute;
-        bottom: 0;
-        right: 3rem;
+    .previous,
+    .next {
+      width: 3rem;
+      height: 3rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      svg {
+        width: 2rem;
+        height: 2rem;
+        color: rgba(28, 101, 140, 1);
+      }
     }
+    .active {
+      background-color: rgba(28, 101, 140, 0.75);
+      a {
+        color: rgba(255, 255, 255, 1);
+      }
+    }
+    .disabled {
+      cursor: not-allowed;
+      svg {
+        color: rgba(149, 159, 180, 1);
+      }
+    }
+  }
 }

@@ -335,6 +335,51 @@ a {
   position: absolute;
   bottom: 0;
   right: 3rem;
+  display: flex;
+  list-style: none;
+  column-gap: 0.5rem;
+}
+.transactions-list .pagination .page {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  border-radius: 1.6rem;
+  cursor: pointer;
+}
+.transactions-list .pagination .page a {
+  font-size: 1.6rem;
+  line-height: 1.9rem;
+  color: rgb(28, 101, 140);
+}
+.transactions-list .pagination .previous,
+.transactions-list .pagination .next {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.transactions-list .pagination .previous svg,
+.transactions-list .pagination .next svg {
+  width: 2rem;
+  height: 2rem;
+  color: rgb(28, 101, 140);
+}
+.transactions-list .pagination .active {
+  background-color: rgba(28, 101, 140, 0.75);
+}
+.transactions-list .pagination .active a {
+  color: rgb(255, 255, 255);
+}
+.transactions-list .pagination .disabled {
+  cursor: not-allowed;
+}
+.transactions-list .pagination .disabled svg {
+  color: rgb(149, 159, 180);
 }
 
 #transactions-page {
