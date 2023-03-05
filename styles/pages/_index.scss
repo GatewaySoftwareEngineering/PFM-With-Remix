@@ -8,12 +8,6 @@
 @import "../components/transaction";
 @import "../components/addTransactionModal";
 
-.index-page {
-  font-family: system-ui, sans-serif;
-  width: 100%;
+.overview-page {
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  justify-content: center;
 }

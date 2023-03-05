@@ -5,11 +5,11 @@ import Topbar from "~/components/Topbar"
 
 export default function Index() {
   return (
-    <>
+    <div id="overview-page">
       <AddTransactionModal />
       <Topbar title="Overview" />
       <Cards />
       <LatestTransactions />
-    </>
+    </div>
   )
 }

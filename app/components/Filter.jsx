@@ -18,6 +18,8 @@ export default function Filter() {
       <div className="wrapper">
         <FiFilter className="icon" />
         <Select
+          id="long-value-select"
+          instanceId="long-value-select"
           options={options}
           components={makeAnimated}
           closeMenuOnSelect={false}

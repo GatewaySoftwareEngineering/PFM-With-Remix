@@ -16,5 +16,94 @@
     border-radius: 1.5rem;
     width: 60%;
     height: 60%;
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .title {
+        font-size: 1.6rem;
+        font-weight: 400;
+        color: rgba(0, 0, 0, 1);
+      }
+      .close {
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+        .icon {
+          width: 1.6rem;
+          height: 1.6rem;
+          color: rgba(17, 24, 39, 1);
+        }
+      }
+    }
+    .modal-body {
+      margin-top: 2.5rem;
+      .modal-form {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 3rem;
+        row-gap: 2rem;
+        .form-group {
+          display: flex;
+          flex-direction: column;
+          row-gap: 1rem;
+          input,
+          textarea {
+            padding: 1rem;
+            resize: none;
+          }
+          &.textarea {
+            grid-column: span 2;
+          }
+          .date,
+          .amount {
+            height: 3.8rem;
+            width: 100%;
+          }
+          .radio-container {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            column-gap: 1rem;
+            margin-top: 2rem;
+          }
+          .radio-input {
+            display: none;
+            &:checked + .radio-label {
+              border: 1px solid rgba(148, 163, 184, 1);
+            }
+          }
+          .radio-label {
+            padding: 0.8rem 1.5rem;
+            border: 1px solid rgba(148, 163, 184, 0.3);
+            border-radius: 0.7rem;
+            cursor: pointer;
+          }
+        }
+        .form-button-group {
+          grid-column: span 3;
+          justify-self: end;
+          display: flex;
+          align-items: center;
+          column-gap: 0.5rem;
+          .button {
+            padding: 0.5rem 1rem;
+            border-radius: 5rem;
+            font-size: 1.2rem;
+            font-weight: 500;
+            border: none;
+            &.primary {
+              background-color: rgba(28, 101, 140, 0.15);
+              color: rgba(28, 101, 140, 1);
+            }
+            &.cancel {
+              background-color: rgba(248, 250, 252, 1);
+              color: rgba(0, 0, 0, 1);
+              border: 1px solid rgba(0, 0, 0, 1);
+            }
+          }
+        }
+      }
+    }
   }
 }
