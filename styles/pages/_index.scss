@@ -1,9 +1,108 @@
-.index-page {
-  font-family: system-ui, sans-serif;
-  width: 100%;
-  height: 100vh;
+.sidebar {
   display: flex;
   flex-direction: column;
-  text-align: center;
-  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 100%;
+  background: linear-gradient(#30475e, #222831);
+  padding: spacing(4);
+  color: $text-black-contrast-primary;
+
+  .logo {
+    color: $secondary-color;
+    display: flex;
+    align-items: center;
+
+    .dollar-sign-icon {
+      width: 36px;
+      height: 36px;
+      margin-right: spacing(2);
+    }
+
+    .close-sidebar-icon {
+      width: 14px;
+      height: 14px;
+      margin-left: spacing(4);
+      @extend .icon-button;
+
+      &:hover {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+
+  nav {
+    margin-top: spacing(12);
+
+    ul {
+      list-style-type: none;
+
+      li {
+        margin-top: spacing(4);
+      }
+
+      a {
+        color: $text-black-contrast-secondary;
+        font-size: 20px;
+        font-weight: $font-weight-semi-bold;
+        text-decoration: none;
+        transition: $primary-transition;
+        &:hover {
+          color: $secondary-color;
+        }
+      }
+
+      .current-nav-link {
+        font-size: 22px;
+        color: $text-black-contrast-primary;
+      }
+    }
+  }
+}
+
+.mobile-sidebar {
+  display: flex;
+  z-index: $z-index-sidebar;
+  position: absolute;
+}
+
+.main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-bar {
+  width: 100%;
+  height: 80px;
+  background: $paper-color;
+  color: $text-primary;
+  padding: spacing(4);
+  display: flex;
+  align-items: center;
+}
+
+.top-bar-menu-icon {
+  display: none;
+  width: 26px;
+  height: 26px;
+  margin-right: spacing(6);
+  margin-left: spacing(4);
+  @extend .icon-button;
+
+  &:hover {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .sidebar {
+    display: none;
+  }
+
+  .top-bar-menu-icon {
+    display: block;
+  }
 }

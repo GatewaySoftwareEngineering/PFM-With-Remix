@@ -1,0 +1,138 @@
+.page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+
+.main-section {
+  width: 100%;
+  padding: spacing(4);
+  padding-bottom: spacing(10);
+  overflow-x: hidden;
+}
+
+.dollar:before {
+  content: '$';
+}
+
+.modal-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.modal {
+  max-width: 1012px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  background-color: $paper-color;
+  z-index: $z-index-modal;
+  border-radius: $border-radius;
+  margin: spacing(2);
+
+  .modal-header {
+    background-color: $white;
+    padding: spacing(4);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: $border-radius $border-radius 0 0;
+
+    .modal-close-icon {
+      font-weight: $font-weight-bold;
+    }
+  }
+
+  .modal-content {
+    padding: spacing(8);
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: spacing(8);
+
+      .dismiss-button {
+        margin-right: spacing(4);
+      }
+    }
+  }
+}
+
+.input-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+
+  .input {
+    width: 250px;
+    max-width: 250px;
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: spacing(4);
+
+    label {
+      margin-bottom: spacing(2);
+    }
+
+    em {
+      margin-top: spacing(2);
+    }
+
+    .radio-buttons-container {
+      display: flex;
+      align-items: center;
+
+      & > div input {
+        margin: 0 spacing(2);
+      }
+    }
+  }
+}
+
+input {
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  padding: spacing(3) spacing(2);
+  font-size: $font-size;
+  font-weight: $font-weight-semi-bold;
+  background-color: $white;
+  transition: $primary-transition;
+  outline: none;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: $shadow;
+  }
+
+  &:focus {
+    border: 1px solid $primary-color;
+  }
+}
+
+textarea {
+  resize: none;
+  @extend input;
+}
+
+select {
+  @extend input;
+}
+
+input[type='number'] {
+  text-indent: spacing(4);
+}
+
+.amount-currency {
+  position: absolute;
+  top: spacing(10);
+  left: spacing(2.5);
+}
