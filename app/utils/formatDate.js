@@ -19,4 +19,8 @@ const formatDate = (date) => {
   }
 }
 
-export { formatDate }
+const getDateObj = (date) => {
+  return new Date(date)
+}
+
+export { formatDate, getDateObj }
