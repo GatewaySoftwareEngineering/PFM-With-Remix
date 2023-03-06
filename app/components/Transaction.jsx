@@ -19,7 +19,6 @@ const icons = {
   health: <GiHealthNormal className="icon blue" />,
 }
 export default function Transaction({ category, note, date, amount, type }) {
-  console.log(type)
   const formattedAmount = formatAmount(amount)
   const formattedDate = formatDate(date)
   const amountElement =
