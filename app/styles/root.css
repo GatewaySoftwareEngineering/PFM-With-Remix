@@ -191,10 +191,16 @@ a {
   height: 32px;
   padding: 5px;
   border-radius: 50%;
+}
+.transaction .icon.green {
+  background-color: rgba(5, 150, 105, 0.2);
+  color: rgb(5, 150, 105);
+}
+.transaction .icon.blue {
   background-color: rgba(2, 132, 199, 0.2);
   color: rgb(2, 132, 199);
 }
-.transaction .title {
+.transaction .note {
   width: 40rem;
   font-size: 16px;
   line-height: 19px;
@@ -209,12 +215,18 @@ a {
 .transaction .amount {
   padding: 6px 20px;
   border-radius: 6px;
-  background-color: rgba(239, 42, 76, 0.15);
   font-size: 18px;
   font-weight: 600;
   line-height: 22px;
-  color: rgb(239, 42, 76);
   text-align: center;
+}
+.transaction .amount.green {
+  background-color: rgba(14, 165, 233, 0.15);
+  color: rgb(14, 165, 233);
+}
+.transaction .amount.red {
+  color: rgb(239, 42, 76);
+  background-color: rgba(239, 42, 76, 0.15);
 }
 
 .modal {

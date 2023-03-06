@@ -1,22 +1,50 @@
 import propTypes from "prop-types"
-import { GiBlackBook } from "react-icons/gi"
-export default function Transaction({ type, title, date, amount }) {
+import { FaMoneyBillAlt } from "react-icons/fa"
+import { AiOutlineGift } from "react-icons/ai"
+import { GiBlackBook, GiReceiveMoney, GiHealthNormal } from "react-icons/gi"
+import { GrTechnology } from "react-icons/gr"
+import { IoFastFoodOutline } from "react-icons/io5"
+import { MdOutlineSportsSoccer } from "react-icons/md"
+import { formatAmount } from "~/utils/formatAmount"
+import { formatDate } from "~/utils/formatDate"
+
+const icons = {
+  salary: <FaMoneyBillAlt className="icon green" />,
+  loan: <GiReceiveMoney className="icon green" />,
+  gift: <AiOutlineGift className="icon green" />,
+  tech: <GrTechnology className="icon blue" />,
+  food: <IoFastFoodOutline className="icon blue" />,
+  bills: <GiBlackBook className="icon blue" />,
+  sports: <MdOutlineSportsSoccer className="icon blue" />,
+  health: <GiHealthNormal className="icon blue" />,
+}
+export default function Transaction({ category, note, date, amount, type }) {
+  console.log(type)
+  const formattedAmount = formatAmount(amount)
+  const formattedDate = formatDate(date)
+  const amountElement =
+    type === "income" ? (
+      <p className="amount green">+${formattedAmount}</p>
+    ) : (
+      <p className="amount red">-${formattedAmount}</p>
+    )
   return (
     <div className="transaction">
       <div className="wrapper">
-        <GiBlackBook className="icon" />
-        <p className="title">{title}</p>
+        {icons[category]}
+        <p className="note">{note}</p>
       </div>
       <div className="wrapper">
-        <p className="date">{date.getFullYear()}</p>
-        <p className="amount">${amount}</p>
+        <p className="date">{formattedDate}</p>
+        {amountElement}
       </div>
     </div>
   )
 }
 Transaction.propTypes = {
-  type: propTypes.string.isRequired,
-  title: propTypes.string.isRequired,
-  date: propTypes.instanceOf(Date).isRequired,
+  category: propTypes.string.isRequired,
+  note: propTypes.string.isRequired,
+  date: propTypes.string.isRequired,
   amount: propTypes.number.isRequired,
+  type: propTypes.string.isRequired,
 }

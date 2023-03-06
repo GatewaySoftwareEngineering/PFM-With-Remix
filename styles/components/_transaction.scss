@@ -16,10 +16,16 @@
     height: 32px;
     padding: 5px;
     border-radius: 50%;
-    background-color: rgba(2, 132, 199, 0.2);
-    color: rgba(2, 132, 199, 1);
+    &.green {
+      background-color: rgba(5, 150, 105, 0.2);
+      color: rgba(5, 150, 105, 1);
+    }
+    &.blue {
+      background-color: rgba(2, 132, 199, 0.2);
+      color: rgba(2, 132, 199, 1);
+    }
   }
-  .title {
+  .note {
     width: 40rem;
     font-size: 16px;
     line-height: 19px;
@@ -34,11 +40,17 @@
   .amount {
     padding: 6px 20px;
     border-radius: 6px;
-    background-color: rgba(239, 42, 76, 0.15);
     font-size: 18px;
     font-weight: 600;
     line-height: 22px;
-    color: rgba(239, 42, 76, 1);
     text-align: center;
+    &.green {
+      background-color: rgba(14, 165, 233, 0.15);
+      color: rgba(14, 165, 233, 1);
+    }
+    &.red {
+      color: rgba(239, 42, 76, 1);
+      background-color: rgba(239, 42, 76, 0.15);
+    }
   }
 }
