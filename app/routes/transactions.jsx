@@ -24,7 +24,7 @@ export default function Transactions() {
 
   const [selectedCategories, setSelectedCategories] = useState([])
   const [startDate, setStartDate] = useState(
-    getDateObj(transactions[transactions.length - 1].date)
+    getDateObj(transactions[transactions.length - 1]?.date || new Date())
   )
   const [endDate, setEndDate] = useState(new Date())
 
@@ -55,7 +55,9 @@ export default function Transactions() {
 
   const handleClearClick = () => {
     setSelectedCategories([])
-    setStartDate(getDateObj(transactions.length - 1))
+    setStartDate(
+      getDateObj(transactions[transactions.length - 1]?.date || new Date())
+    )
     setEndDate(new Date())
   }
 
