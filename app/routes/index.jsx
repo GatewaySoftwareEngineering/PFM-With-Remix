@@ -34,7 +34,7 @@ export const action = async ({ request }) => {
   return redirect("/")
 }
 export default function Index() {
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(true)
 
   const handleOpenModalClick = () => {
     setIsModalOpen((prev) => !prev)

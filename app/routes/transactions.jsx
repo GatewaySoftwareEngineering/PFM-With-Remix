@@ -14,7 +14,7 @@ import { search } from "~/utils/search"
 
 export const loader = async () => {
   const transactions = await db.transactions.findMany({
-    orderBy: { date: "desc" },
+    orderBy: { date: "asc" },
   })
   return json({ transactions })
 }
@@ -24,7 +24,7 @@ export default function Transactions() {
 
   const [selectedCategories, setSelectedCategories] = useState([])
   const [startDate, setStartDate] = useState(
-    getDateObj(transactions[transactions.length - 1]?.date || new Date())
+    getDateObj(transactions[0]?.date || new Date())
   )
   const [endDate, setEndDate] = useState(new Date())
 
@@ -32,7 +32,7 @@ export default function Transactions() {
 
   const debouncedSearchTerm = useDebounce(searchTerm, 500)
 
-  const searchedTransactions = search(transactions, "note", debouncedSearchTerm)
+  const searchedTransactions = search(transactions, debouncedSearchTerm)
 
   const filteredTransactions = filter(
     searchedTransactions,
@@ -55,9 +55,7 @@ export default function Transactions() {
 
   const handleClearClick = () => {
     setSelectedCategories([])
-    setStartDate(
-      getDateObj(transactions[transactions.length - 1]?.date || new Date())
-    )
+    setStartDate(getDateObj(transactions[0]?.date || new Date()))
     setEndDate(new Date())
   }
 

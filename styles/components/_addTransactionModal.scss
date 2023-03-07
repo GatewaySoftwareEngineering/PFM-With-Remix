@@ -61,6 +61,22 @@
             height: 3.8rem;
             width: 100%;
           }
+          .amount {
+            display: flex;
+            align-items: center;
+            border-radius: 7px;
+            border: 1px solid rgba(148, 163, 184, 1);
+            .amount-icon {
+              width: 2rem;
+              height: 2rem;
+              color: rgba(148, 163, 184, 1);
+            }
+            .amount-input {
+              width: 100%;
+              border: none;
+              outline: none;
+            }
+          }
           .radio-container {
             display: flex;
             align-items: center;

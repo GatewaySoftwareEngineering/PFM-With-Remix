@@ -289,6 +289,22 @@ a {
   height: 3.8rem;
   width: 100%;
 }
+.modal .modal-content .modal-body .modal-form .form-group .amount {
+  display: flex;
+  align-items: center;
+  border-radius: 7px;
+  border: 1px solid rgb(148, 163, 184);
+}
+.modal .modal-content .modal-body .modal-form .form-group .amount .amount-icon {
+  width: 2rem;
+  height: 2rem;
+  color: rgb(148, 163, 184);
+}
+.modal .modal-content .modal-body .modal-form .form-group .amount .amount-input {
+  width: 100%;
+  border: none;
+  outline: none;
+}
 .modal .modal-content .modal-body .modal-form .form-group .radio-container {
   display: flex;
   align-items: center;

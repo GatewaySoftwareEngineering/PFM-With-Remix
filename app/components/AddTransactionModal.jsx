@@ -1,6 +1,7 @@
 import { Form, useTransition } from "@remix-run/react"
 import propTypes from "prop-types"
 import { useState } from "react"
+import { BiDollar } from "react-icons/bi"
 import { GrClose } from "react-icons/gr"
 import { options } from "~/utils/categories"
 
@@ -9,6 +10,7 @@ const categoryOptions = options
 
 export default function AddTransactionModal({ onModalOpenClick }) {
   const [type, setType] = useState("income")
+  const [note, setNote] = useState("")
 
   const transition = useTransition()
 
@@ -72,12 +74,17 @@ export default function AddTransactionModal({ onModalOpenClick }) {
             </div>
             <div className="form-group">
               <label>Amount</label>
-              <input
-                type="number"
-                name="amount"
-                id="amount"
-                className="amount"
-              />
+
+              <div className="amount">
+                <BiDollar className="amount-icon" />
+                <input
+                  type="number"
+                  name="amount"
+                  id="amount"
+                  className="amount-input"
+                  min={0}
+                />
+              </div>
             </div>
             <div className="form-group">
               <label>Type</label>
@@ -114,7 +121,16 @@ export default function AddTransactionModal({ onModalOpenClick }) {
             </div>
             <div className="form-group textarea">
               <label>Note</label>
-              <textarea name="note" id="note" cols="30" rows="10"></textarea>
+              <textarea
+                name="note"
+                id="note"
+                cols="30"
+                rows="10"
+                maxLength={350}
+                value={note}
+                onChange={(e) => setNote(e.target.value)}
+              ></textarea>
+              <p>{`${note.length} / 350`}</p>
             </div>
             <div className="form-button-group">
               <button onClick={onModalOpenClick} className="button cancel">
