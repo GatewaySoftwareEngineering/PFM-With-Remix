@@ -1,7 +1,7 @@
 import Transaction from "./Transaction"
 import Paginate from "react-paginate"
 import { GrFormNext, GrFormPrevious } from "react-icons/gr"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import propTypes from "prop-types"
 import { paginate } from "~/utils/pagination"
 export default function TransactionsList({ transactions }) {
@@ -12,6 +12,11 @@ export default function TransactionsList({ transactions }) {
     10,
     currentPage
   )
+
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [transactions])
+
   const transactionsArray = paginatedTransaction.map((transaction) => (
     <Transaction
       key={transaction.id}

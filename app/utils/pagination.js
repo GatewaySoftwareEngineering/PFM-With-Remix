@@ -3,6 +3,7 @@ const paginate = (list, pageSize, currentPage) => {
 
   const startIndex = (currentPage - 1) * pageSize
   const endIndex = startIndex + pageSize
+
   const paginatedList = list.slice(startIndex, endIndex)
 
   return {
