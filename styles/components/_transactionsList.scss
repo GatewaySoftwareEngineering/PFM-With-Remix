@@ -1,15 +1,10 @@
 .transactions-list {
-  position: relative;
+  display: flex;
+  flex-direction: column;
   width: 80%;
-  height: 68%;
-  padding: 3rem;
-  .container {
-    height: 100%;
-  }
+  padding: 2.5rem;
   .pagination {
-    position: absolute;
-    bottom: 0;
-    right: 3rem;
+    align-self: flex-end;
     display: flex;
     list-style: none;
     column-gap: 0.5rem;

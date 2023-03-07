@@ -18,11 +18,13 @@ export default function LatestTransactions({ onModalOpenClick }) {
   ))
   return (
     <section className="latest-transactions">
-      <h3 className="title">{title}</h3>
+      <div className="wrapper">
+        <h3 className="title">{title}</h3>
+        <button className="add-transaction" onClick={onModalOpenClick}>
+          Add Transaction
+        </button>
+      </div>
       <div className="container">{transactionsArray}</div>
-      <button className="add-transaction" onClick={onModalOpenClick}>
-        Add Transaction
-      </button>
     </section>
   )
 }

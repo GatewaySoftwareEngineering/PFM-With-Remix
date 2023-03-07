@@ -34,6 +34,10 @@ const options = {
       value: "health",
       label: "Health",
     },
+    {
+      value: "clothes",
+      label: "Clothes",
+    },
   ],
 }
 

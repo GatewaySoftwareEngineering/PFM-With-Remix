@@ -11,6 +11,7 @@ import {
   validateNote,
   validateType,
 } from "~/utils/validations"
+import Error from "./Error"
 
 // get the options from the utils folder
 const categoryOptions = options
@@ -61,12 +62,7 @@ export default function AddTransactionModal({ onModalOpenClick }) {
           >
             <div className="form-group">
               <label>Category</label>
-              <select
-                name="category"
-                id="category"
-                className="category"
-                defaultValue={actionData?.fields?.category}
-              >
+              <select name="category" id="category" className="category">
                 {categoryOptions[type].map((option) => (
                   <option key={option.value} value={option.value}>
                     {option.label}
@@ -74,13 +70,7 @@ export default function AddTransactionModal({ onModalOpenClick }) {
                 ))}
               </select>
               {actionData?.fieldErrors?.category ? (
-                <p
-                  className="form-validation-error"
-                  role="alert"
-                  id="category-error"
-                >
-                  {actionData.fieldErrors.category}
-                </p>
+                <Error error={actionData?.fieldErrors?.category} />
               ) : null}
             </div>
             <div className="form-group">
@@ -89,20 +79,11 @@ export default function AddTransactionModal({ onModalOpenClick }) {
                 type="date"
                 name="date"
                 id="date"
-                defaultValue={
-                  actionData?.fields?.date ||
-                  new Date().toISOString().split("T")[0]
-                }
+                defaultValue={new Date().toISOString().split("T")[0]}
                 className="date"
               />
               {actionData?.fieldErrors?.date ? (
-                <p
-                  className="form-validation-error"
-                  role="alert"
-                  id="date-error"
-                >
-                  {actionData.fieldErrors.date}
-                </p>
+                <Error error={actionData?.fieldErrors?.date} />
               ) : null}
             </div>
             <div className="form-group">
@@ -116,17 +97,10 @@ export default function AddTransactionModal({ onModalOpenClick }) {
                   id="amount"
                   className="amount-input"
                   min={0}
-                  defaultValue={actionData?.fields?.amount}
                 />
               </div>
               {actionData?.fieldErrors?.amount ? (
-                <p
-                  className="form-validation-error"
-                  role="alert"
-                  id="amount-error"
-                >
-                  {actionData.fieldErrors.amount}
-                </p>
+                <Error error={actionData?.fieldErrors?.amount} />
               ) : null}
             </div>
             <div className="form-group">
@@ -162,13 +136,7 @@ export default function AddTransactionModal({ onModalOpenClick }) {
                 </div>
               </div>
               {actionData?.fieldErrors?.type ? (
-                <p
-                  className="form-validation-error"
-                  role="alert"
-                  id="type-error"
-                >
-                  {actionData.fieldErrors.type}
-                </p>
+                <Error error={actionData?.fieldErrors?.type} />
               ) : null}
             </div>
             <div className="form-group textarea">
@@ -181,21 +149,18 @@ export default function AddTransactionModal({ onModalOpenClick }) {
                 maxLength={350}
                 value={note}
                 onChange={(e) => setNote(e.target.value)}
-                defaultValue={actionData?.fields?.note}
               ></textarea>
               <p>{`${note.length} / 350`}</p>
               {actionData?.fieldErrors?.note ? (
-                <p
-                  className="form-validation-error"
-                  role="alert"
-                  id="note-error"
-                >
-                  {actionData.fieldErrors.note}
-                </p>
+                <Error error={actionData?.fieldErrors?.note} />
               ) : null}
             </div>
             <div className="form-button-group">
-              <button onClick={onModalOpenClick} className="button cancel">
+              <button
+                onClick={onModalOpenClick}
+                type="reset"
+                className="button cancel"
+              >
                 Dismiss
               </button>
               {submitButton}

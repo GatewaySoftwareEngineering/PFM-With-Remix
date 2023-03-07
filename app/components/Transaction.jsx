@@ -1,10 +1,10 @@
 import propTypes from "prop-types"
 import { FaMoneyBillAlt } from "react-icons/fa"
 import { AiOutlineGift } from "react-icons/ai"
-import { GiBlackBook, GiReceiveMoney, GiHealthNormal } from "react-icons/gi"
+import { GiReceiveMoney, GiHealthNormal, GiClothes } from "react-icons/gi"
 import { GrTechnology } from "react-icons/gr"
 import { IoFastFoodOutline } from "react-icons/io5"
-import { MdOutlineSportsSoccer } from "react-icons/md"
+import { MdAttachMoney, MdOutlineSportsSoccer } from "react-icons/md"
 import { formatAmount } from "~/utils/formatAmount"
 import { formatDate } from "~/utils/formatDate"
 
@@ -14,9 +14,10 @@ const icons = {
   gift: <AiOutlineGift className="icon green" />,
   tech: <GrTechnology className="icon blue" />,
   food: <IoFastFoodOutline className="icon blue" />,
-  bills: <GiBlackBook className="icon blue" />,
+  bills: <MdAttachMoney className="icon blue" />,
   sports: <MdOutlineSportsSoccer className="icon blue" />,
   health: <GiHealthNormal className="icon blue" />,
+  clothes: <GiClothes className="icon blue" />,
 }
 export default function Transaction({ category, note, date, amount, type }) {
   const formattedAmount = formatAmount(amount)

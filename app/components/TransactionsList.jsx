@@ -9,7 +9,7 @@ export default function TransactionsList({ transactions }) {
 
   const { list: paginatedTransaction, pageCount } = paginate(
     transactions,
-    5,
+    10,
     currentPage
   )
   const transactionsArray = paginatedTransaction.map((transaction) => (
@@ -30,19 +30,23 @@ export default function TransactionsList({ transactions }) {
   return (
     <section className="transactions-list">
       <div className="container">{transactionsArray}</div>
-      <Paginate
-        pageCount={pageCount}
-        previousLabel={<GrFormPrevious />}
-        nextLabel={<GrFormNext />}
-        renderOnZeroPageCount={null}
-        className="pagination"
-        pageClassName="page"
-        activeClassName="active"
-        previousClassName="previous"
-        nextClassName="next"
-        disabledClassName="disabled"
-        onPageChange={handlePageChange}
-      />
+
+      {transactions.length > 10 ? (
+        <Paginate
+          pageCount={pageCount}
+          previousLabel={<GrFormPrevious />}
+          nextLabel={<GrFormNext />}
+          initialPage={currentPage - 1}
+          renderOnZeroPageCount={null}
+          className="pagination"
+          pageClassName="page"
+          activeClassName="active"
+          previousClassName="previous"
+          nextClassName="next"
+          disabledClassName="disabled"
+          onPageChange={handlePageChange}
+        />
+      ) : null}
     </section>
   )
 }
