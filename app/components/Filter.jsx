@@ -52,6 +52,7 @@ export default function Filter({
           selectsEnd
           startDate={startDate}
           endDate={endDate}
+          maxDate={new Date()}
         />
       </div>
       <button onClick={onClearClick} className="clear-button">

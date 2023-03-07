@@ -24,6 +24,17 @@ export default function AddTransactionModal({ onModalOpenClick }) {
       </button>
     )
 
+  const handleFormSubmit = (e) => {
+    const category = e.target.category.value
+    const date = e.target.date.value
+    const amount = e.target.amount.value
+    const type = e.target.type.value
+    const note = e.target.note.value
+
+    if ((category, date, amount, type, note)) {
+      onModalOpenClick()
+    }
+  }
   return (
     <div className="modal">
       <div className="modal-content">
@@ -34,7 +45,11 @@ export default function AddTransactionModal({ onModalOpenClick }) {
           </button>
         </div>
         <div className="modal-body">
-          <Form method="POST" className="modal-form">
+          <Form
+            method="POST"
+            className="modal-form"
+            onSubmit={handleFormSubmit}
+          >
             <div className="form-group">
               <label>Category</label>
               <select name="category" id="category" className="category">

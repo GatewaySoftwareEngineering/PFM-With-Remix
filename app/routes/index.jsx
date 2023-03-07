@@ -7,11 +7,14 @@ import Topbar from "~/components/Topbar"
 import { db } from "~/utils/db.server"
 
 export const loader = async () => {
-  const transactions = await db.transactions.findMany()
+  const transactions = await db.transactions.findMany({
+    orderBy: { createdAt: "desc" },
+  })
   return json({ transactions })
 }
 
 export const action = async ({ request }) => {
+  console.log("action")
   const formData = await request.formData()
   const { category, date, amount, type, note } = Object.fromEntries(formData)
 
