@@ -14,7 +14,6 @@ export const loader = async () => {
 }
 
 export const action = async ({ request }) => {
-  console.log("action")
   const formData = await request.formData()
   const { category, date, amount, type, note } = Object.fromEntries(formData)
 

@@ -1,11 +1,15 @@
-import Card from "./Card";
+import { useLoaderData } from "@remix-run/react"
+import { balance, expense, income } from "~/utils/calculateBalance"
+import Card from "./Card"
 
 export default function Cards() {
+  const { transactions } = useLoaderData()
+
   return (
     <section className="cards">
-      <Card title="Income" amount={1000} color="blue" />
-      <Card title="Balance" amount={1500} color="gray" />
-      <Card title="Expense" amount={2000} color="red" />
+      <Card title="Income" amount={income(transactions)} color="blue" />
+      <Card title="Balance" amount={balance(transactions)} color="gray" />
+      <Card title="Expense" amount={expense(transactions)} color="red" />
     </section>
   )
 }
