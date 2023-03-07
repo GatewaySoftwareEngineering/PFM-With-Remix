@@ -5,6 +5,13 @@ import Cards from "~/components/Cards"
 import LatestTransactions from "~/components/LatestTransactions"
 import Topbar from "~/components/Topbar"
 import { db } from "~/utils/db.server"
+import {
+  validateAmount,
+  validateCategory,
+  validateDate,
+  validateNote,
+  validateType,
+} from "~/utils/validations"
 
 export const loader = async () => {
   const transactions = await db.transactions.findMany({
@@ -17,8 +24,27 @@ export const action = async ({ request }) => {
   const formData = await request.formData()
   const { category, date, amount, type, note } = Object.fromEntries(formData)
 
-  if (!category || !date || !amount || !type || !note) {
-    return json("Please fill all the fields", { status: 400 })
+  const fieldErrors = {
+    category: validateCategory(category),
+    date: validateDate(date),
+    amount: validateAmount(amount),
+    type: validateType(type),
+    note: validateNote(note),
+  }
+
+  const fields = {
+    category,
+    date,
+    amount,
+    type,
+    note,
+  }
+
+  if (Object.values(fieldErrors).some(Boolean)) {
+    return json({
+      fieldErrors,
+      fields,
+    })
   }
 
   await db.transactions.create({
