@@ -50,7 +50,7 @@ export default function AddTransactionModal({ onModalOpenClick }) {
       <div className="modal-content">
         <div className="modal-header">
           <h5 className="title">Add Transaction</h5>
-          <button onClick={onModalOpenClick} className="close">
+          <button type="reset" onClick={onModalOpenClick} className="close">
             <GrClose className="icon" />
           </button>
         </div>

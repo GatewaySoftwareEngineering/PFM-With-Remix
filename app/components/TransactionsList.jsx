@@ -13,10 +13,6 @@ export default function TransactionsList({ transactions }) {
     currentPage
   )
 
-  useEffect(() => {
-    setCurrentPage(1)
-  }, [transactions])
-
   const transactionsArray = paginatedTransaction.map((transaction) => (
     <Transaction
       key={transaction.id}
@@ -31,6 +27,10 @@ export default function TransactionsList({ transactions }) {
   const handlePageChange = ({ selected }) => {
     setCurrentPage(selected + 1)
   }
+
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [transactions])
 
   return (
     <section className="transactions-list">
