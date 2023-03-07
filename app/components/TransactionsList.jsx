@@ -6,6 +6,7 @@ import propTypes from "prop-types"
 import { paginate } from "~/utils/pagination"
 export default function TransactionsList({ transactions }) {
   const [currentPage, setCurrentPage] = useState(1)
+
   const { list: paginatedTransaction, pageCount } = paginate(
     transactions,
     5,
@@ -25,6 +26,7 @@ export default function TransactionsList({ transactions }) {
   const handlePageChange = ({ selected }) => {
     setCurrentPage(selected + 1)
   }
+
   return (
     <section className="transactions-list">
       <div className="container">{transactionsArray}</div>

@@ -6,9 +6,11 @@ import Filter from "~/components/Filter"
 import SearchBar from "~/components/SearchBar"
 import Topbar from "~/components/Topbar"
 import TransactionsList from "~/components/TransactionsList"
+import useDebounce from "~/hooks/useDebounce"
 import { db } from "~/utils/db.server"
 import { filter } from "~/utils/filter"
 import { getDateObj } from "~/utils/formatDate"
+import { search } from "~/utils/search"
 
 export const loader = async () => {
   const transactions = await db.transactions.findMany({
@@ -24,8 +26,13 @@ export default function Transactions() {
   const [startDate, setStartDate] = useState(getDateObj(transactions[0].date))
   const [endDate, setEndDate] = useState(new Date())
 
+  const [searchTerm, setSearchTerm] = useState("")
+  const debouncedSearchTerm = useDebounce(searchTerm, 500)
+
+  const searchedTransactions = search(transactions, "note", debouncedSearchTerm)
+
   const filteredTransactions = filter(
-    transactions,
+    searchedTransactions,
     selectedCategories,
     startDate,
     endDate
@@ -45,13 +52,25 @@ export default function Transactions() {
 
   const handleClearClick = () => {
     setSelectedCategories([])
-    setStartDate(new Date())
+    setStartDate(getDateObj(transactions[0].date))
     setEndDate(new Date())
+  }
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value)
+  }
+
+  const handleSearchClearClick = () => {
+    setSearchTerm("")
   }
   return (
     <div id="transactions-page">
       <Topbar title="Transaction History" />
-      <SearchBar />
+      <SearchBar
+        search={searchTerm}
+        onSearchChange={handleSearchChange}
+        onClearClick={handleSearchClearClick}
+      />
       <Filter
         selectedCategories={selectedCategories}
         onCategoryChange={handleCategoryChange}
