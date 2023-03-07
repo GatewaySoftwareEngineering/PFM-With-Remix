@@ -1,18 +1,19 @@
-export const income = (transactions) => {
-  const income = transactions
+import { getDateObj } from "./formatDate"
+
+const today = new Date()
+const thisMonth = new Date(today.getFullYear(), today.getMonth(), 1)
+
+export const income = (transactions) =>
+  transactions
     .filter((transaction) => transaction.type === "income")
+    .filter((transaction) => getDateObj(transaction.date) >= thisMonth)
     .reduce((sum, transaction) => sum + Number(transaction.amount), 0)
-  return income
-}
 
-export const expense = (transactions) => {
-  const expense = transactions
+export const expense = (transactions) =>
+  transactions
     .filter((transaction) => transaction.type === "expense")
+    .filter((transaction) => getDateObj(transaction.date) >= thisMonth)
     .reduce((sum, transaction) => sum + Number(transaction.amount), 0)
-  return expense
-}
-export const balance = (transactions) => {
-  const balance = income(transactions) - expense(transactions)
 
-  return balance
-}
+export const balance = (transactions) =>
+  income(transactions) - expense(transactions)
