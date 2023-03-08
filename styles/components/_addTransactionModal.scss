@@ -44,7 +44,7 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(3, 1fr);
-        column-gap: 30px;
+        column-gap: 3rem;
         .form-group {
           display: flex;
           flex-direction: column;
