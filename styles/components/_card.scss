@@ -7,7 +7,7 @@
   border-radius: 7px;
 
   color: #fff;
-  padding: 20px;
+  padding: 2rem;
   &.blue {
     background: linear-gradient(90deg, #7dd3fc 0%, #bae6fd 102.82%);
   }
@@ -18,9 +18,8 @@
     background: linear-gradient(90deg, #fda4af 0%, #fecdd3 102.82%);
   }
   .title {
-    font-size: 18px;
+    font-size: 1.8rem;
     font-weight: 600;
-    line-height: 22px;
     &.blue {
       color: #1a74c7;
     }
@@ -32,14 +31,12 @@
     }
   }
   .details-button {
-    width: 64px;
-    height: 20px;
     border-radius: 12px;
-    font-size: 12px;
-    line-height: 15px;
+    font-size: 1.2rem;
     border: none;
     color: #fff;
     justify-self: end;
+    padding: 0.2em 1rem;
     &.blue {
       background-color: rgba(56, 189, 248, 0.75);
     }
@@ -51,8 +48,7 @@
     }
   }
   .amount {
-    font-size: 30px;
+    font-size: 3rem;
     font-weight: 600;
-    line-height: 36px;
   }
 }
