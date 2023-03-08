@@ -2,6 +2,23 @@
 
 Personal Finance Manager is an application with limited financing functionality, used for tracking your income and expenses and managing your money efficiently.
 
+## Steps To Run The Application
+
+- Create .env file inside project directory
+- Add DATABASE_URL="file:./dev.db" to .env
+- In the terminal run npx prisma db push to created database file in prisma/dev.db
+- In the terminal run yarn seed to add mock data to the database
+- Finally run yarn dev to run the project
+
+## Libraries And Packages That I Used
+
+- Prisma as ORM
+- PropTypes for validating props
+- React DatePicker for handling range date input
+- React Icons for icons
+- React Paginate for pagination
+- React Select for multiple selecting
+
 ## The Assignment
 
 The assignment you're about to tackle is a simple application, you'll be building from the current template built with **Create Remix App**.
@@ -21,11 +38,11 @@ The application uses a simple data representation due to its limited functionali
 
 Following best practices is especially important because it helps us to ensure that the code is clean, maintainable, and efficient. Some examples of best practices in coding include:
 
-  - Creating a clear and intuitive navigation structure.
-  - Using clear and descriptive names for variables, functions, and other elements of code.
-  - Using descriptive and meaningful variable and function names.
-  - Structuring code in a logical and organized way.
-  - while using version controll, keep you're commits simple, small, and clean.
+- Creating a clear and intuitive navigation structure.
+- Using clear and descriptive names for variables, functions, and other elements of code.
+- Using descriptive and meaningful variable and function names.
+- Structuring code in a logical and organized way.
+- while using version control, keep you're commits simple, small, and clean.
 
 ## Design
 
@@ -39,17 +56,17 @@ to actions, but keep in mind, it's just a mock up, and real-world applications n
 
 ![image](https://user-images.githubusercontent.com/41629832/154848837-d53bf2fd-e721-4f78-8858-22d07cb36c43.png)
 
-
 ## Stories
 
 ### Sidebar & Topbar
 
 - As a user, I want to see a sidebar in the left of the screen so I can easily navigate through the application.
   Each link representing a page in the application, when I'm on a specific page, I want it's link to be `white`
-  
+
   When clicking on a link other than currently active link, user will be navigated to corresponding page.
 
   Sidebar contains two navigation links:
+
   1. Overview
   2. Transaction History
 
@@ -83,7 +100,7 @@ to actions, but keep in mind, it's just a mock up, and real-world applications n
   4. `type` input: multiple radio buttons, one can be selected at a time, determining the transactions type.
   5. `note` input: I want to be able to write up to 350 characters as a note attached to the transaction.
 - When `Dismiss` button clicked, the popup will be hidden and the state will be discarded.
-- When `Add Transaction` button clicked: 
+- When `Add Transaction` button clicked:
   - If one or more fields do not have acceptable values, each input will have an error message below it, showing a proper error message.
   - If the form is valid, then a transaction will be saved to the transactions list.
 
@@ -100,4 +117,4 @@ to actions, but keep in mind, it's just a mock up, and real-world applications n
 - As a user, I want to be able to see a Date input to select a `to` date to filter transactions until that date.
   - in `to` date input, future dates must be disabled.
 - When clicking on `Clear` button on the filter bar, all filters except search bar will be resetted to their initial values.
-- As a user, I want to see pagination on the screen so I can change pages of which transactions is shown. 
+- As a user, I want to see pagination on the screen so I can change pages of which transactions is shown.
