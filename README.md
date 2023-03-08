@@ -12,12 +12,12 @@ Personal Finance Manager is an application with limited financing functionality,
 
 ## Libraries And Packages That I Used
 
-- Prisma as ORM
-- PropTypes for validating props
-- React DatePicker for handling range date input
-- React Icons for icons
-- React Paginate for pagination
-- React Select for multiple selecting
+- [Prisma](https://www.prisma.io/) as ORM
+- [PropTypes](https://www.npmjs.com/package/prop-types) for validating props
+- [React DatePicker](https://reactdatepicker.com/) for handling range date input
+- [React Icons](https://react-icons.github.io/react-icons/) for icons
+- [React Paginate](https://www.npmjs.com/package/react-paginate) for pagination
+- [React Select](https://react-select.com/home) for multiple selecting
 
 ## The Assignment
 
