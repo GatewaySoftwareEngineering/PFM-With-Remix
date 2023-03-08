@@ -12,7 +12,7 @@ export default function LatestTransactions({ onModalOpenClick }) {
       category={transaction.category}
       note={transaction.note}
       date={transaction.date}
-      amount={parseInt(transaction.amount, 10)}
+      amount={transaction.amount}
       type={transaction.type}
     />
   ))

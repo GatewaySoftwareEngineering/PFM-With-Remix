@@ -45,6 +45,6 @@ Transaction.propTypes = {
   category: propTypes.string.isRequired,
   note: propTypes.string.isRequired,
   date: propTypes.string.isRequired,
-  amount: propTypes.number.isRequired,
+  amount: propTypes.string.isRequired,
   type: propTypes.string.isRequired,
 }

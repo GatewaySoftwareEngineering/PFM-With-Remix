@@ -7,13 +7,13 @@ export const income = (transactions) =>
   transactions
     .filter((transaction) => transaction.type === "income")
     .filter((transaction) => getDateObj(transaction.date) >= thisMonth)
-    .reduce((sum, transaction) => sum + Number(transaction.amount), 0)
+    .reduce((sum, transaction) => sum + parseInt(transaction.amount, 10), 0)
 
 export const expense = (transactions) =>
   transactions
     .filter((transaction) => transaction.type === "expense")
     .filter((transaction) => getDateObj(transaction.date) >= thisMonth)
-    .reduce((sum, transaction) => sum + Number(transaction.amount), 0)
+    .reduce((sum, transaction) => sum + parseInt(transaction.amount, 10), 0)
 
 export const balance = (transactions) =>
   income(transactions) - expense(transactions)

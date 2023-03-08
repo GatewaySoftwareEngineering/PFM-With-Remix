@@ -1,10 +1,7 @@
-let title = ""
-const getLatestTransactions = (transactions) => {
-  // Helper function to convert date string to date object
-  const getDateObject = (date) => {
-    return new Date(date)
-  }
+import { getDateObj } from "./formatDate"
 
+export let title = ""
+export const getLatestTransactions = (transactions) => {
   // Get current date
   const currentDate = new Date()
 
@@ -26,35 +23,31 @@ const getLatestTransactions = (transactions) => {
 
   //Check for transactions this week
   if (
-    transactions.some(
-      (transaction) => getDateObject(transaction.date) >= lastWeek
-    )
+    transactions.some((transaction) => getDateObj(transaction.date) >= lastWeek)
   ) {
     allTransactions = transactions.filter(
-      (transaction) => getDateObject(transaction.date) >= lastWeek
+      (transaction) => getDateObj(transaction.date) >= lastWeek
     )
     title = "This Week"
   }
   // Check for transactions last month
   else if (
     transactions.some(
-      (transaction) => getDateObject(transaction.date) >= lastMonth
+      (transaction) => getDateObj(transaction.date) >= lastMonth
     )
   ) {
     allTransactions = transactions.filter(
-      (transaction) => getDateObject(transaction.date) >= lastMonth
+      (transaction) => getDateObj(transaction.date) >= lastMonth
     )
     title = "Last Month"
   }
 
   // Check for transactions this year
   else if (
-    transactions.some(
-      (transaction) => getDateObject(transaction.date) >= thisYear
-    )
+    transactions.some((transaction) => getDateObj(transaction.date) >= thisYear)
   ) {
     allTransactions = transactions.filter(
-      (transaction) => getDateObject(transaction.date) >= thisYear
+      (transaction) => getDateObj(transaction.date) >= thisYear
     )
     title = "This Year"
   }
@@ -62,5 +55,3 @@ const getLatestTransactions = (transactions) => {
   // Return the last 10 transactions
   return allTransactions.slice(Math.max(allTransactions.length - 10, 0))
 }
-
-export { getLatestTransactions, title }

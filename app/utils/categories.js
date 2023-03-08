@@ -1,4 +1,4 @@
-const options = {
+export const options = {
   income: [
     {
       value: "salary",
@@ -40,5 +40,3 @@ const options = {
     },
   ],
 }
-
-export { options }

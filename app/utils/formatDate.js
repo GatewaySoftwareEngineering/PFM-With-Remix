@@ -1,4 +1,4 @@
-const formatDate = (date) => {
+export const formatDate = (date) => {
   const today = new Date()
   const yesterday = new Date(
     today.getFullYear(),
@@ -19,8 +19,6 @@ const formatDate = (date) => {
   }
 }
 
-const getDateObj = (date) => {
+export const getDateObj = (date) => {
   return new Date(date)
 }
-
-export { formatDate, getDateObj }

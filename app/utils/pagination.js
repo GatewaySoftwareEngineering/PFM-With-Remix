@@ -1,4 +1,4 @@
-const paginate = (list, pageSize, currentPage) => {
+export const paginate = (list, pageSize, currentPage) => {
   const pageCount = Math.ceil(list.length / pageSize)
 
   const startIndex = (currentPage - 1) * pageSize
@@ -11,5 +11,3 @@ const paginate = (list, pageSize, currentPage) => {
     pageCount,
   }
 }
-
-export { paginate }

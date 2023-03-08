@@ -1,6 +1,6 @@
 import { getDateObj } from "./formatDate"
 
-const filter = (list, selectedCategories, startDate, endDate) =>
+export const filter = (list, selectedCategories, startDate, endDate) =>
   list.filter((transaction) => {
     const isCategorySelected = selectedCategories.length
       ? selectedCategories.some(
@@ -12,5 +12,3 @@ const filter = (list, selectedCategories, startDate, endDate) =>
       getDateObj(transaction.date) <= endDate
     return isCategorySelected && isDateInRange
   })
-
-export { filter }

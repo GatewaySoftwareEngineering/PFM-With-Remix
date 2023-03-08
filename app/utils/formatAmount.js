@@ -1,17 +1,15 @@
-const formatAmount = (amount) => {
-  const billion = 1000000000
-  const million = 1000000
-  const thousand = 1000
-
-  if (amount >= billion) {
-    return `${(amount / billion).toFixed(1)}B`
-  } else if (amount >= million) {
-    return `${(amount / million).toFixed(1)}M`
-  } else if (amount >= thousand) {
-    return `${(amount / thousand).toFixed(1)}K`
-  } else {
-    return amount
+export const formatAmount = (amount) => {
+  const parsedAmount = parseInt(amount, 10)
+  const suffixes = [
+    { value: 1000000000, suffix: "B" },
+    { value: 1000000, suffix: "M" },
+    { value: 1000, suffix: "K" },
+  ]
+  for (const suffix of suffixes) {
+    if (parsedAmount >= suffix.value) {
+      return `${(parsedAmount / suffix.value).toFixed(1)}${suffix.suffix}`
+    }
   }
-}
 
-export { formatAmount }
+  return parsedAmount
+}
