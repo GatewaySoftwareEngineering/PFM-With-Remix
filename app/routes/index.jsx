@@ -41,10 +41,13 @@ export const action = async ({ request }) => {
   }
 
   if (Object.values(fieldErrors).some(Boolean)) {
-    return json({
-      fieldErrors,
-      fields,
-    })
+    return json(
+      {
+        fieldErrors,
+        fields,
+      },
+      { status: 400 }
+    )
   }
 
   await db.transactions.create({
