@@ -1,9 +1,9 @@
-.index-page {
-  font-family: system-ui, sans-serif;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  justify-content: center;
+@import "../components/cards";
+@import "../components/card";
+@import "../components/latestTransactions";
+@import "../components/addTransactionModal";
+@import "../components/error";
+
+.overview-page {
+  min-height: 100vh;
 }

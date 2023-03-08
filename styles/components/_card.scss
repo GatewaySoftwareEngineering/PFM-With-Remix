@@ -1,0 +1,54 @@
+.card {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  width: 32%;
+  height: 11rem;
+  border-radius: 7px;
+
+  color: #fff;
+  padding: 2rem;
+  &.blue {
+    background: linear-gradient(90deg, #7dd3fc 0%, #bae6fd 102.82%);
+  }
+  &.gray {
+    background: linear-gradient(90deg, #d4d4d8 0%, #e4e4e7 102.82%);
+  }
+  &.red {
+    background: linear-gradient(90deg, #fda4af 0%, #fecdd3 102.82%);
+  }
+  .title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    &.blue {
+      color: #1a74c7;
+    }
+    &.gray {
+      color: #71717a;
+    }
+    &.red {
+      color: #ef2a4c;
+    }
+  }
+  .details-button {
+    border-radius: 12px;
+    font-size: 1.2rem;
+    border: none;
+    color: #fff;
+    justify-self: end;
+    padding: 0.2em 1rem;
+    &.blue {
+      background-color: rgba(56, 189, 248, 0.75);
+    }
+    &.gray {
+      background-color: rgba(113, 113, 122, 0.75);
+    }
+    &.red {
+      background-color: rgba(251, 113, 133, 0.75);
+    }
+  }
+  .amount {
+    font-size: 3rem;
+    font-weight: 600;
+  }
+}

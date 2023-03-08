@@ -1,0 +1,24 @@
+.latest-transactions {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  width: 80%;
+  padding: 0 2.5rem;
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .title {
+    font-size: 2.2rem;
+  }
+  .add-transaction {
+    align-self: flex-end;
+    padding: 0.8rem 1.6rem;
+    border-radius: 50px;
+    background-color: rgba(28, 101, 140, 0.15);
+    font-size: 1.6rem;
+    color: rgba(28, 101, 140, 1);
+    border: none;
+  }
+}

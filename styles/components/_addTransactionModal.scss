@@ -1,0 +1,129 @@
+.modal {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  .modal-content {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+    background-color: rgba(248, 250, 252, 1);
+    padding: 1.8rem 2.5rem;
+    border-radius: 1.5rem;
+    width: 60%;
+    height: 65%;
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .title {
+        font-size: 1.6rem;
+        font-weight: 400;
+        color: rgba(0, 0, 0, 1);
+      }
+      .close {
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+        .icon {
+          width: 1.6rem;
+          height: 1.6rem;
+          color: rgba(17, 24, 39, 1);
+        }
+      }
+    }
+    .modal-body {
+      margin-top: 2rem;
+      height: 90%;
+      .modal-form {
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 3rem;
+        row-gap: 0.5rem;
+        .form-group {
+          display: flex;
+          flex-direction: column;
+          row-gap: 1rem;
+          input,
+          textarea {
+            height: 100%;
+            padding: 1rem;
+            resize: none;
+          }
+          &.textarea {
+            grid-column: span 2;
+          }
+          .date,
+          .amount,
+          .category {
+            height: 3.8rem;
+            width: 100%;
+          }
+          .amount {
+            display: flex;
+            align-items: center;
+            border-radius: 7px;
+            border: 1px solid rgba(148, 163, 184, 1);
+            .amount-icon {
+              width: 2rem;
+              height: 2rem;
+              color: rgba(148, 163, 184, 1);
+            }
+            .amount-input {
+              width: 100%;
+              border: none;
+              outline: none;
+            }
+          }
+          .radio-container {
+            display: flex;
+            align-items: center;
+            column-gap: 1rem;
+            margin-top: 2rem;
+          }
+          .radio-input {
+            display: none;
+            &:checked + .radio-label {
+              border: 1px solid rgba(148, 163, 184, 1);
+            }
+          }
+          .radio-label {
+            padding: 0.8rem 1.5rem;
+            border: 1px solid rgba(148, 163, 184, 0.3);
+            border-radius: 0.7rem;
+            cursor: pointer;
+          }
+        }
+        .form-button-group {
+          grid-column: span 3;
+          justify-self: end;
+          align-self: flex-end;
+          display: flex;
+          align-items: center;
+          column-gap: 0.5rem;
+          .button {
+            padding: 0.5rem 1rem;
+            border-radius: 5rem;
+            font-size: 1.2rem;
+            font-weight: 500;
+            border: none;
+            &.primary {
+              background-color: rgba(28, 101, 140, 0.15);
+              color: rgba(28, 101, 140, 1);
+            }
+            &.cancel {
+              background-color: rgba(248, 250, 252, 1);
+              color: rgba(0, 0, 0, 1);
+              border: 1px solid rgba(0, 0, 0, 1);
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,53 @@
+.transaction {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8rem 2rem;
+  background-color: rgba(248, 250, 252, 1);
+  border-radius: 7px;
+  margin-bottom: 1rem;
+  color: rgba(51, 65, 85, 1);
+  .wrapper {
+    display: flex;
+    align-items: center;
+    column-gap: 1.8rem;
+  }
+  .icon {
+    width: 3.2rem;
+    height: 3.2rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    &.green {
+      background-color: rgba(5, 150, 105, 0.2);
+      color: rgba(5, 150, 105, 1);
+    }
+    &.blue {
+      background-color: rgba(2, 132, 199, 0.2);
+      color: rgba(2, 132, 199, 1);
+    }
+  }
+  .note {
+    width: 40rem;
+    font-size: 1.6rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .date {
+    font-size: 1.6rem;
+  }
+  .amount {
+    padding: 0.6rem 1.4rem;
+    border-radius: 6px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    &.green {
+      background-color: rgba(14, 165, 233, 0.15);
+      color: rgba(14, 165, 233, 1);
+    }
+    &.red {
+      color: rgba(239, 42, 76, 1);
+      background-color: rgba(239, 42, 76, 0.15);
+    }
+  }
+}

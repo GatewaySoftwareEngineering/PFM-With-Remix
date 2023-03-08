@@ -1,0 +1,7 @@
+@import "../components/searchBar";
+@import "../components/filter";
+@import "../components/transactionsList";
+
+#transactions-page {
+  min-height: 100vh;
+}

@@ -1,2 +1,11 @@
 @import "global";
+
+@import "components/layout";
+@import "components/header";
+@import "components/navbar";
+@import "components/navItem";
+@import "components/topbar";
+@import "components/transaction";
+
 @import "pages/index";
+@import "pages/transactionHistory";

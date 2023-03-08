@@ -1,5 +1,5 @@
 {
-  "include": ["app/**/*.js", "app/**/*.jsx"],
+  "include": ["app/**/*.js", "app/**/*.jsx", "app/utils/db.server.ts"],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2019"],
     "isolatedModules": true,

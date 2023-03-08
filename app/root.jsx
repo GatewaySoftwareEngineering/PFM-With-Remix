@@ -1,14 +1,10 @@
-import {
-  Links,
-  LiveReload,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-} from "@remix-run/react"
+import { Outlet, useCatch } from "@remix-run/react"
+import propTypes from "prop-types"
 
 import rootStyles from "~/styles/root.css"
-
+import Layout from "~/components/Layout"
+import datePickerStyles from "react-datepicker/dist/react-datepicker.css"
+import Document from "~/components/Document"
 /**
  * @returns {import("@remix-run/node").LinkDescriptor[]}
  */
@@ -17,6 +13,10 @@ export const links = () => [
     rel: "stylesheet",
     href: rootStyles,
   },
+  {
+    rel: "stylesheet",
+    href: datePickerStyles,
+  },
 ]
 
 /**
@@ -24,23 +24,54 @@ export const links = () => [
  */
 export const meta = () => ({
   charset: "utf-8",
-  title: "New Remix App",
+  title: "Finance Manager",
   viewport: "width=device-width,initial-scale=1",
+  description: "A finance manager app that helps you manage your finances",
+  keywords: "finance, manager, app, money, budget",
+  author: "Ayub Abdullah",
 })
 
 export default function App() {
   return (
-    <html lang="en">
-      <head>
-        <Meta />
-        <Links />
-      </head>
-      <body>
+    <Document>
+      <Layout>
         <Outlet />
-        <ScrollRestoration />
-        <Scripts />
-        <LiveReload />
-      </body>
-    </html>
+      </Layout>
+    </Document>
   )
+}
+
+export function ErrorBoundary({ error }) {
+  const { message, name } = error
+  return (
+    <Document>
+      <Layout>
+        <div className="error-container error-boundary">
+          <h1 className="title">{name}</h1>
+          <p className="message">{message}</p>
+        </div>
+      </Layout>
+    </Document>
+  )
+}
+
+export function CatchBoundary() {
+  const caught = useCatch()
+  return (
+    <Document>
+      <Layout>
+        <div className="error-container catch-boundary ">
+          <h1 className="status">{caught.status}</h1>
+          <p className="status-text">
+            {caught.statusText || "Something went wrong"}
+          </p>
+          <p className="message">{caught.data || "Something went wrong"}</p>
+        </div>
+      </Layout>
+    </Document>
+  )
+}
+
+ErrorBoundary.propTypes = {
+  error: propTypes.object.isRequired,
 }
