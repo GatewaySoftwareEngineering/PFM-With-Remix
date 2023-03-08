@@ -19,6 +19,10 @@ export const loader = async () => {
   return json({ transactions })
 }
 
+export const meta = () => ({
+  title: "Finance Manager | Transactions History",
+})
+
 export default function Transactions() {
   const { transactions } = useLoaderData()
 

@@ -24,8 +24,11 @@ export const links = () => [
  */
 export const meta = () => ({
   charset: "utf-8",
-  title: "New Remix App",
+  title: "Finance Manager",
   viewport: "width=device-width,initial-scale=1",
+  description: "A finance manager app that helps you manage your finances",
+  keywords: "finance, manager, app, money, budget",
+  author: "Ayub Abdullah",
 })
 
 export default function App() {

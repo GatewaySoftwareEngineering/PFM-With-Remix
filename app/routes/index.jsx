@@ -62,6 +62,10 @@ export const action = async ({ request }) => {
 
   return redirect("/")
 }
+
+export const meta = () => ({
+  title: "Finance Manager | Overview",
+})
 export default function Index() {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
