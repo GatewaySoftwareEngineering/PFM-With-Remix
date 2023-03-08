@@ -42,6 +42,7 @@ export default function Filter({
           selectsStart
           startDate={startDate}
           endDate={endDate}
+          maxDate={new Date()}
         />
         <DatePicker
           selected={endDate}
