@@ -1,8 +1,5 @@
-export default function Index() {
-  return (
-    <div className="index-page">
-      <h1>Finance Manager</h1>
-      <p>Let&apos;s get this done!</p>
-    </div>
-  );
+import { redirect } from "@remix-run/node"
+
+export const loader = async () => {
+  return redirect("/overview")
 }
