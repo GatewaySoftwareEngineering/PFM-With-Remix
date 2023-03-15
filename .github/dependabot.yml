@@ -1,0 +1,12 @@
+version: 2
+updates:
+  - directory: /
+    open-pull-requests-limit: 5
+    package-ecosystem: npm
+    rebase-strategy: auto
+    versioning-strategy: lockfile-only
+    schedule:
+      interval: monthly
+      day: saturday
+      time: "07:00"
+      timezone: "Asia/Baghdad"
